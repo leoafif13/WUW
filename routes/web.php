@@ -9,6 +9,7 @@ Route::get('/', function () {
 
 Route::get('/index', [PageController::class, 'index']);
 Route::get('/about', [PageController::class, 'about']);
+Route::get('/layanan_kami', [PageController::class, 'layanan_kami']);
 Route::get('/produk', [PageController::class, 'produk']);
 Route::get('/hubungi', [PageController::class, 'hubungi']);
 Route::get('/register', [PageController::class, 'register']);

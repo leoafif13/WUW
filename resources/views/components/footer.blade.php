@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-<footer class="bg-cream px-6 py-4">
+<footer class="bg-gray-400 px-6 py-4">
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
     <!-- Logo -->
     <div class="flex items-center space-x-2 mb-4 md:mb-0">
