@@ -31,7 +31,7 @@
         <div id="profile-dropdown" class="absolute right-0 mt-2 w-48 bg-white text-[#4a3c32] shadow-lg rounded-lg hidden z-40">
           <a href="/profile" class="block px-4 py-2 text-sm">Profile Saya</a>
           <a href="/ganti_password" class="block px-4 py-2 text-sm">Ganti Kata Sandi</a>
-          <a href="#logout" class="block px-4 py-2 text-sm">Keluar</a>
+          <a href="/index" class="block px-4 py-2 text-sm">Keluar</a>
         </div>
       </div>
     </div>
