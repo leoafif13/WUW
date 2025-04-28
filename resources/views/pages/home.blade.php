@@ -18,7 +18,7 @@
  <body class=" text-white font-sans">
   @include('components.navbar_auth')
 
-  <section id="home" class="pt-24 relative z-10 flex flex-col items-center justify-center text-center px-6 py-20 max-w-full mx-auto text-white min-h-screen bg-cover bg-center" style="background-image: url('img/bg.png')">
+  <section id="home" class="pt-24 relative z-10 flex flex-col items-center justify-center text-center px-6 py-20 max-w-full mx-auto text-white min-h-screen bg-cover bg-center" style="background-image: url('img/Background 3.png')">
     <h1 class="font-extrabold text-3xl md:text-4xl leading-tight mb-2 drop-shadow-md">
       Selamat Datang di WUW,<br/> Username
     </h1>
