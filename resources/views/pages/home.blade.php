@@ -1,20 +1,6 @@
-<html lang="id">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>WUW-Home</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
-  </style>
- </head>
+@extends('layouts.app')
+@section('title', 'home')
+@section('content')
  <body class=" text-white font-sans">
   @include('components.navbar_auth')
 
@@ -25,9 +11,9 @@
     <p class="text-base md:text-lg mb-6 font-normal max-w-md mx-auto drop-shadow-md">
       Temukan pakaian terbaik untuk dirimu
     </p>
-    <button class="bg-cream-50 text-[#4a3c32] font-semibold rounded px-6 py-2 hover:bg-[#f9f6f1] transition drop-shadow-lg">
+    <a href="#produk" class="bg-[#f9f6f1] text-blue-900 font-semibold rounded px-6 py-2 hover:bg-gray-500 transition drop-shadow-lg">
       Sewa Sekarang
-    </button>
+    </a>
     <button aria-label="Scroll down" class="mt-8 text-white text-2xl animate-bounce">
       <i class="fas fa-chevron-down"></i>
     </button>
@@ -37,12 +23,17 @@
     @include('pages.about')
   </section>
 
+  <!-- layanan Kami -->
+  <section id="layanan">
+    @include('pages.layanan')
+  </section>
+
      <!-- Hubungi Kami -->
-  <section id="hubungi" class="pt-24">
+  <section id="hubungi">
     @include('pages.hubungi')
   </section>
 
   <!-- Footer -->
   <x-footer></x-footer>
  </body>
-</html>
+endsection
