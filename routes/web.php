@@ -27,6 +27,7 @@ Route::get('/home', [PageController::class, 'home']);
 Route::get('/profile', [PageController::class, 'profile']);
 Route::get('/edit_profile', [PageController::class, 'editProfile']);
 Route::get('/ganti_password', [PageController::class, 'gantiPassword']);
+Route::get('/pembayaran', [PageController::class, 'pembayaran']);
 Route::get('/admin/index', [AdminController::class,'index']);
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/admin/pesan', [PesanController::class, 'index'])->name('pesan');

@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 z-20 bg-amber-900 w-full text-sm font-semibold">
+<header class="fixed top-0 left-0 z-20 bg-blue-900 w-full text-sm font-semibold">
   <div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
     <!-- Logo -->
     <div class="flex items-center space-x-2">
@@ -17,7 +17,7 @@
     <!-- Desktop Icons -->
     <div class="hidden md:flex space-x-6 text-[#f9f6f1] text-xl items-center">
       <button aria-label="Catatan" class="hover:text-[#e0d8cc] transition">
-        <i class="far fa-sticky-note"></i>
+        <i class="fas fa-sticky-note"></i>
       </button>
       <button aria-label="Keranjang" class="hover:text-[#e0d8cc] transition">
         <i class="fas fa-shopping-cart"></i>
