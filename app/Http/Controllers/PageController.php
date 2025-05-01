@@ -90,5 +90,7 @@ class PageController extends Controller
     public function cartProduk() {
         return view('pages.cart');
     }
-    
+    public function keranjang() {
+        return view('pages.keranjang');
+    }
 }
