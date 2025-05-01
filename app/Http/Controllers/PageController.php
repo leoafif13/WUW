@@ -45,4 +45,7 @@ class PageController extends Controller
     public function gantiPassword() {
         return view('pages.ganti_password');
     }
+    public function keranjang() {
+        return view('pages.keranjang');
+    }
 }
