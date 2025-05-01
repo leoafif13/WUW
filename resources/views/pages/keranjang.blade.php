@@ -9,9 +9,10 @@
         </button>
     </div>
     <h1 class="text-base sm:text-lg absolute left-1/2 transform -translate-x-1/2">Keranjang</h1>
-    <button aria-label="Notes" class="text-white text-lg">
+    <a href="/sewa" aria-label="Notes" class="text-white text-lg">
         <span class="material-symbols-outlined">sticky_note_2</span>
-    </button>
+    </a>
+
 </header>
 <!-- Cart Items Container -->
 <main class="px-4 sm:px-6 py-4 space-y-2 bg-[#F9F9F9]">
