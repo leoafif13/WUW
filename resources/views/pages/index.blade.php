@@ -6,7 +6,10 @@
 
   <!-- Hero Section -->
   <section id="beranda" class="bg-gradient-to-br from-[#1e3a8a] to-[#000000] relative min-h-screen px-4 sm:px-6 lg:px-12 py-20">
-  <div class="relative z-10 max-w-3xl ml-0 lg:ml-16 mt-0 lg:mt-10 text-white space-y-6 px-2 sm:px-0">
+  <div class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8">
+    
+    <!-- Konten Kiri (Teks) -->
+    <div class="flex-1 text-white space-y-6 px-2 sm:px-0">
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-snug">
         Temukan Pakaian Terbaik<br>Untuk Hari Terbaik.
       </h1>
@@ -20,7 +23,18 @@
         <i class="ml-4 fa-solid fa-chevron-right fa-2xl"></i>
       </div>
     </div>
-  </section>
+
+    <!-- Konten Kanan (Gambar) -->
+    <div class="relative">
+      <img src="img/15.png" alt="Pakaian" class="w-full max-w-md mx-auto lg:mx-0 relative z-10">
+      <img src="img/16.png" alt="Pakaian" class="w-full max-w-md mx-auto lg:mx-0 absolute bottom-0 left-0 z-0">
+      <img src="img/17.png" alt="Pakaian" class="w-full max-w-md mx-auto lg:mx-0 absolute top-0 left-0 z-0">
+    </div>
+
+  </div>
+</section>
+
+
 
   <!-- Tentang Kami -->
   <section id="tentang">
