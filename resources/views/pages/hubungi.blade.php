@@ -30,7 +30,7 @@
         <!-- Iframe Google Maps tetap di bawah -->
         <iframe
           class="w-full rounded-lg shadow"
-          height="170"
+          height="220"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.052173474437!2d104.04564687499073!3d1.118895662724118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d9892f2138b9f1%3A0x8dcab8a3c877bba0!2sPoliteknik%20Negeri%20Batam!5e0!3m2!1sid!2sid!4v1713523456789"
           allowfullscreen=""
           loading="lazy"
@@ -39,12 +39,12 @@
       </div>
 
       <!-- Formulir Kontak -->
-      <div class="text-black bg-white rounded-lg shadow p-6 space-y-4">
-        <h1 class="text-center text-3xl font-bold text-white">Hubungi Kami</h1>
-        <input type="text" placeholder="Nama Lengkap" class="w-full bg-gray-300 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
-        <input type="email" placeholder="Alamat Email" class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
-        <input type="text" placeholder="Subjek Pesan" class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
-        <textarea placeholder="Ketik Pesan Disini..." rows="4" class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900"></textarea>
+      <div class="text-black bg-gray-300 rounded-lg shadow p-6 space-y-4">
+        <h1 class="text-center text-3xl font-bold text-blue-900">Hubungi Kami</h1>
+        <input type="text" placeholder="Nama Lengkap" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
+        <input type="email" placeholder="Alamat Email" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
+        <input type="text" placeholder="Subjek Pesan" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
+        <textarea placeholder="Ketik Pesan Disini..." rows="4" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900"></textarea>
         <button class="bg-blue-900 text-white font-semibold px-6 py-2 rounded hover:bg-gray-900 transition">Kirim</button>
       </div>
     </div>

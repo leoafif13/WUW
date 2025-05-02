@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>Masuk</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-    }
-  </style>
-</head>
-<body>
+@extends('layouts.app')
+@section('title', 'login')
+@section('content')
   <div class="min-h-screen flex flex-col items-center justify-start bg-[rgb(9, 41, 201)]  relative">
     <img src="img/Background 3.png" alt="Background image" class="absolute inset-0 w-full h-full object-cover opacity-80" loading="lazy" aria-hidden="true" />
     
@@ -50,5 +38,4 @@
       </p>
     </form>
   </div>
-</body>
-</html>
+@endsection

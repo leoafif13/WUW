@@ -9,13 +9,13 @@
 
     <!-- Social Media Icons -->
     <div class="flex space-x-6 text-black text-xl mb-4 md:mb-0">
-      <a href="#" aria-label="Twitter" class="hover:text-gray-600">
+      <a href="#" aria-label="Twitter" class="hover:text-blue-900">
         <i class="fab fa-twitter"></i>
       </a>
-      <a href="#" aria-label="Instagram" class="hover:text-gray-600">
+      <a href="#" aria-label="Instagram" class="hover:text-blue-900">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="#" aria-label="TikTok" class="hover:text-gray-600">
+      <a href="#" aria-label="TikTok" class="hover:text-blue-900">
         <i class="fab fa-tiktok"></i>
       </a>
     </div>

@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>WUW - Temukan Pakaian Terbaik</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  @vite('resources/js/app.js')
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
-  </style>
-</head>
-<body class="text-white">
-
+@extends('layouts.app')
+@section('title', 'index')
+@section('content')
   <!-- Navbar -->
   <x-navbar></x-navbar>
 
@@ -60,6 +44,4 @@
 
   <!-- Footer -->
   <x-footer></x-footer>
-
-</body>
-</html>
+  @endsection

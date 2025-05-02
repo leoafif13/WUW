@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 z-20 bg-blue-900 w-full text-sm font-semibold">
+<header class="fixed top-0 left-0 z-20 bg-transparent backdrop-blur-md w-full text-sm font-semibold">
   <div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
     <!-- Logo -->
     <div class="flex items-center space-x-2">
@@ -16,22 +16,22 @@
 
     <!-- Desktop Icons -->
     <div class="hidden md:flex space-x-6 text-[#f9f6f1] text-xl items-center">
-      <button aria-label="Catatan" class="hover:text-[#e0d8cc] transition">
-        <i class="fas fa-sticky-note"></i>
+      <button aria-label="Catatan" class="hover:text-blue-900 transition duration-200">
+      <span class="material-symbols-outlined">sticky_note_2</span>
       </button>
-      <button aria-label="Keranjang" class="hover:text-[#e0d8cc] transition">
-        <i class="fas fa-shopping-cart"></i>
+      <button aria-label="Keranjang" class="hover:text-blue-900 transition duration-200">
+      <svg class="w-7 h-7 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/></svg>
       </button>
 
       <!-- Profile Icon with Dropdown -->
       <div class="relative z-30">
-        <button aria-label="Akun" class="hover:text-[#e0d8cc] transition" id="profile-btn">
+        <button aria-label="Akun" class="hover:text-blue-900 transition" id="profile-btn">
           <i class="far fa-user-circle"></i>
         </button>
-        <div id="profile-dropdown" class="absolute right-0 mt-2 w-48 bg-white text-[#4a3c32] shadow-lg rounded-lg hidden z-40">
-          <a href="/profile" class="block px-4 py-2 text-sm">Profile Saya</a>
-          <a href="/ganti_password" class="block px-4 py-2 text-sm">Ganti Kata Sandi</a>
-          <a href="/index" class="block px-4 py-2 text-sm">Keluar</a>
+        <div id="profile-dropdown" class="absolute right-0 mt-2 w-45 bg-white text-[#4a3c32] shadow-lg rounded-lg hidden z-40">
+          <a href="/profile" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Profile Saya</a>
+          <a href="/ganti_password" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Ganti Kata Sandi</a><hr class="text-gray-300">
+          <a href="/index" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Keluar</a>
         </div>
       </div>
     </div>
@@ -43,35 +43,39 @@
       </button>
     </div>
   </div>
-</header>
+
 
 <!-- Mobile Menu -->
-<div id="mobile-menu" class="md:hidden hidden bg-[rgba(249,246,241,0.95)] px-6 py-4 space-y-4 text-[#4a3c32] text-sm font-semibold">
-  <a href="#home" class="block nav-item">Home</a>
-  <a href="#tentang" class="block nav-item">Tentang</a>
-  <a href="#produk" class="block nav-item">Produk</a>
-  <a href="#hubungi" class="block nav-item">Hubungi Kami</a>
+<div id="mobile-menu" class="md:hidden hidden bg-transparent backdrop-blur-md px-6 py-4 space-y-4 text-white text-sm font-semibold">
+  <a href="#home" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Home</a>
+  <a href="#tentang" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Tentang</a>
+  <a href="#produk" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Produk</a>
+  <a href="#hubungi" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Hubungi Kami</a>
 
-  <!-- Mobile Icons -->
-  <div class="flex justify-center space-x-6 text-xl text-[#4a3c32] pt-4 border-t border-[#d8cfc6]">
-    <button aria-label="Catatan" class="hover:text-[#7a6657] transition">
-      <i class="far fa-sticky-note"></i>
-    </button>
-    <button aria-label="Keranjang" class="hover:text-[#7a6657] transition">
-      <i class="fas fa-shopping-cart"></i>
-    </button>
+  <div class="flex items-center justify-center space-x-6 text-xl text-white pt-4 border-t border-[#d8cfc6]">
+  <!-- Catatan -->
+  <button aria-label="Catatan" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition duration-200">
+    <span class="material-symbols-outlined text-2xl">sticky_note_2</span>
+  </button>
 
-    <!-- Profile Icon with Mobile Dropdown -->
-    <div class="relative">
-      <button aria-label="Akun" class="hover:text-[#7a6657] transition" id="profile-btn-mobile">
-        <i class="far fa-user-circle"></i>
-      </button>
-      <div id="profile-dropdown-mobile" class="absolute right-0 mt-2 w-48 bg-white text-[#4a3c32] shadow-lg rounded-lg hidden z-40">
-        <a href="/profile" class="block px-4 py-2 text-sm">Profile Saya</a>
-        <a href="/ganti_password" class="block px-4 py-2 text-sm">Ganti Kata Sandi</a>
-        <a href="#logout" class="block px-4 py-2 text-sm">Keluar</a>
-      </div>
-    </div>
+  <!-- Keranjang -->
+  <button aria-label="Keranjang" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition duration-200">
+  <svg class="w-7 h-7 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/></svg>
+  </button>
+
+  <div class="relative flex items-center justify-center">
+  <button aria-label="Akun" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition duration-200" id="profile-btn-mobile">
+    <i class="far fa-user-circle text-2xl"></i>
+  </button>
+  <div id="profile-dropdown-mobile" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white text-[#4a3c32] shadow-lg rounded-lg hidden z-40">
+    <a href="/profile" class="block px-4 py-2 text-sm">Profile Saya</a>
+    <a href="/ganti_password" class="block px-4 py-2 text-sm">Ganti Kata Sandi</a><hr class="text-gray-300">
+    <a href="#logout" class="block px-4 py-2 text-sm">Keluar</a>
+  </div>
+</div>
+
+</div>
+
   </div>
 </div>
 
@@ -114,3 +118,4 @@
     }
   });
 </script>
+</header>
