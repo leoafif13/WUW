@@ -36,4 +36,4 @@
   <!-- Footer -->
   <x-footer></x-footer>
  </body>
-endsection
+@endsection
