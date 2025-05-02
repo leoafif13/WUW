@@ -9,7 +9,7 @@
     <div class="flex flex-col md:flex-row gap-6">
       <!-- Gambar -->
       <div class="md:w-1/2 flex justify-center">
-        <img src="images/Jas.jpg" alt="Royal Java Heritage Set" class="rounded-md w-90 object-cover">
+        <img src="img/Jas.jpg" alt="Royal Java Heritage Set" class="rounded-md w-90 object-cover">
       </div>
 
       <!-- Detail Produk -->

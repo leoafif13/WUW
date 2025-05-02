@@ -1,7 +1,7 @@
 <div class="max-w-5xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden border p-6 lg:flex gap-8 min-h-[500px]">
   <!-- Gambar Produk -->
   <div class="flex-shrink-0 flex justify-center items-start w-full lg:w-1/3 h-full">
-    <img src="images/Jas.jpg" alt="Jas"
+    <img src="img/Jas.jpg" alt="Jas"
          class="rounded-md shadow-md object-cover w-64 h-full max-h-[500px]" />
   </div>
 

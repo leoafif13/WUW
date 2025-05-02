@@ -8,9 +8,9 @@
 
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex space-x-8 text-[#f9f6f1] font-semibold text-sm">
-      <a href="#home" class="hover:underline px-2 tracking-wide">Home</a>
+      <a href="/home" class="hover:underline px-2 tracking-wide">Home</a>
       <a href="#tentang" class="hover:underline px-2 tracking-wide">Tentang</a>
-      <a href="#produk" class="nav-item hover:underline" id="produk-nav">Produk</a>
+      <a href="/barang" class="nav-item hover:underline" id="produk-nav">Produk</a>
       <a href="#hubungi" class="hover:underline px-2 tracking-wide">Hubungi Kami</a>
     </nav>
 

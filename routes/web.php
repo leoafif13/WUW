@@ -28,7 +28,7 @@ Route::get('/profile', [PageController::class, 'profile']);
 Route::get('/edit_profile', [PageController::class, 'editProfile']);
 Route::get('/ganti_password', [PageController::class, 'gantiPassword']);
 Route::get('/sewa', [PageController::class, 'sewa']);
-Route::get('/searchbar', [PageController::class, 'headerProduk']);
+Route::get('/barang', [PageController::class, 'barang']);
 Route::get('/detailproduk', [PageController::class, 'detailProduk']);
 Route::get('/cart', [PageController::class, 'cartProduk']);
 Route::get('/keranjang', [PageController::class, 'keranjang']);
