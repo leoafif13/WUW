@@ -20,7 +20,7 @@
 
     <!-- GAMBAR -->
     <div class="md:w-2/5 flex justify-center w-full">
-      <img src="img/6.png" alt="..." class="w-full h-auto max-w-sm object-cover rounded-lg shadow-lg" />
+      <img src="img/25.png" alt="..." class="w-full h-auto max-w-sm object-cover rounded-lg shadow-lg" />
     </div>
   </div>
 </section>

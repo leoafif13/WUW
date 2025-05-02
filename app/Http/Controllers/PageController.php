@@ -88,4 +88,7 @@ class PageController extends Controller
     public function keranjang() {
         return view('pages.keranjang');
     }
+    public function history() {
+        return view('pages.history');
+    }
 }
