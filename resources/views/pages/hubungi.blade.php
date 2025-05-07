@@ -1,7 +1,7 @@
 <section id="hubungi" class="bg-gradient-to-r from-blue-900 to-black min-h-screen scroll-mt-24">
   <div class="max-w-7xl mx-auto px-4 pt-16 pb-16">
     <div class="text-center mb-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-blue-300">Hubungi Kami</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-white">Hubungi Kami</h2>
       <p class="text-lg text-gray-500">Hubungi Kami Kapanpun Anda Mau</p>
     </div>
 

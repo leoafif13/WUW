@@ -31,7 +31,7 @@
         btn.addEventListener("click", () => {
           buttons.forEach(b => b.classList.remove("bg-blue-900", "text-white"));
           btn.classList.add("bg-blue-900", "text-white");
-          console.log(`${groupId}: ${btn.dataset.value}`); // Simpan atau gunakan
+          console.log(${groupId}: ${btn.dataset.value}); // Simpan atau gunakan
         });
       });
     }

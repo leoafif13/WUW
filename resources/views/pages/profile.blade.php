@@ -7,7 +7,7 @@
     <button id="backButton" aria-label="Back" class="text-white hover:text-gray-300 text-lg mr-4">
       <i class="fas fa-arrow-left"></i>
     </button>
-    <h1 class="text-white font-bold text-center flex-grow text-sm sm:text-base" style="font-family: 'Popppins', sans-serif;">
+    <h1 class="text-white font-bold text-center flex-grow text-sm sm:text-base">
       Profile Saya
     </h1>
     <div style="width: 24px;"></div>
@@ -20,13 +20,13 @@
       <div class="w-20 h-20 rounded-full border-4 border-blue-900 bg-white flex items-center justify-center mb-2">
         <i class="fas fa-user text-blue-900 text-4xl"></i>
       </div>
-      <h2 class="text-white font-bold text-lg sm:text-xl" style="font-family: 'Inter', sans-serif;">
+      <h2 class="text-white font-bold text-lg sm:text-xl">
         Username
       </h2>
     </div>
 
     <!-- Profile Details -->
-    <div class="bg-white rounded-md p-4 mt-6 text-sm sm:text-base" style="font-family: 'Inter', sans-serif;">
+    <div class="bg-white rounded-md p-4 mt-6 text-sm sm:text-base">
       <p class="text-gray-500 mb-2">
         <span class="font-bold text-blue-900">Nama Pengguna:</span> Username
       </p>
