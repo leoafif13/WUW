@@ -14,6 +14,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\MarkdownEditor;
 
 class BarangResource extends Resource
 {
@@ -28,10 +31,15 @@ class BarangResource extends Resource
                 TextInput::make('kategori'),
                 TextInput::make('nama_barang'),
                 TextInput::make('stok'),
-                TextInput::make('foto'),
-                TextInput::make('deskripsi'),
-                TextInput::make('warna'),
+                FileUpload::make('foto')
+                    ->disk('public')
+                    ->preserveFilenames()
+                    ->image(),
                 TextInput::make('ukuran'),
+                TextInput::make('warna'),
+                MarkdownEditor::make('deskripsi')
+                    ->columnSpanFull()
+                    ->required(),
             ]);
     }
 
@@ -42,10 +50,12 @@ class BarangResource extends Resource
                 TextColumn::make('kategori'),
                 TextColumn::make('nama_barang'),
                 TextColumn::make('stok'),
-                TextColumn::make('foto'),
-                TextColumn::make('deskripsi'),
-                TextColumn::make('warna'),
+                ImageColumn::make('foto')
+                    ->disk('public')
+                    ->width(100),
                 TextColumn::make('ukuran'),
+                TextColumn::make('warna'),
+                TextColumn::make('deskripsi'),
             ])
             ->filters([
                 //

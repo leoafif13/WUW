@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('kategori');
             $table->string('nama_barang');
             $table->string('stok');
-            $table->string('foto');
+            $table->string('foto')->nullable();
             $table->string('deskripsi');
             $table->string('warna');
             $table->string('ukuran');
