@@ -34,7 +34,8 @@ class BarangResource extends Resource
                 FileUpload::make('foto')
                     ->disk('public')
                     ->preserveFilenames()
-                    ->image(),
+                    ->image()
+                    ->visibility('public'),
                 TextInput::make('ukuran'),
                 TextInput::make('warna'),
                 MarkdownEditor::make('deskripsi')
