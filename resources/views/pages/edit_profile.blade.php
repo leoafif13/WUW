@@ -4,9 +4,9 @@
 <body class="bg-cover bg-center min-h-screen flex flex-col" style="background-image: url('img/Background 3.png')">
   <!-- Header -->
   <header class="flex items-center px-4 py-3 text-white font-semibold text-sm bg-blue-900 backdrop-blur-sm">
-    <button onclick="history.back()" aria-label="Back" class="mr-4 hover:text-gray-300 focus:outline-none">
-      <i class="fas fa-arrow-left"></i>
-    </button>
+    <button aria-label="Back" class="mr-4 focus:outline-none hover:text-gray-300" onclick="window.history.back()">
+    <i class="fas fa-chevron-left"></i>
+   </button>
     <h1 class="flex-1 text-center font-bold text-sm">Edit Profile</h1>
     <div class="w-6"></div>
   </header>
