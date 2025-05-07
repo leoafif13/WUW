@@ -4,7 +4,7 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
     @for ($i = 0; $i < 3; $i++)
       <div class="bg-white text-blue-900 rounded-lg overflow-hidden shadow-md">
-        <img src="{{ asset('img/Jas.jpg') }}" alt="Jas Midnight Charcoal" class="w-full h-72 object-cover">
+        <img src="{{ asset('img/jashitam.jpg') }}" alt="Jas Midnight Charcoal" class="w-full h-72 object-cover">
         <div class="p-4 text-left">
           <div class="flex items-center  mb-2">
             <span class="bg-gray-300 text-gray-600 text-xs font-semibold mr-2 px-2 py-1 rounded">Tersedia</span>

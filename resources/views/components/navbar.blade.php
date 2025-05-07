@@ -8,7 +8,7 @@
 
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex space-x-8 text-[#f9f6f1] font-semibold text-sm">
-      <a href="#home" class="hover:underline px-2 tracking-wide">Home</a>
+      <a href="#beranda" class="hover:underline px-2 tracking-wide">Beranda</a>
       <a href="#tentang" class="hover:underline px-2 tracking-wide">Tentang</a>
       <a href="#produk" class="hover:underline px-2 tracking-wide">Produk</a>
       <a href="#hubungi" class="hover:underline px-2 tracking-wide">Hubungi Kami</a>
@@ -33,7 +33,7 @@
 
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="md:hidden hidden bg-transparent backdrop-blur-md px-6 py-4 space-y-4 text-white text-sm font-semibold">
-    <a href="#home" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Home</a>
+    <a href="#beranda" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Beranda</a>
     <a href="#tentang" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Tentang</a>
     <a href="#produk" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Produk</a>
     <a href="#hubungi" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Hubungi Kami</a>

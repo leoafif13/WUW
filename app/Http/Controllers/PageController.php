@@ -47,6 +47,11 @@ class PageController extends Controller
         return view('pages.ganti_password');
     }
 
+
+    public function pembayaran() {
+        return view('pages.pembayaran');
+    }
+
     public function sewa() {
         $terms = [
             ['step' => 1, 'title' => 'Pilih tanggal sewa yang tersedia', 'icon' => 'calender.png'],
@@ -87,5 +92,8 @@ class PageController extends Controller
     }
     public function keranjang() {
         return view('pages.keranjang');
+    }
+    public function history() {
+        return view('pages.history');
     }
 }

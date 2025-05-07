@@ -31,7 +31,8 @@
         </button>
         <div id="profile-dropdown" class="absolute right-0 mt-2 w-45 bg-white text-[#4a3c32] shadow-lg rounded-lg hidden z-40">
           <a href="/profile" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Profile Saya</a>
-          <a href="/ganti_password" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Ganti Kata Sandi</a><hr class="text-gray-300">
+          <a href="/ganti_password" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Ganti Kata Sandi</a>
+          <a href="/history" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Riwayat Penyewaan</a><hr class="text-gray-300">
           <a href="/index" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Keluar</a>
         </div>
       </div>

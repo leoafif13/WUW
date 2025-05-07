@@ -13,17 +13,17 @@
           <div class="flex-1 bg-gray-300 rounded-lg shadow p-4">
             <h3 class="text-lg font-semibold text-blue-900 mb-2">Jam Operasional</h3>
             <ul class="text-sm">
-              <li>Senin - Jumat: <strong>8.00 – 16.00</strong></li>
-              <li>Sabtu: <strong>8.00 – 12.00</strong></li>
-              <li>Minggu: <strong class="text-blue-600">Close</strong></li>
+              <li>Senin - Jumat : <strong class="text-blue-600">8.00 – 16.00</strong></li>
+              <li>Sabtu : <strong class="text-blue-600">8.00 – 12.00</strong></li>
+              <li>Minggu : <strong class="text-blue-600">Close</strong></li>
             </ul>
           </div>
 
-          <div class="flex-1 bg-gray-300 text-sm leading-relaxed p-4 rounded-lg">
-            <h3 class="text-lg font-semibold text-blue-900 mb-2">Kunjungi Lokasi Kami</h3>
-            <p><strong>Nomor Telepon:</strong> (0778) 456880</p>
-            <p><strong>Alamat:</strong> Jl. Ahmad Yani, Tlk. Tering, Kec. Batam Kota, Kota Batam, Kepulauan Riau 29444</p>
-            <p><strong>Email:</strong> WearYouWant@gmail.com</p>
+          <div class="flex-1 text-white text-sm leading-relaxed p-4 rounded-lg">
+            <h3 class="text-lg font-semibold mb-2">Kunjungi Lokasi Kami</h3>
+            <p><i class="fa-solid fa-phone-volume p-2"></i><strong>Nomor Telepon:</strong> (0778) 456880</p>
+            <p><i class="fa-solid fa-location-dot p-2"></i><strong>Alamat:</strong> Jl. Ahmad Yani, Tlk. Tering, Kec. Batam Kota, Kota Batam, Kepulauan Riau 29444</p>
+            <p><i class="fa-regular fa-envelope p-2"></i><strong>Email:</strong> WearYouWant@gmail.com</p>
           </div>
         </div>
 
@@ -39,13 +39,12 @@
       </div>
 
       <!-- Formulir Kontak -->
-      <div class="text-black bg-gray-300 rounded-lg shadow p-6 space-y-4">
-        <h1 class="text-center text-3xl font-bold text-blue-900">Hubungi Kami</h1>
+      <div class="text-black p-12 bg-gray-300 rounded-lg shadow p-6 space-y-4">
         <input type="text" placeholder="Nama Lengkap" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
         <input type="email" placeholder="Alamat Email" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
         <input type="text" placeholder="Subjek Pesan" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
         <textarea placeholder="Ketik Pesan Disini..." rows="4" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900"></textarea>
-        <button class="bg-blue-900 text-white font-semibold px-6 py-2 rounded hover:bg-gray-900 transition">Kirim</button>
+        <button class="w-full bg-blue-900 text-white font-semibold px-6 py-2 rounded-lg hover:bg-gray-900 transition">Kirim</button>
       </div>
     </div>
   </div>
