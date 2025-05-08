@@ -22,7 +22,7 @@ class BarangResource extends Resource
 {
     protected static ?string $model = Barang::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
     public static function form(Form $form): Form
     {
@@ -48,11 +48,21 @@ class BarangResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->state(function ($record, $livewire) {
+                        $currentPage = $livewire->page ?? 1;
+                        $perPage = $livewire->tableRecordsPerPage ?? 10;
+                        $index = $livewire->getTableRecords()->search(fn ($item) => $item->id === $record->id);
+                        return ($currentPage - 1) * $perPage + $index + 1;
+                    })
+                    ->sortable(false),
                 TextColumn::make('kategori'),
                 TextColumn::make('nama_barang'),
                 TextColumn::make('stok'),
                 ImageColumn::make('foto')
                     ->disk('public')
+                    ->url(fn($record) => $record->foto ? asset('storage/' . $record->foto) : null) 
                     ->width(100),
                 TextColumn::make('ukuran'),
                 TextColumn::make('warna'),

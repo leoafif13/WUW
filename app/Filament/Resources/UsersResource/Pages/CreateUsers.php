@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Filament\Resources\BarangResource\Pages;
+namespace App\Filament\Resources\UsersResource\Pages;
 
-use App\Filament\Resources\BarangResource;
+use App\Filament\Resources\UsersResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateBarang extends CreateRecord
+class CreateUsers extends CreateRecord
 {
-    protected static string $resource = BarangResource::class;
+    protected static string $resource = UsersResource::class;
 
     public function getTitle(): string
     {
-        return 'Nambah Barang';
+        return 'Nambah User';
     }
 
     protected function getFormActions(): array

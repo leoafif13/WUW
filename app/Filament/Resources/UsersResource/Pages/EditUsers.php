@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Filament\Resources\BarangResource\Pages;
+namespace App\Filament\Resources\UsersResource\Pages;
 
-use App\Filament\Resources\BarangResource;
+use App\Filament\Resources\UsersResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditBarang extends EditRecord
+class EditUsers extends EditRecord
 {
-    protected static string $resource = BarangResource::class;
+    protected static string $resource = UsersResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make()
-                ->label('Hapus'),
+            Actions\DeleteAction::make() ->label('Hapus'),
         ];
     }
 
