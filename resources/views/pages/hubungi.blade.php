@@ -39,13 +39,37 @@
       </div>
 
       <!-- Formulir Kontak -->
-      <div class="text-black p-12 bg-gray-300 rounded-lg shadow p-6 space-y-4">
-        <input type="text" placeholder="Nama Lengkap" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
-        <input type="email" placeholder="Alamat Email" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
-        <input type="text" placeholder="Subjek Pesan" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900">
-        <textarea placeholder="Ketik Pesan Disini..." rows="4" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900"></textarea>
-        <button class="w-full bg-blue-900 text-white font-semibold px-6 py-2 rounded-lg hover:bg-gray-900 transition">Kirim</button>
-      </div>
+      <form action="{{ route('kontak.store') }}" method="POST" class="text-black p-6 bg-gray-300 rounded-lg shadow space-y-4">
+        @csrf
+        <input type="text" name="nama" placeholder="Nama Lengkap" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required value="{{ old('nama') }}">
+        @error('nama')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+        @enderror
+
+        <input type="email" name="email" placeholder="Alamat Email" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required value="{{ old('email') }}">
+        @error('email')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+        @enderror
+
+        <input type="text" name="subjek" placeholder="Subjek Pesan" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required value="{{ old('subjek') }}">
+        @error('subjek')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+        @enderror
+
+        <textarea name="pesan" placeholder="Ketik Pesan Disini..." rows="4" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required>{{ old('pesan') }}</textarea>
+        @error('pesan')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+        @enderror
+
+        <button type="submit" class="w-full bg-blue-900 text-white font-semibold px-6 py-2 rounded-lg hover:bg-gray-900 transition">Kirim</button>
+      </form>
     </div>
   </div>
+
+  <!-- Pesan Sukses -->
+  @if(session('success'))
+    <div class="bg-green-500 text-white p-4 rounded-lg mb-6">
+      {{ session('success') }}
+    </div>
+  @endif
 </section>

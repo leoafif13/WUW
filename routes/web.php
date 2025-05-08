@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
-
+use App\Http\Controllers\KontakController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,3 +26,4 @@ Route::get('/keranjang', [PageController::class, 'keranjang']);
 Route::get('/barang', [PageController::class, 'barang']);
 Route::get('/detailproduk', [PageController::class, 'detailproduk']);
 Route::get('/cart', [PageController::class, 'cartProduk']);
+Route::post('/kirim-pesan', [KontakController::class, 'store'])->name('kontak.store');
