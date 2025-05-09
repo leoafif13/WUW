@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->string('warna');
             $table->string('ukuran');
+            $table->string('type');
+            $table->decimal('harga', 10, 2);
             $table->timestamps();
         });
     }

@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BarangResource\Pages;
-use App\Filament\Resources\BarangResource\RelationManagers;
 use App\Models\Barang;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -17,6 +16,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Select;
 
 class BarangResource extends Resource
 {
@@ -28,16 +28,49 @@ class BarangResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('kategori'),
+                Select::make('kategori')
+                    ->label('Kategori')
+                    ->required()
+                    ->options([
+                        'Baju Nikahan' => 'Baju Nikahan',
+                        'Baju Wisuda' => 'Baju Wisuda',
+                    ]),
+                
+                Select::make('type')
+                    ->required()
+                    ->label('Tipe Pakaian')
+                    ->placeholder('Pilih tipe pakaian')
+                    ->options([
+                        'Atasan' => 'Atasan',
+                        'Bawahan' => 'Bawahan',
+                    ]),
+                
                 TextInput::make('nama_barang'),
+
+                TextInput::make('harga')
+                    ->required()
+                    ->label('harga')
+                    ->placeholder('Masukkan Harga Baju')
+                    ->numeric()
+                    ->prefix('Rp')
+                    ->minValue(0)
+                    ->maxValue(1000000),
+
                 TextInput::make('stok'),
+
                 FileUpload::make('foto')
+                    ->label('foto')
                     ->disk('public')
+                    ->directory('barangs') 
                     ->preserveFilenames()
                     ->image()
-                    ->visibility('public'),
+                    ->visibility('public')
+                    ->maxSize(2048)
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/jpg']),
+
                 TextInput::make('ukuran'),
                 TextInput::make('warna'),
+
                 MarkdownEditor::make('deskripsi')
                     ->columnSpanFull()
                     ->required(),
@@ -58,12 +91,23 @@ class BarangResource extends Resource
                     })
                     ->sortable(false),
                 TextColumn::make('kategori'),
+
+                TextColumn::make('type')
+                    ->label('Jenis'),
+
                 TextColumn::make('nama_barang'),
+
+                TextColumn::make('harga')
+                    ->label('Harga')
+                    ->money('IDR', true),
                 TextColumn::make('stok'),
+
                 ImageColumn::make('foto')
                     ->disk('public')
-                    ->url(fn($record) => $record->foto ? asset('storage/' . $record->foto) : null) 
-                    ->width(100),
+                    ->width(100)
+                    ->label('Foto')
+                    ->visibility('public')
+                    ->url(fn($record) => $record->foto ? asset('storage/barangs/' . basename($record->foto)) : asset('images/default.jpg')),
                 TextColumn::make('ukuran'),
                 TextColumn::make('warna'),
                 TextColumn::make('deskripsi'),

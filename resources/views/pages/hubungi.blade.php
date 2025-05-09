@@ -66,10 +66,5 @@
     </div>
   </div>
 
-  <!-- Pesan Sukses -->
-  @if(session('success'))
-    <div class="bg-green-500 text-white p-4 rounded-lg mb-6">
-      {{ session('success') }}
-    </div>
-  @endif
+  
 </section>
