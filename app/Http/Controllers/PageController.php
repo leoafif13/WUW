@@ -19,26 +19,6 @@ class PageController extends Controller
         return view('pages.produk');
     }
 
-    public function hubungi() {
-        return view('pages.hubungi');
-    }
-
-    public function register() {
-        return view('pages.register');
-    }
-
-    public function login() {
-        return view('pages.login');
-    }
-
-    public function home() {
-        return view('pages.home');
-    }
-
-    public function profile() {
-        return view('pages.profile');
-    }
-
     public function editProfile() {
         return view('pages.edit_profile');
     }
@@ -46,8 +26,7 @@ class PageController extends Controller
     public function gantiPassword() {
         return view('pages.ganti_password');
     }
-
-
+    
     public function pembayaran() {
         return view('pages.pembayaran');
     }
@@ -81,9 +60,7 @@ class PageController extends Controller
 
         return view('pages.sewa', compact('terms', 'guides'));
     }
-    public function barang() {
-        return view('pages.barang');
-    }
+
     public function detailProduk() {
         return view('pages.detailproduk');
     }
@@ -93,7 +70,5 @@ class PageController extends Controller
     public function keranjang() {
         return view('pages.keranjang');
     }
-    public function history() {
-        return view('pages.history');
-    }
+
 }

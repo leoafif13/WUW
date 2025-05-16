@@ -6,6 +6,8 @@
   <div class="bg-blue-900 text-white py-4 px-6 shadow">
   <div class="flex items-center justify-between">
     <button class="mr-4">
+      <!-- Tombol Kembali -->
+      <button onclick="window.history.back()" class="mr-4">
       <!-- Icon kembali -->
       <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg">

@@ -31,15 +31,15 @@
         <span class="font-bold text-blue-900">Nama Pengguna:</span> Username
       </p>
       <p class="text-gray-500 mb-2">
+        <span class="font-bold text-blue-900">Nama Lengkap:</span> Username123
+      </p>
+      <p class="text-gray-500 mb-2">
         <span class="font-bold text-blue-900">Alamat Email:</span> username@gmail.com
       </p>
       <p class="text-gray-500 mb-2">
         <span class="font-bold text-blue-900">Nomor Telepon:</span> 0812-3456-7890
       </p>
-      <p class="text-gray-500 mb-4">
-        <span class="font-bold text-blue-900">Alamat Rumah:</span><br />
-        Politeknik Negeri Batam. Jl. Ahmad Yani, Tlk. Tering, Kec. Batam Kota. Kota Batam, Kepulauan Riau 29461
-      </p>
+      
 
       <!-- Edit Profile Button -->
       <a href="/edit_profile" class="w-full block text-center bg-blue-900 text-white py-2 rounded text-sm sm:text-base font-semibold">

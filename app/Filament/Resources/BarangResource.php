@@ -23,6 +23,8 @@ class BarangResource extends Resource
     protected static ?string $model = Barang::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
+    
+    protected static ?string $label = 'Product';
 
     public static function form(Form $form): Form
     {
@@ -59,15 +61,20 @@ class BarangResource extends Resource
                 TextInput::make('stok'),
 
                 FileUpload::make('foto')
+                    ->required()
+                    ->image()
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ])
+                    ->directory('barangs')
                     ->label('foto')
                     ->disk('public')
-                    ->directory('barangs') 
-                    ->preserveFilenames()
-                    ->image()
                     ->visibility('public')
-                    ->maxSize(2048)
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/jpg']),
-
+                    ->preserveFilenames()
+                    ->maxSize(2048),
                 TextInput::make('ukuran'),
                 TextInput::make('warna'),
 
@@ -104,7 +111,7 @@ class BarangResource extends Resource
 
                 ImageColumn::make('foto')
                     ->disk('public')
-                    ->width(100)
+                    ->size(100)
                     ->label('Foto')
                     ->visibility('public')
                     ->url(fn($record) => $record->foto ? asset('storage/barangs/' . basename($record->foto)) : asset('images/default.jpg')),

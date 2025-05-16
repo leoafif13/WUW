@@ -6,7 +6,11 @@ use App\Models\Kontak;
 use Illuminate\Http\Request;
 
 class KontakController extends Controller
-{
+{   
+    public function hubungi() {
+        return view('pages.hubungi');
+    }
+
     public function store(Request $request)
     {
 
