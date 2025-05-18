@@ -13,22 +13,19 @@
     
     <form autocomplete="off" class="relative z-10 bg-white bg-opacity-90 rounded-md w-[90vw] max-w-md p-4 md:p-6 mb-12">
       <div class="mb-4">
-        <label class="block text-[13px] font-semibold text-[#000353] mb-1" for="namaPengguna">
-          Nama Pengguna
-        </label>
-        <input class="w-full bg-[#d1d1d1] text-[13px] placeholder:text-[#a3a3a3] rounded-sm px-2 py-2 focus:outline-none" id="namaPengguna" name="namaPengguna" placeholder="Masukkan Nama Pengguna" type="text"/>
+        <x-label for="email" value="Email"/>
+        <x-input id="email" name="email" placeholder="Masukkan Email" type="text"/>
       </div>
-      
+    
       <div class="mb-4">
-        <label class="block text-[13px] font-semibold text-[#000353] mb-1" for="kataSandi">
-          Kata Sandi
-        </label>
-        <input class="w-full bg-[#d1d1d1] text-[13px] placeholder:text-[#a3a3a3] rounded-sm px-2 py-2 focus:outline-none" id="kataSandi" name="kataSandi" placeholder="Masukkan Kata Sandi" type="password"/>
+        <x-label for="password" value="Kata Sandi" />
+        <x-input id="Password" name="Password" placeholder="Masukkan Kata Sandi" type="password"/>
       </div>
       
-      <button class="mt-2 w-full bg-[#000353] text-white text-[13px] font-semibold py-2 rounded-sm hover:bg-[#509fe4] transition-colors" type="submit">
-        Masuk
-      </button>
+      <x-button type="submit">
+       Masuk
+      </x-button>
+
       
       <p class="mt-2 text-[10px] text-center text-black">
         Belum punya akun?

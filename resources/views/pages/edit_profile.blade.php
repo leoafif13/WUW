@@ -30,12 +30,12 @@
       <!-- Input fields -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label for="nama" class="block text-blue-900 font-bold text-xs mb-1">Nama Pengguna</label>
-          <input id="nama" type="text" placeholder="Masukkan Nama Pengguna" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1" />
-        </div>
-        <div>
           <label for="nama_lengkap" class="block text-blue-900 font-bold text-xs mb-1">Nama Lengkap</label>
           <input id="nama_lengkap" type="text" placeholder="Masukkan Nama Lengkap" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1" />
+        </div>
+        <div>
+          <label for="alamat" class="block text-blue-900 font-bold text-xs mb-1">Alamat</label>
+          <input id="alamat" type="text" placeholder="Masukkan Alamat" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1" />
         </div>
         <div>
           <label for="phone" class="block text-blue-900 font-bold text-xs mb-1">Nomor Telepon</label>

@@ -28,10 +28,10 @@
     <!-- Profile Details -->
     <div class="bg-white rounded-md p-4 mt-6 text-sm sm:text-base">
       <p class="text-gray-500 mb-2">
-        <span class="font-bold text-blue-900">Nama Pengguna:</span> Username
+        <span class="font-bold text-blue-900">Nama Lengkap:</span> Username123
       </p>
       <p class="text-gray-500 mb-2">
-        <span class="font-bold text-blue-900">Nama Lengkap:</span> Username123
+        <span class="font-bold text-blue-900">Alamat:</span> Batam
       </p>
       <p class="text-gray-500 mb-2">
         <span class="font-bold text-blue-900">Alamat Email:</span> username@gmail.com

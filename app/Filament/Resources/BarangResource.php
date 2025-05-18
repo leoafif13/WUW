@@ -74,7 +74,8 @@ class BarangResource extends Resource
                     ->disk('public')
                     ->visibility('public')
                     ->preserveFilenames()
-                    ->maxSize(2048),
+                    ->maxSize(2048)
+                    ->required(),
                 TextInput::make('ukuran'),
                 TextInput::make('warna'),
 

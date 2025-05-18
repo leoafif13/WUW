@@ -24,6 +24,8 @@ class UsersResource extends Resource
 
     protected static ?string $navigationGroup = 'System Management';
 
+    protected static ?string $label = 'Customer';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -76,5 +78,10 @@ class UsersResource extends Resource
             'create' => Pages\CreateUsers::route('/create'),
             'edit' => Pages\EditUsers::route('/{record}/edit'),
         ];
+    }
+
+     public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('role', 'customer');
     }
 }
