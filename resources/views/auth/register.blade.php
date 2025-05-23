@@ -9,44 +9,68 @@
       Daftar Akun
     </h1>
   </div>
-  <form autocomplete="off" class="relative z-10 bg-white bg-opacity-90 rounded-md w-[90vw] max-w-3xl p-4 md:p-6 mb-12">
+  
+  <form method="POST" action="{{ route('register') }}" autocomplete="off" class="relative z-10 bg-white bg-opacity-90 rounded-md w-[90vw] max-w-3xl p-4 md:p-6 mb-12">
+    @csrf
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-      @csrf
       <div>
         <x-label for="name" value="Nama Lengkap" />
-        <x-input id="name" name="name" type="text" placeholder="Masukkan Nama Lengkap" />
+        <x-input id="name" name="name" type="text" placeholder="Masukkan Nama Lengkap" value="{{ old('name') }}" />
+        @error('name')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
       </div>
+
       <div>
         <x-label for="alamat" value="Alamat"/>
-        <x-input id="alamat" name="alamat" placeholder="Masukkan Alamat" type="text" />
+        <x-input id="alamat" name="alamat" placeholder="Masukkan Alamat" type="text" value="{{ old('alamat') }}" />
+        @error('alamat')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
       </div>
+
       <div>
         <x-label for="email" value="Alamat Email" />
-        <x-input id="email" name="email" placeholder="Masukkan Alamat Email" type="email" />
+        <x-input id="email" name="email" placeholder="Masukkan Alamat Email" type="email" value="{{ old('email') }}" />
+        @error('email')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
       </div>
+
       <div>
         <x-label for="telepon" value="No Telepon" />
-        <x-input id="telepon" name="telepon" placeholder="Masukkan Nomor Telepon" type="tel" />
+        <x-input id="telepon" name="telepon" placeholder="Masukkan Nomor Telepon" type="tel" value="{{ old('telepon') }}" />
+        @error('telepon')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
       </div>
+
       <div>
         <x-label for="password" value="Kata Sandi" />
         <x-input id="password" name="password" placeholder="Masukkan Kata Sandi" type="password" />
+        @error('password')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
       </div>
+
       <div>
         <x-label for="password_confirmation" value="Konfirmasi Kata Sandi" />
         <x-input id="password_confirmation" name="password_confirmation" placeholder="Konfirmasi Kata Sandi" type="password" />
       </div>
     </div>
+
     <div class="mt-2 text-[10px] text-black flex items-start">
-      <input class="mt-[3px] mr-1 w-3 h-3 accent-[#5a0a0a]" id="agree" type="checkbox" />
+      <input class="mt-[3px] mr-1 w-3 h-3 accent-[#5a0a0a]" id="agree" type="checkbox" required />
       <label class="leading-tight" for="agree">
         Saya Menyetujui Ketentuan Layanan dan Kebijakan Privasi yang Berlaku
       </label>
     </div>
-    <x-button type="submit">Buat Akun</x-button>
+
+    <x-button type="submit" class="mt-4">Buat Akun</x-button>
+
     <p class="mt-2 text-[10px] text-center text-black">
       Sudah punya akun?
-      <a class="underline hover:text-[#5a0a0a]" href="/login">
+      <a class="underline hover:text-[#5a0a0a]" href="{{ route('login') }}">
         Masuk sekarang
       </a>
     </p>

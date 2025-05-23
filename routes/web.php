@@ -19,20 +19,36 @@ Route::get('/', function () {
 
 Route::get('/index', [PageController::class, 'index']);
 Route::get('/about', [PageController::class, 'about']);
-Route::get('/layanan_kami', [PageController::class, 'layanan_kami']);
+
 Route::get('/produk', [PageController::class, 'produk']);
 Route::get('/hubungi', [PageController::class, 'hubungi']);
-Route::get('/register', [RegisterController::class, 'register']);
-Route::get('/login', [LoginController::class, 'login']);
-Route::get('/home', [HomeController::class, 'home']);
-Route::get('/profile', [ProfileController::class, 'profile']);
-Route::get('/edit_profile', [ProfileController::class, 'editProfile']);
-Route::get('/ganti_password', [ProfileController::class, 'gantiPassword']);
-Route::get('/pembayaran', [PembayaranController::class, 'index']);
-Route::get('/sewa', [CaraSewaController::class, 'sewa']);
-Route::get('/history', [HistoryController::class, 'history']);
-Route::get('/keranjang', [KeranjangController::class, 'index']);
-Route::get('/barang', [BarangController::class, 'barang']);
-Route::get('/detailproduk', [BarangController::class, 'detailproduk']);
-Route::get('/cart', [BarangController::class, 'cartProduk']);
-Route::post('/kirim-pesan', [KontakController::class, 'store'])->name('kontak.store');
+
+Route::get('/register', [RegisterController::class, 'show'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/layanan_kami', [PageController::class, 'layanan']);
+    Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::get('/edit_profile', [ProfileController::class, 'editProfile'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('/ganti_password', [ProfileController::class, 'gantiPassword'])->name('ganti_password');
+    Route::post('/update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
+
+
+    Route::get('/pembayaran', [PembayaranController::class, 'index']);
+    Route::get('/sewa', [CaraSewaController::class, 'sewa']);
+    Route::get('/history', [HistoryController::class, 'history']);
+    Route::get('/keranjang', [KeranjangController::class, 'index']);
+    Route::get('/barang', [BarangController::class, 'barang']);
+    Route::get('/detailproduk/{id}', [BarangController::class, 'detailProduk'])->name('detailproduk');
+    Route::get('/cart', [BarangController::class, 'cartProduk']);
+    Route::post('/kirim-pesan', [KontakController::class, 'store'])->name('kontak.store');
+    Route::get('/filter', [BarangController::class, 'filter'])->name('filter');
+});

@@ -13,7 +13,7 @@ class StatsDashboard extends BaseWidget
     protected function getStats(): array
     {
         $countBarangs = Barang::count();
-        $countuser = User::count();
+        $countuser = User::where('role', 'customer')->count();
         $countkontak = Kontak::count();
 
         return [

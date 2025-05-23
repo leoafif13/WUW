@@ -18,5 +18,8 @@ class PageController extends Controller
     public function produk() {
         return view('pages.produk');
     }
+    public function layanan() {
+        return view('pages.layanan');
+    }
     
 }

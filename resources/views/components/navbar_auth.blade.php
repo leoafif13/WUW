@@ -16,12 +16,13 @@
 
     <!-- Desktop Icons -->
     <div class="hidden md:flex space-x-6 text-[#f9f6f1] text-xl items-center">
-    <a href="/sewa" aria-label="Catatan" class="hover:text-blue-900 transition duration-200">
-      <span class="material-symbols-outlined">sticky_note_2</span>
-    </a>
-    <a href="/keranjang" aria-label="Keranjang" class="hover:text-blue-900 transition duration-200">
+      <a href="/sewa" aria-label="Catatan" class="hover:text-blue-900 transition duration-200">
+        <span class="material-symbols-outlined">sticky_note_2</span>
+      </a>
+      <a href="/keranjang" aria-label="Keranjang" class="hover:text-blue-900 transition duration-200">
         <svg class="w-7 h-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
         </svg>
       </a>
       <!-- Profile Icon with Dropdown -->
@@ -32,8 +33,14 @@
         <div id="profile-dropdown" class="absolute right-0 mt-2 w-45 bg-white text-[#4a3c32] shadow-lg rounded-lg hidden z-40">
           <a href="/profile" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Profile Saya</a>
           <a href="/ganti_password" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Ganti Kata Sandi</a>
-          <a href="/history" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Riwayat Penyewaan</a><hr class="text-gray-300">
-          <a href="/index" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Keluar</a>
+          <a href="/history" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Riwayat Penyewaan</a>
+          <hr class="text-gray-300">
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="block w-full text-left bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">
+              Keluar
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -46,40 +53,49 @@
     </div>
   </div>
 
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-transparent backdrop-blur-md px-6 py-4 space-y-4 text-white text-sm font-semibold">
+    <a href="#home" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Home</a>
+    <a href="#tentang" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Tentang</a>
+    <a href="#produk" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Produk</a>
+    <a href="#hubungi" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Hubungi Kami</a>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="md:hidden hidden bg-transparent backdrop-blur-md px-6 py-4 space-y-4 text-white text-sm font-semibold">
-  <a href="#home" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Home</a>
-  <a href="#tentang" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Tentang</a>
-  <a href="#produk" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Produk</a>
-  <a href="#hubungi" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Hubungi Kami</a>
+    <div class="flex items-center justify-center space-x-6 text-xl text-white pt-4 border-t border-[#d8cfc6]">
+      <!-- Catatan -->
+      <button aria-label="Catatan" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition duration-200">
+        <span class="material-symbols-outlined text-2xl">sticky_note_2</span>
+      </button>
 
-  <div class="flex items-center justify-center space-x-6 text-xl text-white pt-4 border-t border-[#d8cfc6]">
-  <!-- Catatan -->
-  <button aria-label="Catatan" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition duration-200">
-    <span class="material-symbols-outlined text-2xl">sticky_note_2</span>
-  </button>
+      <!-- Keranjang -->
+      <button aria-label="Keranjang" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition duration-200">
+        <svg class="w-7 h-7 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+          viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+        </svg>
+      </button>
 
-  <!-- Keranjang -->
-  <button aria-label="Keranjang" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition duration-200">
-  <svg class="w-7 h-7 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/></svg>
-  </button>
+      <div class="relative flex items-center justify-center">
+        <button aria-label="Akun" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition duration-200" id="profile-btn-mobile">
+          <i class="far fa-user-circle text-2xl"></i>
+        </button>
+        <div id="profile-dropdown-mobile" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white text-[#4a3c32] shadow-lg rounded-lg hidden z-40">
+          <a href="/profile" class="block px-4 py-2 text-sm">Profile Saya</a>
+          <a href="/ganti_password" class="block px-4 py-2 text-sm">Ganti Kata Sandi</a>
+          <hr class="text-gray-300">
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="block px-4 py-2 text-sm w-full text-left hover:bg-blue-900 hover:text-white rounded transition duration-200">
+              Keluar
+            </button>
+          </form>
+        </div>
+      </div>
 
-  <div class="relative flex items-center justify-center">
-  <button aria-label="Akun" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition duration-200" id="profile-btn-mobile">
-    <i class="far fa-user-circle text-2xl"></i>
-  </button>
-  <div id="profile-dropdown-mobile" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white text-[#4a3c32] shadow-lg rounded-lg hidden z-40">
-    <a href="/profile" class="block px-4 py-2 text-sm">Profile Saya</a>
-    <a href="/ganti_password" class="block px-4 py-2 text-sm">Ganti Kata Sandi</a><hr class="text-gray-300">
-    <a href="#logout" class="block px-4 py-2 text-sm">Keluar</a>
+    </div>
+
   </div>
-</div>
-
-</div>
-
-  </div>
-</div>
+</header>
 
 <!-- Script -->
 <script>
@@ -120,4 +136,3 @@
     }
   });
 </script>
-</header>

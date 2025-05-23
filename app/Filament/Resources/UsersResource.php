@@ -32,6 +32,8 @@ class UsersResource extends Resource
             ->schema([
                 TextInput::make('name'),
                 TextInput::make('email'),
+                TextInput::make('alamat'),
+                TextInput::make('telepon'),
             ]);
     }
 
@@ -50,6 +52,8 @@ class UsersResource extends Resource
                     ->sortable(false),
                 TextColumn::make('name'),
                 TextColumn::make('email'),
+                TextColumn::make('alamat'),
+                TextColumn::make('telepon'),
             ])
             ->filters([
                 //

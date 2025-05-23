@@ -45,6 +45,7 @@ class BarangResource extends Resource
                     ->options([
                         'Atasan' => 'Atasan',
                         'Bawahan' => 'Bawahan',
+                        'Satu Set' => 'Satu Set',
                     ]),
                 
                 TextInput::make('nama_barang'),
