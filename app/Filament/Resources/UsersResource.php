@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UsersResource\Pages;
-use App\Filament\Resources\UsersResource\RelationManagers;
+
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,7 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 
@@ -26,12 +26,23 @@ class UsersResource extends Resource
 
     protected static ?string $label = 'Customer';
 
+    public static function getNavigationBadge(): ?string
+    {
+        $count = User::where('role', 'customer')->count();
+
+        if ($count > 99) {
+            return '99+';
+        }
+
+        return (string) $count;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name'),
-                TextInput::make('email'),
+                TextInput::make('name')->required(),
+                TextInput::make('email')->email()->required(),
                 TextInput::make('alamat'),
                 TextInput::make('telepon'),
             ]);
@@ -50,10 +61,10 @@ class UsersResource extends Resource
                         return ($currentPage - 1) * $perPage + $index + 1;
                     })
                     ->sortable(false),
-                TextColumn::make('name'),
-                TextColumn::make('email'),
-                TextColumn::make('alamat'),
-                TextColumn::make('telepon'),
+                TextColumn::make('name')->searchable(),
+                TextColumn::make('email')->searchable(),
+                TextColumn::make('alamat')->searchable(),
+                TextColumn::make('telepon')->searchable(),
             ])
             ->filters([
                 //
@@ -84,7 +95,7 @@ class UsersResource extends Resource
         ];
     }
 
-     public static function getEloquentQuery(): Builder
+    public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->where('role', 'customer');
     }

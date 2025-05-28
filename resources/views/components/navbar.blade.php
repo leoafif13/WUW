@@ -2,7 +2,7 @@
   <div class="flex items-center justify-between max-w-7xl mx-auto px-6 py-4 md:px-12">
     <!-- Logo -->
     <div class="flex items-center space-x-2">
-      <img src="img/logo1.png" alt="WUW logo icon" class="w-8 h-8 object-cover rounded-full" />
+      <x-logo />
       <span class="text-[#f9f6f1] font-bold text-base select-none">WUW</span>
     </div>
 

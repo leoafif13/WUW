@@ -1,21 +1,6 @@
-<html lang="id">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <title>Pembayaran</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
-  </style>
- </head>
+@extends('layouts.app')
+@section('title', 'Pembayaran')
+@section('content')
  <body class="bg-white text-gray-800 font-sans">
   <!--navbar payment-->
   @include('components.navbar_payment')
@@ -210,4 +195,4 @@
   <button class="bg-blue-900 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-blue-800 transition">Buat Pesanan</button>
   </footer>
   </body>
-</html>
+

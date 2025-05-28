@@ -23,6 +23,8 @@ class BarangResource extends Resource
     protected static ?string $model = Barang::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
+
+    protected static ?string $navigationGroup = 'Products Management';
     
     protected static ?string $label = 'Product';
 

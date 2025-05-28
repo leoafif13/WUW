@@ -19,9 +19,16 @@
 
 <section class="bg-blue-900 text-white py-6">
     <div class="text-center">
-        <h2 class="text-2xl font-bold">Detail Produk</h2>
+        <h2 class="text-2xl font-bold">
+            @if(request()->has('search') || request()->has('kategori') || request()->has('ukuran')) 
+                Hasil Penelusuran
+            @else
+                Produk Rekomendasi Kami
+            @endif
+        </h2>
     </div>
 </section>
+
 
 <section class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     @foreach ($barangs as $barang)
@@ -43,9 +50,16 @@
                 </p>
 
                 <div class="mt-3 flex gap-2">
-                    <a href="{{ route('detailproduk', $barang->id) }}" class="w-90 text-sm px-4 py-2 bg-blue-900 text-white rounded text-center">Detail Produk</a>
-                    <button class="text-sm px-4 py-2 border bg-blue-900 text-indigo-900 rounded">🛒</button>
+                    <a href="{{ route('detailproduk', $barang->id) }}" class="w-90 text-sm px-4 py-2 bg-blue-900 text-white rounded text-center">
+                        Detail Produk
+                    </a>
+
+                    <form action="{{ route('keranjang.tambah', $barang->id) }}" method="" class="inline">
+                        @csrf
+                        <button type="submit" class="text-sm px-4 py-2 border bg-blue-900 text-indigo-900 rounded">🛒</button>
+                    </form>
                 </div>
+
             </div>
         </div>
 

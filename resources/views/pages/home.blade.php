@@ -12,7 +12,7 @@
     <p class="text-base md:text-lg mb-6 font-normal max-w-md mx-auto drop-shadow-md">
       Temukan pakaian terbaik untuk dirimu
     </p>
-    <a href="#produk" class="bg-[#f9f6f1] text-blue-900 font-semibold rounded px-6 py-2 hover:bg-gray-500 transition drop-shadow-lg">
+    <a href="/barang" class="bg-[#f9f6f1] text-blue-900 font-semibold rounded px-6 py-2 hover:bg-gray-500 transition drop-shadow-lg">
       Sewa Sekarang
     </a>
     <button aria-label="Scroll down" class="mt-8 text-white text-2xl animate-bounce">

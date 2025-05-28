@@ -11,6 +11,7 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
+use Filament\Enums\ThemeMode;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -27,6 +28,12 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->brandName('WUW')
+            ->profile(isSimple: false)
+            ->defaultThemeMode(ThemeMode::Light)
+            ->font('Poppins')
+            ->favicon(asset('img/logo1.png'))
+            ->sidebarFullyCollapsibleOnDesktop()
             ->login()
             ->colors([
                 'primary' => '#1E3A8A',

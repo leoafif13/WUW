@@ -2,10 +2,10 @@
   <div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
     <!-- Logo -->
     <div class="flex items-center space-x-2">
-      <img src="img/logo1.png" alt="WUW logo icon" class="w-8 h-8 object-cover rounded-full" />
+      <x-logo />
       <span class="text-[#f9f6f1] font-bold text-base select-none">WUW</span>
     </div>
-
+    
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex space-x-8 text-[#f9f6f1] font-semibold text-sm">
       <a href="/home" class="hover:underline px-2 tracking-wide">Home</a>

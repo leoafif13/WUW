@@ -13,11 +13,11 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\CaraSewaController;
 use App\Http\Controllers\KeranjangController;
 
-Route::get('/', function () {
-    return view('components.welcome');
-});
+//Route::get('/', function () {
+    //return view('components.welcome');
+//});
 
-Route::get('/index', [PageController::class, 'index']);
+Route::get('/', [PageController::class, 'index']);
 Route::get('/about', [PageController::class, 'about']);
 
 Route::get('/produk', [PageController::class, 'produk']);
@@ -45,7 +45,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pembayaran', [PembayaranController::class, 'index']);
     Route::get('/sewa', [CaraSewaController::class, 'sewa']);
     Route::get('/history', [HistoryController::class, 'history']);
-    Route::get('/keranjang', [KeranjangController::class, 'index']);
+
+    Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.index');
+    Route::get('/keranjang/tambah{id}', [KeranjangController::class, 'tambah'])->name('keranjang.tambah');
+    Route::get('/keranjang/hapus/{id}', [KeranjangController::class, 'hapus'])->name('keranjang.hapus');
+    Route::get('/keranjang/kosongkan', [KeranjangController::class, 'kosongkan'])->name('keranjang.kosongkan');
+    Route::get('/keranjang/kurangi/{id}', [KeranjangController::class, 'kurangi'])->name('keranjang.kurangi');
+
     Route::get('/barang', [BarangController::class, 'barang']);
     Route::get('/detailproduk/{id}', [BarangController::class, 'detailProduk'])->name('detailproduk');
     Route::get('/cart', [BarangController::class, 'cartProduk']);

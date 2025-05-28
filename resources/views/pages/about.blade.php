@@ -1,4 +1,4 @@
-<section id="tentang" class="min-h-screen scroll-pt-36 relative bg-gradient-to-br from-[#595959] to-[#000000] bg-cover bg-center bg-no-repeat">
+<section id="tentang" class="min-h-screen scroll-pt-36 relative bg-gradient-to-r from-[#1e3a8a] to-[#000000] bg-cover bg-center bg-no-repeat">
   <!-- Konten -->
   <div class="relative z-10 max-w-4xl mx-auto p-6 pt-6">
     <div class="text-center mb-8 pt-16">

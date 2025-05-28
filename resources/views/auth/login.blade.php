@@ -21,6 +21,13 @@
       </div>
     @endif
 
+    {{-- Tampilkan error reCAPTCHA jika ada --}}
+    @if($errors->has('captcha'))
+      <div class="text-red-600 text-sm mb-4">
+        {{ $errors->first('captcha') }}
+      </div>
+    @endif
+
     <div class="mb-4">
       <x-label for="email" value="Email"/>
       <x-input id="email" name="email" placeholder="Masukkan Email" type="email" required autofocus />
@@ -30,6 +37,14 @@
       <x-label for="password" value="Kata Sandi" />
       <x-input id="password" name="password" placeholder="Masukkan Kata Sandi" type="password" required />
     </div>
+
+    <div class="mb-4">
+      <div class="w-full flex justify-center">
+        <div class="g-recaptcha transform scale-[0.95] origin-top" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+      </div>
+    </div>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <x-button type="submit">
       Masuk

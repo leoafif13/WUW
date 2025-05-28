@@ -1,4 +1,4 @@
-<section id="layanan" class="min-h-screen scroll-pt-36 relative bg-gradient-to-br from-[#1e3a8a] to-[#000000] bg-cover bg-center bg-no-repeat">
+<section id="layanan" class="min-h-screen scroll-pt-36 relative bg-gradient-to-r from-[#1e3a8a] to-[#000000] bg-cover bg-center bg-no-repeat">
 <div class="text-center mb-8 pt-12">
       <h2 class="text-2xl font-bold text-white">Layanan Kami</h2>
       <p class="text-lg text-white">WUW hadir menjadi solusi bagi kamu</p>

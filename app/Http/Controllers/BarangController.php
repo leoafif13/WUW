@@ -8,7 +8,7 @@ use App\Models\Barang;
 class BarangController extends Controller
 {
     public function barang() {
-        $barangs = Barang::all();
+        $barangs = Barang::orderBy('nama_barang', 'asc')->get();
         return view('pages.barang', compact('barangs'));
     }
     public function detailProduk($id) {
@@ -33,13 +33,17 @@ class BarangController extends Controller
             // Asumsikan field type di database ada, misal 'type'
             $query->where('type', $request->type);
         }
+        if ($request->filled('ukuran')) {
+            // Asumsikan field ukuran di database ada, misal 'ukuran'
+            $query->where('ukuran', $request->ukuran);
+        }
 
         // Filter search (misal berdasarkan nama atau deskripsi)
         if ($request->filled('search')) {
             $search = $request->search;
             $query->where(function($q) use ($search) {
                 $q->where('nama_barang', 'like', "%{$search}%")
-                ->orWhere('ukuran', 'like', "%{$search}%");
+                ->orWhere('deskripsi', 'like', "%{$search}%");
             });
         }
 

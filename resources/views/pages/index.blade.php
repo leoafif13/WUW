@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', 'index')
+@section('title', 'Index')
 @section('content')
   <!-- Navbar -->
   <x-navbar></x-navbar>
 
   <!-- Hero Section -->
-  <section id="beranda" class="bg-gradient-to-br from-[#1e3a8a] to-[#000000] relative min-h-screen px-4 sm:px-6 lg:px-12 py-20">
+  <section id="beranda" class="bg-gradient-to-r from-[#1e3a8a] to-[#000000] relative min-h-screen px-4 sm:px-6 lg:px-12 py-20">
     <div class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8">
 
       <!-- Konten Kiri (Teks) -->
@@ -45,8 +45,8 @@
   </section>
 
   <!-- Produk -->
-  <section id="produk" class="pt-16 py-20 px-4 sm:px-6 lg:px-16 bg-gradient-to-br from-[#595959] to-[#000000] text-white">
-    @include('pages.produk')
+  <section id="produk" class="pt-16 py-20 px-4 sm:px-6 lg:px-16 bg-gradient-to-r from-[#1e3a8a] to-[#000000] text-white">
+    @include('pages.produk', ['barang' => $barang])
   </section>
 
   <!-- Hubungi Kami -->

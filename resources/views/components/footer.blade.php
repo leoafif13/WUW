@@ -3,7 +3,7 @@
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
     <!-- Logo -->
     <div class="flex items-center space-x-2 mb-4 md:mb-0">
-      <img src="img/logo1.png" alt="Logo" class="w-8 h-8 rounded-full">
+      <x-logo />
       <span class="font-bold text-gray-900 text-lg">WUW</span>
     </div>
 
