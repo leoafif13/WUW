@@ -62,9 +62,14 @@
     <div class="mt-2 text-[10px] text-black flex items-start">
       <input class="mt-[3px] mr-1 w-3 h-3 accent-[#5a0a0a]" id="agree" type="checkbox" required />
       <label class="leading-tight" for="agree">
-        Saya Menyetujui Ketentuan Layanan dan Kebijakan Privasi yang Berlaku
+        Saya menyetujui 
+        <a href="{{ route('terms') }}" class="underline hover:text-[#5a0a0a]" target="_blank">Ketentuan Layanan</a>
+        dan
+        <a href="{{ route('policy') }}" class="underline hover:text-[#5a0a0a]" target="_blank">Kebijakan Privasi</a>
+        yang berlaku.
       </label>
     </div>
+
 
     <x-button type="submit" class="mt-4">Buat Akun</x-button>
 

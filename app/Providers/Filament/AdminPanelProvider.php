@@ -6,6 +6,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\MenuItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -30,11 +31,15 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->brandName('WUW')
             ->profile(isSimple: false)
-            ->defaultThemeMode(ThemeMode::Light)
+            ->registration()
+            ->defaultThemeMode(ThemeMode::System)
             ->font('Poppins')
             ->favicon(asset('img/logo1.png'))
             ->sidebarFullyCollapsibleOnDesktop()
             ->login()
+            ->userMenuItems([
+                'profile' => MenuItem::make()->label('Edit profil'),
+            ])
             ->colors([
                 'primary' => '#1E3A8A',
             ])
