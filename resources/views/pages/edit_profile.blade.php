@@ -12,20 +12,28 @@
   </header>
 
   <!-- Content -->
-  <div class="flex-grow flex flex-col items-center justify-center pt-10 px-4">
-    <!-- Profile icon -->
-    <div class="mb-6 flex flex-col items-center space-y-2 z-10">
-      <img src="https://storage.googleapis.com/a1aa/image/020c0338-a101-499d-add9-f730ab1ce9da.jpg" alt="User profile icon" class="w-20 h-20 rounded-full border-4 border-blue-900"/>
-      <label class="inline-block bg-blue-900 text-white text-xs px-4 py-2 rounded-lg cursor-pointer">
+  <div class="flex-grow flex flex-col items-center justify-start px-4 mt-20 space-y-6">
+    
+    <!-- Profile icon & Upload Foto -->
+    <div class="flex flex-col items-center space-y-2 z-10 mt-10"> 
+      <img id="preview" 
+           src="{{ $user->foto ? asset('storage/' . $user->foto) : asset('img/default.png') }}" 
+           alt="User profile icon"
+           class="w-24 h-24 rounded-full border-4 border-blue-900 object-cover shadow-md" />
+      
+      <!-- Tombol Upload -->
+      <label for="foto" class="inline-block bg-blue-900 text-white text-xs px-4 py-2 rounded-lg cursor-pointer shadow">
         Upload Foto
-        <input type="file" class="hidden" />
       </label>
     </div>
 
     <!-- Form -->
-    <form method="POST" action="{{ route('profile.update') }}" class="bg-white bg-opacity-90 rounded-md p-6 w-full max-w-2xl space-y-4 z-10">
+    <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="bg-white bg-opacity-90 rounded-md p-6 w-full max-w-2xl space-y-4 z-10">
       @csrf
       @method('PUT')
+
+      <!-- Hidden input foto -->
+      <input type="file" name="foto" id="foto" class="hidden" accept="image/*" onchange="previewImage(event)" />
 
       <!-- Input fields -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -35,11 +43,11 @@
         </div>
         <div>
           <label for="alamat" class="block text-blue-900 font-bold text-xs mb-1">Alamat</label>
-          <input id="alamat" name="alamat" type="text" value="{{ old('alamat', $user->alamat) }}" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1"  />
+          <input id="alamat" name="alamat" type="text" value="{{ old('alamat', $user->alamat) }}" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1" />
         </div>
         <div>
           <label for="telepon" class="block text-blue-900 font-bold text-xs mb-1">Nomor Telepon</label>
-          <input id="telepon" name="telepon" type="tel" value="{{ old('telepon', $user->telepon) }}" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1"  />
+          <input id="telepon" name="telepon" type="tel" value="{{ old('telepon', $user->telepon) }}" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1" />
         </div>
         <div>
           <label for="email" class="block text-blue-900 font-bold text-xs mb-1">Alamat Email</label>
@@ -53,5 +61,18 @@
       </button>
     </form>
   </div>
+
+  <!-- Preview JS -->
+  <script>
+    function previewImage(event) {
+      const input = event.target;
+      const reader = new FileReader();
+      reader.onload = function () {
+        const img = document.getElementById('preview');
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  </script>
 </body>
 @endsection

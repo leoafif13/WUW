@@ -18,8 +18,12 @@
     <div class="w-full max-w-lg">
       <!-- Profile Icon and Username -->
       <div class="flex flex-col items-center text-center">
-        <div class="w-20 h-20 rounded-full border-4 border-blue-900 bg-white flex items-center justify-center mb-2">
-          <i class="fas fa-user text-blue-900 text-4xl"></i>
+        <div class="w-20 h-20 rounded-full border-4 border-blue-900 bg-white flex items-center justify-center mb-2 overflow-hidden">
+          @if ($user->foto)
+            <img src="{{ asset('storage/' . $user->foto) }}" alt="Foto Profil" class="w-full h-full object-cover">
+          @else
+            <i class="fas fa-user text-blue-900 text-4xl"></i>
+          @endif
         </div>
         <h2 class="text-white font-bold text-lg sm:text-xl">
           {{ $user->name }}

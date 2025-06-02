@@ -11,6 +11,8 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -45,6 +47,22 @@ class UsersResource extends Resource
                 TextInput::make('email')->email()->required(),
                 TextInput::make('alamat'),
                 TextInput::make('telepon'),
+                FileUpload::make('foto')
+                    ->required()
+                    ->image()
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ])
+                    ->directory('profile')
+                    ->label('foto')
+                    ->disk('public')
+                    ->visibility('public')
+                    ->preserveFilenames()
+                    ->maxSize(2048)
+                    ->required(),
             ]);
     }
 
@@ -65,6 +83,12 @@ class UsersResource extends Resource
                 TextColumn::make('email')->searchable(),
                 TextColumn::make('alamat')->searchable(),
                 TextColumn::make('telepon')->searchable(),
+                ImageColumn::make('foto')
+                        ->disk('public')
+                        ->size(100)
+                        ->label('Foto')
+                        ->visibility('public')
+                        ->url(fn($record) => $record->foto ? asset('storage/profile/' . basename($record->foto)) : asset('images/default.jpg')),
             ])
             ->filters([
                 //
