@@ -15,7 +15,7 @@
     <h2 class="text-2xl text-blue-900">Syarat dan Panduan Menyewa</h2>
   </div>
 
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
     @foreach ($terms as $term)
       <div class="bg-white p-4 rounded-xl shadow-md text-center">
         <div class="flex justify-center mb-2">
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="rounded-full flex justify-center mb-2">
-          <img src="{{ asset('img/icon/' . $term['icon']) }}" class="w-20 h-20">
+          <img src="{{ asset('img/icon/' . $term['icon']) }}" class="w-20 h-20 object-contain">
         </div>
         <h3 class="text-sm font-medium">{{ $term['title'] }}</h3>
       </div>
@@ -36,7 +36,7 @@
     <h2 class="text-2xl text-blue-900">Panduan Menyewa</h2>
   </div>
 
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
     @foreach ($guides as $guide)
       <div class="bg-white p-4 rounded-xl shadow-md text-center">
         <div class="flex justify-center mb-2">
@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="rounded-full flex justify-center mb-2">
-          <img src="{{ asset('img/icon/' . $guide['icon']) }}" class="w-20 h-20">
+          <img src="{{ asset('img/icon/' . $guide['icon']) }}" class="w-20 h-20 object-contain">
         </div>
         <h3 class="text-sm font-medium">{{ $guide['title'] }}</h3>
       </div>

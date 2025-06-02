@@ -1,11 +1,11 @@
-<section id="produk" class="max-w-6xl mx-auto p-6 text-center overflow-hidden">
+<section id="produk" class="max-w-6xl mx-auto px-4 py-6 text-center overflow-hidden">
   <h2 class="text-white text-2xl md:text-3xl font-bold mb-10">Produk Yang Kami Sewakan</h2>
 
   <div class="produk-slider flex gap-6 overflow-x-auto scrollbar-hide">
     @foreach ($barang as $item)
-      <div class="bg-white text-blue-900 rounded-lg overflow-hidden shadow-md flex flex-col w-72 flex-shrink-0">
+      <div class="bg-white text-blue-900 rounded-lg overflow-hidden shadow-md flex flex-col w-64 sm:w-72 md:w-80 flex-shrink-0">
         <img src="{{ asset('storage/' . $item->foto) }}" alt="{{ $item->nama_barang }}"
-             class="w-full h-80 object-cover rounded-b-none">
+             class="w-full h-60 sm:h-72 md:h-80 object-cover rounded-b-none">
 
         <div class="p-4 text-left flex flex-col flex-grow">
           {{-- Status & Nama --}}
@@ -38,14 +38,15 @@
     @endforeach
   </div>
 </section>
+
 <style>
-  /* Optional: Hilangkan scrollbar di browser */
+  
   .scrollbar-hide {
-    -ms-overflow-style: none;  /* IE dan Edge */
-    scrollbar-width: none;     /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   .scrollbar-hide::-webkit-scrollbar {
-    display: none;             /* Chrome, Safari, Opera */
+    display: none;
   }
 </style>

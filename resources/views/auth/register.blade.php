@@ -15,7 +15,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
       <div>
         <x-label for="name" value="Nama Lengkap" />
-        <x-input id="name" name="name" type="text" placeholder="Masukkan Nama Lengkap" value="{{ old('name') }}" />
+        <x-input id="name" name="name" type="text" placeholder="Masukkan Nama Lengkap" value="{{ old('name') }}" autocomplete="name"/>
         @error('name')
           <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
         @enderror
@@ -31,7 +31,7 @@
 
       <div>
         <x-label for="email" value="Alamat Email" />
-        <x-input id="email" name="email" placeholder="Masukkan Alamat Email" type="email" value="{{ old('email') }}" />
+        <x-input id="email" name="email" placeholder="Masukkan Alamat Email" type="email" value="{{ old('email') }}" autocomplete="email"/>
         @error('email')
           <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
         @enderror

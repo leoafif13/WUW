@@ -5,7 +5,7 @@
       <p class="text-lg text-gray-500">Hubungi Kami Kapanpun Anda Mau</p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8 items-start p-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start px-4 sm:px-8 md:px-12 lg:px-16 py-10">
       <!-- Kontak dan Jam -->
       <div class="space-y-6 text-gray-800">
         <!-- Jam Operasional & Lokasi berdampingan -->
@@ -46,7 +46,7 @@
           <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
 
-        <input type="email" name="email" placeholder="Alamat Email" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required value="{{ old('email') }}">
+        <input type="email" name="email" placeholder="Alamat Email" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required value="{{ old('email') }}" autocomplete="email">
         @error('email')
           <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror

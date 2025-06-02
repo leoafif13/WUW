@@ -9,7 +9,7 @@
     <div class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8">
 
       <!-- Konten Kiri (Teks) -->
-      <div class="flex-1 text-white space-y-6 px-2 sm:px-0">
+      <div class="flex-1 text-white space-y-6 px-2 sm:px-0 lg:mt-30">
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-snug">
           Temukan Pakaian Terbaik<br>Untuk Hari Terbaik.
         </h1>
@@ -23,6 +23,7 @@
           <i class="ml-4 fa-solid fa-chevron-right fa-2xl"></i>
         </div>
       </div>
+
 
       <!-- Konten Kanan (Gambar) -->
       <div class="relative">

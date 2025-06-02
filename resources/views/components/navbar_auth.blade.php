@@ -12,6 +12,7 @@
       <a href="#tentang" class="hover:underline px-2 tracking-wide">Tentang</a>
       <a href="/barang" class="nav-item hover:underline" id="produk-nav">Produk</a>
       <a href="#hubungi" class="hover:underline px-2 tracking-wide">Hubungi Kami</a>
+      <a href="/ulasan" class="hover:underline px-2 tracking-wide">Ulasan</a>
     </nav>
 
     <!-- Desktop Icons -->
@@ -33,14 +34,12 @@
         <div id="profile-dropdown" class="absolute right-0 mt-2 w-45 bg-white text-[#4a3c32] shadow-lg rounded-lg hidden z-40">
           <a href="/profile" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Profile Saya</a>
           <a href="/ganti_password" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Ganti Kata Sandi</a>
+                    <a href="/pembayaran" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Pembayaran</a>
           <a href="/history" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">Riwayat Penyewaan</a>
           <hr class="text-gray-300">
-          <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button type="submit" class="block w-full text-left bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">
-              Keluar
-            </button>
-          </form>
+          <a href="{{ route('keluar') }}" class="block w-full text-left bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">
+            Keluar
+          </a>
         </div>
       </div>
     </div>
@@ -57,7 +56,7 @@
   <div id="mobile-menu" class="md:hidden hidden bg-transparent backdrop-blur-md px-6 py-4 space-y-4 text-white text-sm font-semibold">
     <a href="#home" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Home</a>
     <a href="#tentang" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Tentang</a>
-    <a href="#produk" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Produk</a>
+    <a href="/barang" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Produk</a>
     <a href="#hubungi" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Hubungi Kami</a>
 
     <div class="flex items-center justify-center space-x-6 text-xl text-white pt-4 border-t border-[#d8cfc6]">
@@ -79,16 +78,14 @@
         <button aria-label="Akun" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition duration-200" id="profile-btn-mobile">
           <i class="far fa-user-circle text-2xl"></i>
         </button>
-        <div id="profile-dropdown-mobile" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white text-[#4a3c32] shadow-lg rounded-lg hidden z-40">
+        <div id="profile-dropdown-mobile" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white text-blue-900 shadow-lg rounded-lg hidden z-40">
           <a href="/profile" class="block px-4 py-2 text-sm">Profile Saya</a>
           <a href="/ganti_password" class="block px-4 py-2 text-sm">Ganti Kata Sandi</a>
+          <a href="/history" class="block px-4 py-2 text-sm">Riwayat Pemesanan</a>
           <hr class="text-gray-300">
-          <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button type="submit" class="block px-4 py-2 text-sm w-full text-left hover:bg-blue-900 hover:text-white rounded transition duration-200">
-              Keluar
-            </button>
-          </form>
+          <a href="{{ route('keluar') }}" class="block w-full text-left bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition duration-200">
+            Keluar
+          </a>
         </div>
       </div>
 

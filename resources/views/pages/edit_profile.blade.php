@@ -31,19 +31,19 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label for="name" class="block text-blue-900 font-bold text-xs mb-1">Nama Lengkap</label>
-          <input id="name" name="name" type="text" value="{{ old('name', $user->name) }}" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1" />
+          <input id="name" name="name" type="text" value="{{ old('name', $user->name) }}" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1" autocomplete="name"/>
         </div>
         <div>
           <label for="alamat" class="block text-blue-900 font-bold text-xs mb-1">Alamat</label>
-          <input id="alamat" name="alamat" type="text" value="{{ old('alamat', $user->alamat) }}" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1" />
+          <input id="alamat" name="alamat" type="text" value="{{ old('alamat', $user->alamat) }}" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1"  />
         </div>
         <div>
           <label for="telepon" class="block text-blue-900 font-bold text-xs mb-1">Nomor Telepon</label>
-          <input id="telepon" name="telepon" type="tel" value="{{ old('telepon', $user->telepon) }}" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1" />
+          <input id="telepon" name="telepon" type="tel" value="{{ old('telepon', $user->telepon) }}" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1"  />
         </div>
         <div>
           <label for="email" class="block text-blue-900 font-bold text-xs mb-1">Alamat Email</label>
-          <input id="email" name="email" type="email" value="{{ old('email', $user->email) }}" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1" />
+          <input id="email" name="email" type="email" value="{{ old('email', $user->email) }}" class="w-full bg-gray-300 text-gray-600 text-xs rounded px-2 py-1" autocomplete="email" />
         </div>
       </div>
 

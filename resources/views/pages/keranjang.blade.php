@@ -12,12 +12,11 @@
     <a href="/sewa" aria-label="Notes" class="text-white text-lg">
         <span class="material-symbols-outlined">sticky_note_2</span>
     </a>
-    
 </header>
 
 <main class="px-4 sm:px-6 py-4 space-y-2 bg-[#F9F9F9]">
     @forelse ($barangs as $barang)
-    <article class="bg-white flex flex-wrap sm:flex-nowrap items-center p-3 shadow-sm space-x-3 w-full">
+    <article class="bg-white flex flex-wrap sm:flex-nowrap items-center p-3 shadow-sm space-x-3 w-full" data-barang-id="{{ $barang->id }}">
         <input type="checkbox" class="check-barang" data-harga="{{ $barang->harga }}" data-qty="{{ $barang->qty }}" />
 
         <img alt="{{ $barang->nama_barang }}" class="w-20 h-20 object-cover ml-3 flex-shrink-0"
@@ -32,17 +31,17 @@
                 <button class="text-[10px] sm:text-xs bg-gray-200 text-gray-400 rounded px-2 py-[2px]" disabled>{{ $barang->ukuran }}</button>
 
                 <label class="text-xs text-gray-600">Dari:</label>
-                <input type="date" class="tanggal-mulai border rounded px-2 py-1 text-xs sm:text-sm w-auto" name="tanggal_mulai" />
+                <input type="date" class="tanggal-mulai border rounded px-2 py-1 text-xs sm:text-sm w-auto" />
 
                 <label class="text-xs text-gray-600">Sampai:</label>
-                <input type="date" class="tanggal-selesai border rounded px-2 py-1 text-xs sm:text-sm w-auto" name="tanggal_selesai" />
+                <input type="date" class="tanggal-selesai border rounded px-2 py-1 text-xs sm:text-sm w-auto" />
             </div>
             <span class="text-xs sm:text-sm text-blue-900 mt-1 harga-barang">
                 Rp{{ number_format($barang->harga) }} / hari
             </span>
         </div>
 
-       <div class="grid grid-cols-3 sm:grid-cols-1 gap-2 w-full sm:w-auto">
+        <div class="grid grid-cols-3 sm:grid-cols-1 gap-2 w-full sm:w-auto">
             <form action="{{ route('keranjang.kurangi', $barang->id) }}" method="GET">
                 <button class="bg-blue-900 text-white text-xs sm:text-sm rounded px-3 py-1 w-full" type="submit">- 1</button>
             </form>
@@ -60,8 +59,9 @@
     @endforelse
 </main>
 
-
-<footer class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between px-4 sm:px-6 py-3 space-y-2 sm:space-y-0">
+<!-- Form checkout -->
+<form id="orderForm" action="{{ route('order.store') }}" method="POST" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between px-4 sm:px-6 py-3 space-y-2 sm:space-y-0">
+    @csrf
     <label class="flex items-center text-blue-900 text-sm sm:text-base font-semibold cursor-pointer w-full sm:w-auto">
         <input id="checkAll" class="w-5 h-5 mr-2 text-blue-900 border-gray-300 rounded" type="checkbox" />
         Pilih Semua
@@ -70,12 +70,12 @@
         <p class="text-sm sm:text-base text-blue-900 font-semibold text-center sm:text-left">
             Total <span id="totalHarga" class="text-blue-900 text-lg sm:text-xl font-extrabold">Rp0</span>
         </p>
-        <a href="/pembayaran" class="bg-blue-900 text-white text-sm sm:text-base font-semibold rounded px-5 py-2 text-center w-full sm:w-auto">
+        <input type="hidden" name="items" id="itemsInput" />
+        <button type="submit" class="bg-blue-900 text-white text-sm sm:text-base font-semibold rounded px-5 py-2 text-center w-full sm:w-auto">
             Checkout (<span id="countBarang">0</span>)
-        </a>
+        </button>
     </div>
-</footer>
-
+</form>
 
 <script>
     // Fungsi format rupiah
@@ -83,7 +83,7 @@
         return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angka);
     }
 
-    // Hitung selisih hari (termasuk hari pertama dan terakhir)
+    // Hitung durasi hari (termasuk hari pertama dan terakhir)
     function hitungDurasi(tglMulai, tglSelesai) {
         if (!tglMulai || !tglSelesai) return 0;
         const mulai = new Date(tglMulai);
@@ -93,7 +93,7 @@
         return diffDays > 0 ? diffDays : 0;
     }
 
-    // Update total harga dan tampilan harga per barang
+    // Update total harga dan count barang
     function updateTotal() {
         let total = 0;
         let count = 0;
@@ -126,7 +126,7 @@
         document.getElementById('countBarang').textContent = count;
     }
 
-    // Event listener untuk semua checkbox dan input tanggal
+    // Update jumlah barang dan total saat checkbox / tanggal berubah
     document.querySelectorAll('.check-barang, .tanggal-mulai, .tanggal-selesai').forEach(el => {
         el.addEventListener('change', updateTotal);
     });
@@ -140,7 +140,57 @@
         updateTotal();
     });
 
-    // Inisialisasi total harga saat halaman dimuat
+    // Submit form, buat JSON items dari yang diceklis
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const items = [];
+        let valid = true;
+
+        document.querySelectorAll('article').forEach(article => {
+            const checkbox = article.querySelector('.check-barang');
+            if (checkbox.checked) {
+                const nama_barang = article.querySelector('h2').childNodes[0].nodeValue.trim();
+                const foto = article.querySelector('img').src;
+                const ukuran = article.querySelector('button[disabled]').innerText;
+                const qty = parseInt(checkbox.getAttribute('data-qty'));
+                const harga_per_hari = parseInt(checkbox.getAttribute('data-harga'));
+                const tanggal_mulai = article.querySelector('.tanggal-mulai').value;
+                const tanggal_selesai = article.querySelector('.tanggal-selesai').value;
+
+                if (!tanggal_mulai || !tanggal_selesai) {
+                    alert('Tanggal mulai dan selesai harus diisi untuk semua barang yang dipilih.');
+                    valid = false;
+                    return;
+                }
+
+                items.push({
+                    nama_barang,
+                    foto: foto.includes('/storage/') ? foto.split('/storage/')[1] : '',
+                    ukuran,
+                    qty,
+                    tanggal_mulai,
+                    tanggal_selesai,
+                    harga_per_hari
+                });
+            }
+        });
+
+        if (!valid) return;
+
+        if (items.length === 0) {
+            alert('Pilih minimal satu barang untuk checkout.');
+            return;
+        }
+
+        // Isi input hidden dengan JSON string
+        document.getElementById('itemsInput').value = JSON.stringify(items);
+
+        // Submit form
+        e.target.submit();
+    });
+
+    // Inisialisasi update total saat halaman load
     updateTotal();
 </script>
 

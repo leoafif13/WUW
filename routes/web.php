@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\CaraSewaController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\OrderController;
 
 //Route::get('/', function () {
     //return view('components.welcome');
@@ -36,6 +37,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/layanan_kami', [PageController::class, 'layanan']);
     Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+    Route::get('/keluar', function () {
+        return view('pages.keluar');
+    })->name('keluar');
+
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
     Route::get('/edit_profile', [ProfileController::class, 'editProfile'])->name('profile.edit');
@@ -43,9 +48,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/ganti_password', [ProfileController::class, 'gantiPassword'])->name('ganti_password');
     Route::post('/update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
-
-
-    Route::get('/pembayaran', [PembayaranController::class, 'index']);
+    
     Route::get('/sewa', [CaraSewaController::class, 'sewa']);
     Route::get('/history', [HistoryController::class, 'history']);
 
@@ -54,6 +57,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/keranjang/hapus/{id}', [KeranjangController::class, 'hapus'])->name('keranjang.hapus');
     Route::get('/keranjang/kosongkan', [KeranjangController::class, 'kosongkan'])->name('keranjang.kosongkan');
     Route::get('/keranjang/kurangi/{id}', [KeranjangController::class, 'kurangi'])->name('keranjang.kurangi');
+
+    Route::post('/order/store', [OrderController::class, 'store'])->name('order.store')->middleware('auth');
+    Route::get('/pembayaran', [PembayaranController::class, 'index']);
+    Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
 
     Route::get('/barang', [BarangController::class, 'barang']);
     Route::get('/detailproduk/{id}', [BarangController::class, 'detailProduk'])->name('detailproduk');
