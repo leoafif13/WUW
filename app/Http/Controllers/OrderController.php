@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -17,11 +18,12 @@ class OrderController extends Controller
             return back()->withErrors(['items' => 'Data barang tidak valid atau kosong'])->withInput();
         }
 
-        $userId = Auth::id();
+        $user = Auth::user(); 
+        $userId = $user->id;
 
         foreach ($items as $index => $item) {
             // Validasi manual sederhana per item
-            $validator = \Validator::make($item, [
+            $validator = Validator::make($item, [
                 'nama_barang' => 'required|string|max:255',
                 'foto' => 'nullable|string|max:255',
                 'ukuran' => 'required|string|max:50',
@@ -39,7 +41,9 @@ class OrderController extends Controller
             $tanggalMulai = new \DateTime($item['tanggal_mulai']);
             $tanggalSelesai = new \DateTime($item['tanggal_selesai']);
             if ($tanggalSelesai < $tanggalMulai) {
-                return back()->withErrors(['items.'.$index => ['Tanggal selesai harus sama atau setelah tanggal mulai']])->withInput();
+                return back()->withErrors([
+                    'items.'.$index => ['Tanggal selesai harus sama atau setelah tanggal mulai']
+                ])->withInput();
             }
 
             // Hitung durasi (hari)
@@ -50,6 +54,7 @@ class OrderController extends Controller
             // Simpan ke database
             Order::create([
                 'user_id' => $userId,
+                'name' => $user->name, 
                 'nama_barang' => $item['nama_barang'],
                 'foto' => $item['foto'] ?? '',
                 'ukuran' => $item['ukuran'],
@@ -62,7 +67,7 @@ class OrderController extends Controller
             ]);
         }
 
-        // Redirect ke halaman pembayaran dengan pesan sukses
+
         return redirect('/pembayaran')->with('success', 'Pesanan berhasil disimpan!');
     }
 
@@ -76,7 +81,7 @@ class OrderController extends Controller
             return back()->withErrors(['msg' => 'Pesanan tidak bisa dibatalkan.']);
         }
 
-        // Ganti status jadi 'cancelled' daripada delete
+
         $order->status = 'cancelled';
         $order->save();
 
