@@ -14,7 +14,7 @@ class PembayaranController extends Controller
 
         $orders = Order::where('user_id', $userId)
                     ->where('status', 'pending')
-                    ->get(['nama_barang', 'ukuran', 'qty', 'foto', 'harga_per_hari', 'tanggal_mulai', 'tanggal_selesai', 'total_harga']);
+                    ->get(['id','status','nama_barang', 'ukuran', 'qty', 'foto', 'harga_per_hari', 'tanggal_mulai', 'tanggal_selesai', 'total_harga']);
 
         return view('pages.pembayaran', compact('orders'));
     }

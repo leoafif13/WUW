@@ -61,6 +61,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/order/store', [OrderController::class, 'store'])->name('order.store')->middleware('auth');
     Route::get('/pembayaran', [PembayaranController::class, 'index']);
     Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
+    
+
 
     Route::get('/barang', [BarangController::class, 'barang']);
     Route::get('/detailproduk/{id}', [BarangController::class, 'detailProduk'])->name('detailproduk');
