@@ -82,7 +82,7 @@ class OrderController extends Controller
         }
 
 
-        $order->status = 'cancelled';
+        $order->status = 'batal';
         $order->save();
 
         return back()->with('success', 'Pesanan berhasil dibatalkan.');
