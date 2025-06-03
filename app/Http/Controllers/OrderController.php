@@ -66,20 +66,21 @@ class OrderController extends Controller
         return redirect('/pembayaran')->with('success', 'Pesanan berhasil disimpan!');
     }
 
-    public function cancel($id)
-    {
-        $order = Order::where('id', $id)
-            ->where('user_id', Auth::id())
-            ->firstOrFail();
+   public function cancel($id)
+{
+    $order = Order::where('id', $id)
+        ->where('user_id', Auth::id())
+        ->firstOrFail();
 
-        if ($order->status !== 'pending') {
-            return back()->withErrors(['msg' => 'Pesanan tidak bisa dibatalkan.']);
-        }
-
-        // Ganti status jadi 'cancelled' daripada delete
-        $order->status = 'cancelled';
-        $order->save();
-
-        return back()->with('success', 'Pesanan berhasil dibatalkan.');
+    if ($order->status !== 'pending') {
+        return back()->withErrors(['msg' => 'Pesanan tidak bisa dibatalkan.']);
     }
+
+    // Ganti status jadi 'batal'
+    $order->status = 'batal';
+    $order->save();
+
+    return back()->with('success', 'Pesanan berhasil dibatalkan.');
+}
+
 }

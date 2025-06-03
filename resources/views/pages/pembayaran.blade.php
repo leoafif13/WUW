@@ -70,7 +70,7 @@
                 Batalkan
               </a>
 
-              <form id="cancel-form-{{ $order->id }}" action="{{ route('orders.cancel', ['id' => $order->id]) }}" method="POST" style="display:none;">
+              <form id="cancel-form-{{ $order->id }}" action="{{ route('orders.cancel', ['id' => $order->id]) }}" method="POST">
                 @csrf
                 @method('DELETE')
               </form>
