@@ -72,19 +72,33 @@ class OrderController extends Controller
     }
 
    public function cancel($id)
-{
-    $order = Order::where('id', $id)
-        ->where('user_id', Auth::id())
-        ->firstOrFail();
+    {
+        $order = Order::where('id', $id)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
 
         if ($order->status !== 'pending') {
             return back()->withErrors(['msg' => 'Pesanan tidak bisa dibatalkan.']);
         }
 
+        if ($order->qty > 1) {
+            $order->qty -= 1;
 
-        $order->status = 'batal';
-        $order->save();
+            // Hitung ulang durasi dan total harga
+            $tanggalMulai = new \DateTime($order->tanggal_mulai);
+            $tanggalSelesai = new \DateTime($order->tanggal_selesai);
+            $durasi = $tanggalSelesai->diff($tanggalMulai)->days + 1;
 
-        return back()->with('success', 'Pesanan berhasil dibatalkan.');
+            $order->total_harga = $order->harga_per_hari * $durasi * $order->qty;
+            $order->save();
+
+            return back()->with('success', 'Jumlah produk berhasil dikurangi.');
+                } else {
+            // qty == 1, batalkan seluruh order
+            $order->status = 'batal';
+            $order->save();
+
+            return back()->with('success', 'Pesanan berhasil dibatalkan.');
+        }
     }
 }

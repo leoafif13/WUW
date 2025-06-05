@@ -2,6 +2,7 @@
 @section('title', 'Cara Menyewa')
 @section('content')
 
+<!-- Header manual dengan tombol kembali -->
 <div class="bg-blue-900 flex items-center px-4 py-3">
   <button id="backButton" aria-label="Back" class="text-white text-lg mr-4">
     <i class="fas fa-arrow-left"></i>
@@ -11,44 +12,20 @@
 
 <main class="py-8">
   <!-- Bagian Syarat -->
-  <div class="text-center my-8">
-    <h2 class="text-2xl text-blue-900">Syarat dan Panduan Menyewa</h2>
-  </div>
+  <x-section-title title="Syarat dan Panduan Menyewa" />
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
     @foreach ($terms as $term)
-      <div class="bg-white p-4 rounded-xl shadow-md text-center">
-        <div class="flex justify-center mb-2">
-          <div class="w-8 h-8 bg-gray-300 text-black font-bold rounded-full flex items-center justify-center">
-            {{ $term['step'] }}
-          </div>
-        </div>
-        <div class="rounded-full flex justify-center mb-2">
-          <img src="{{ asset('img/icon/' . $term['icon']) }}" class="w-20 h-20 object-contain">
-        </div>
-        <h3 class="text-sm font-medium">{{ $term['title'] }}</h3>
-      </div>
+      <x-step-card :step="$term['step']" :icon="$term['icon']" :title="$term['title']" />
     @endforeach
   </div>
 
   <!-- Bagian Panduan -->
-  <div class="text-center my-8">
-    <h2 class="text-2xl text-blue-900">Panduan Menyewa</h2>
-  </div>
+  <x-section-title title="Panduan Menyewa" />
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
     @foreach ($guides as $guide)
-      <div class="bg-white p-4 rounded-xl shadow-md text-center">
-        <div class="flex justify-center mb-2">
-          <div class="w-8 h-8 bg-gray-300 text-black font-bold rounded-full flex items-center justify-center">
-            {{ $guide['step'] }}
-          </div>
-        </div>
-        <div class="rounded-full flex justify-center mb-2">
-          <img src="{{ asset('img/icon/' . $guide['icon']) }}" class="w-20 h-20 object-contain">
-        </div>
-        <h3 class="text-sm font-medium">{{ $guide['title'] }}</h3>
-      </div>
+      <x-step-card :step="$guide['step']" :icon="$guide['icon']" :title="$guide['title']" />
     @endforeach
   </div>
 </main>
