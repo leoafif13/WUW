@@ -34,7 +34,7 @@ class AdminPanelProvider extends PanelProvider
             ->registration()
             ->defaultThemeMode(ThemeMode::System)
             ->font('Poppins')
-            ->favicon(asset('img/logo1.png'))
+            ->favicon(asset('img/Logo WUW.png'))
             ->sidebarFullyCollapsibleOnDesktop()
             ->login()
             ->userMenuItems([
