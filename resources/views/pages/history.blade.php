@@ -4,24 +4,22 @@
 <div class="min-h-screen bg-gray-100">
   <!-- Header -->
   <div class="bg-blue-900 text-white py-4 px-6 shadow">
-  <div class="flex items-center justify-between">
-    <button class="mr-4">
-      <!-- Tombol Kembali -->
-      <button onclick="window.history.back()" class="mr-4">
-      <!-- Icon kembali -->
-      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-      </svg>
-    </button>
-    <h1 class="text-lg font-semibold text-center flex-1">Riwayat Penyewaan</h1>
+    <div class="flex items-center justify-between">
+      <!-- Tombol Kembali ke /home -->
+      <a href="{{ url('/home') }}" class="mr-4">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+      <h1 class="text-lg font-semibold text-center flex-1">Riwayat Penyewaan</h1>
+      <div class="w-6"></div>
+    </div>
   </div>
-</div>
-
 
   <!-- Daftar Riwayat -->
   <div class="p-4 space-y-4">
-    <!-- Item Card -->
+    <!-- Item Card 1 -->
     <div class="bg-white rounded shadow-sm p-4 flex justify-between items-center">
       <div class="flex items-start space-x-4">
         <img src="img/jas.jpg" alt="Produk" class="w-20 h-24 object-cover rounded" />
@@ -34,14 +32,11 @@
         </div>
       </div>
       <div class="flex space-x-2">
-    <button class="bg-blue-900 text-white px-4 py-2 rounded text-sm hover:bg-blue-800">Sewa Lagi</button>
-    <button class="bg-blue-900 text-white px-8 py-2 rounded text-sm hover:bg-blue-800">Nilai</button>
-</div>
-
-
+        <button class="bg-blue-900 text-white px-4 py-2 rounded text-sm hover:bg-blue-800">Sewa Lagi</button>
+        <button class="bg-blue-900 text-white px-8 py-2 rounded text-sm hover:bg-blue-800">Nilai</button>
+      </div>
     </div>
 
-    <!-- Salin item-card di atas untuk item lain -->
     <!-- Item Card 2 -->
     <div class="bg-white rounded shadow-sm p-4 flex justify-between items-center">
       <div class="flex items-start space-x-4">

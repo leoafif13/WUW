@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'login')
+@section('title', 'Login')
 @section('content')
 <div class="min-h-screen flex flex-col items-center justify-start bg-[rgb(9, 41, 201)] relative">
   <img src="{{ asset('img/Background 3.png') }}" alt="Background image" class="absolute inset-0 w-full h-full object-cover opacity-80" loading="lazy" aria-hidden="true" />
@@ -42,7 +42,7 @@
 
     <div class="mb-4">
       <div class="w-full flex justify-center">
-        <div class="g-recaptcha transform scale-[0.95] origin-top" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
       </div>
     </div>
 

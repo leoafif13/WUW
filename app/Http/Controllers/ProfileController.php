@@ -12,13 +12,13 @@ class ProfileController extends Controller
     public function show()
     {
         $user = Auth::user();
-        return view('pages.profile', compact('user'));
+        return view('profile.profile', compact('user'));
     }
 
     public function editProfile()
     {
         $user = Auth::user();
-        return view('pages.edit_profile', compact('user'));
+        return view('profile.edit_profile', compact('user'));
     }
 
     public function update(Request $request)
@@ -60,7 +60,7 @@ class ProfileController extends Controller
     public function gantiPassword()
     {
         $user = Auth::user();
-        return view('pages.ganti_password', compact('user'));
+        return view('profile.ganti_password', compact('user'));
     }
 
     public function updatePassword(Request $request)

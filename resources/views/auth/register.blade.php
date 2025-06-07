@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'register')
+@section('title', 'Register')
 @section('content')
 <div class="min-h-screen flex flex-col items-center justify-start bg-[rgba(0,0,0,0.3)] relative">
   <img src="img/Background 3.png" alt="Background image" class="absolute inset-0 w-full h-full object-cover opacity-80" loading="lazy" aria-hidden="true" />

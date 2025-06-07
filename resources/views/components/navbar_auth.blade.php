@@ -58,6 +58,7 @@
     <a href="#tentang" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Tentang</a>
     <a href="/barang" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Produk</a>
     <a href="#hubungi" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Hubungi Kami</a>
+    <a href="/ulasan" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Ulasan</a>
 
     <div class="flex items-center justify-center space-x-6 text-xl text-white pt-4 border-t border-[#d8cfc6]">
       <!-- Catatan -->
