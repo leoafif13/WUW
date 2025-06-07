@@ -13,6 +13,7 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\CaraSewaController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReviewController;
 
 //Route::get('/', function () {
     //return view('components.welcome');
@@ -68,3 +69,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/kirim-pesan', [KontakController::class, 'store'])->name('kontak.store');
     Route::get('/filter', [BarangController::class, 'filter'])->name('filter');
 });
+
+Route::get('/review', [ReviewController::class, 'create'])->name('review.create');
+Route::post('/review', [ReviewController::class, 'store'])->name('review.store');
