@@ -6,30 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Order extends Model
+class Payment extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'name',
+        'order_id',
         'nama_barang',
-        'foto',
         'ukuran',
+        'tanggal_mulai',
+        'tanggal_selesai',
         'qty',
-        'tanggal_mulai',
-        'tanggal_selesai',
-        'harga_per_hari',
-        'total_harga',
+        'metode',
+        'pengiriman',
+        'alamat',
+        'total',
         'status',
-    ];
-
-    // Tipe data untuk kolom tanggal
-    protected $dates = [
-        'tanggal_mulai',
-        'tanggal_selesai',
-        'created_at',
-        'updated_at',
     ];
 
     public function user()
@@ -37,8 +30,8 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function payment()
+    public function order()
     {
-        return $this->hasOne(Payment::class);
+        return $this->belongsTo(Order::class);
     }
 }

@@ -60,15 +60,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/keranjang/kurangi/{id}', [KeranjangController::class, 'kurangi'])->name('keranjang.kurangi');
 
     Route::post('/order/store', [OrderController::class, 'store'])->name('order.store')->middleware('auth');
-    Route::get('/pembayaran', [PembayaranController::class, 'index']);
+    Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
+    Route::post('/pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.store');
     Route::post('/orders/cancel/{id}', [OrderController::class, 'cancel'])->name('orders.cancel');
     
     Route::get('/barang', [BarangController::class, 'barang']);
     Route::get('/detailproduk/{id}', [BarangController::class, 'detailProduk'])->name('detailproduk');
-    Route::get('/cart', [BarangController::class, 'cartProduk']);
-    Route::post('/kirim-pesan', [KontakController::class, 'store'])->name('kontak.store');
     Route::get('/filter', [BarangController::class, 'filter'])->name('filter');
-});
+    Route::post('/kirim-pesan', [KontakController::class, 'store'])->name('kontak.store');
+    
+    Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
+    Route::post('/review', [ReviewController::class, 'create'])->name('review.create');
 
-Route::get('/review', [ReviewController::class, 'create'])->name('review.create');
-Route::post('/review', [ReviewController::class, 'store'])->name('review.store');
+});

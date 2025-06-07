@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ReviewController extends Controller
 {
-    public function create()
+    public function index()
     {
-        return view('pages.review'); // nama file blade: resources/views/review.blade.php
+        return view('pages.review');
     }
 
-    public function store(Request $request)
+    public function create(Request $request)
     {
         $request->validate([
             'ulasan' => 'required|max:300',
@@ -22,7 +22,7 @@ class ReviewController extends Controller
         // Simpan foto (jika ada)
         $path = null;
         if ($request->hasFile('foto')) {
-            $path = $request->file('foto')->store('ulasan_foto', 'public');
+            $path = $request->file('foto')->create('ulasan_foto', 'public');
         }
 
         // Simpan ke database atau log (untuk demo kita tampilkan saja)

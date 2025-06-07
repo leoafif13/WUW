@@ -22,7 +22,7 @@
                 Detail Produk
             </a>
 
-            <form action="{{ route('keranjang.tambah', $barang->id) }}" method="post" class="inline">
+            <form action="{{ route('keranjang.tambah', $barang->id) }}" method="get" class="inline">
                 @csrf
                 <button type="submit" class="text-sm px-4 py-2 border bg-blue-900 text-indigo-900 rounded">🛒</button>
             </form>
