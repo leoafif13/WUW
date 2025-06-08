@@ -14,6 +14,7 @@ use App\Http\Controllers\CaraSewaController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\UlasanController;
 
 //Route::get('/', function () {
     //return view('components.welcome');
@@ -51,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
     
     Route::get('/sewa', [CaraSewaController::class, 'sewa']);
-    Route::get('/history', [HistoryController::class, 'history']);
+    Route::get('/history', [HistoryController::class, 'history'])->name('history');;
 
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.index');
     Route::get('/keranjang/tambah{id}', [KeranjangController::class, 'tambah'])->name('keranjang.tambah');
@@ -71,5 +72,7 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
     Route::post('/review', [ReviewController::class, 'create'])->name('review.create');
+
+    Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
 
 });

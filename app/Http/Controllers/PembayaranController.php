@@ -17,7 +17,10 @@ class PembayaranController extends Controller
 
         $orders = Order::where('user_id', $userId)
             ->where('status', 'pending')
-            ->get(['id', 'status', 'nama_barang', 'ukuran', 'qty', 'foto', 'harga_per_hari', 'tanggal_mulai', 'tanggal_selesai', 'total_harga']);
+            ->get([
+                'id', 'status', 'nama_barang', 'ukuran', 'qty', 'foto',
+                'harga_per_hari', 'tanggal_mulai', 'tanggal_selesai', 'total_harga'
+            ]);
 
         return view('pages.pembayaran', compact('orders'));
     }
@@ -27,10 +30,10 @@ class PembayaranController extends Controller
         $request->validate([
             'pengiriman' => 'required|in:antar,jemput',
             'metode'     => 'required|in:cod,qris',
-            'alamat'     => 'required_if:pengiriman,antar|string',
+            'alamat'     =>  $request->pengiriman === 'antar' ? 'required|string' : 'nullable|string',
         ]);
 
-        $user = auth()->user();
+        $user = Auth::user();
 
         $orders = Order::where('user_id', $user->id)
             ->where('status', 'pending')
@@ -40,29 +43,33 @@ class PembayaranController extends Controller
             return back()->with('error', 'Tidak ada pesanan yang dapat dibayar.');
         }
 
-        foreach ($orders as $order) {
-            try {
+        DB::beginTransaction();
+        try {
+            foreach ($orders as $order) {
                 Payment::create([
                     'user_id'         => $user->id,
                     'order_id'        => $order->id,
                     'nama_barang'     => $order->nama_barang,
                     'ukuran'          => $order->ukuran,
-                    'tanggal_mulai'   => \Carbon\Carbon::parse($order->tanggal_mulai)->format('Y-m-d'),
-                    'tanggal_selesai' => \Carbon\Carbon::parse($order->tanggal_selesai)->format('Y-m-d'),
+                    'tanggal_mulai'   => Carbon::parse($order->tanggal_mulai)->format('Y-m-d'),
+                    'tanggal_selesai' => Carbon::parse($order->tanggal_selesai)->format('Y-m-d'),
                     'qty'             => $order->qty,
                     'metode'          => $request->metode,
                     'pengiriman'      => $request->pengiriman,
                     'alamat'          => $request->pengiriman === 'antar' ? $request->alamat : null,
-                    'total'           => $order->total_harga + 1500,
+                    'total'           => $order->total_harga + 1500, // Jika biaya layanan per order
                     'status'          => 'dibayar',
                 ]);
 
                 $order->update(['status' => 'dibayar']);
-            } catch (\Exception $e) {
-                continue;
             }
-        }
 
-        return redirect()->route('/history')->with('success', 'Pembayaran berhasil dilakukan!');
+            DB::commit();
+
+            return redirect()->route('history')->with('success', 'Pembayaran berhasil dilakukan!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'Terjadi kesalahan saat memproses pembayaran.')->withErrors(['exception' => $e->getMessage()]);
+        }
     }
 }
