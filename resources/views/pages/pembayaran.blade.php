@@ -34,8 +34,14 @@
               </div>
 
               <p class="text-blue-600 font-bold mt-2">Rp{{ number_format($order->total_harga, 0, ',', '.') }}</p>
+              
+              <!-- Tombol Batalkan -->
+              <button type="button"
+                      class="text-red-600 text-sm hover:underline"
+                      onclick="if(confirm('Apakah kamu yakin ingin membatalkan pesanan ini?')) { document.getElementById('cancel-form-{{ $order->id }}').submit(); }">
+                Batalkan
+              </button>
             </div>
-            
           </div>
         @endforeach
 
@@ -45,7 +51,8 @@
         </div>
       </section>
 
-      <!-- Pengiriman -->
+      <!-- Pengiriman, Metode Pembayaran, Rincian Pembayaran tetap sama -->
+
       <section class="space-y-3">
         <h3 class="font-semibold text-lg">Opsi Pengiriman</h3>
 
@@ -69,7 +76,6 @@
         </div>
       </section>
 
-      <!-- Metode Pembayaran -->
       <section class="space-y-3">
         <h3 class="font-semibold text-lg">Metode Pembayaran</h3>
 
@@ -95,8 +101,6 @@
         </div>
       </section>
 
-
-      <!-- Rincian Pembayaran -->
       <section class="space-y-2 pt-2">
         <h3 class="font-semibold text-lg">Rincian Pembayaran</h3>
         <div class="flex justify-between text-sm">
@@ -111,7 +115,6 @@
       </section>
     </div>
 
-    <!-- Tombol Submit -->
     <footer class="z-50 fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg p-4 flex justify-between items-center">
       <p class="font-semibold text-sm">
         Total: <span class="text-blue-900">Rp{{ number_format($subtotalProduk + 1500, 0, ',', '.') }}</span>
@@ -122,6 +125,13 @@
       </button>
     </footer>
   </form>
+
+  <!-- Form Cancel tersembunyi di luar form pembayaran -->
+  @foreach ($orders as $order)
+    <form id="cancel-form-{{ $order->id }}" action="{{ route('orders.cancel', $order->id) }}" method="POST" style="display:none;">
+      @csrf
+    </form>
+  @endforeach
 </main>
 
 <style>

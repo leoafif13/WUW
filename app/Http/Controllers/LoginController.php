@@ -4,39 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
 {
-    public function showLoginForm() {
+    public function showLoginForm()
+    {
         return view('auth.login');
     }
 
-    public function login(Request $request) {
-        // Validasi input termasuk reCAPTCHA
+    public function login(Request $request)
+    {
+        // Validasi input termasuk reCAPTCHA menggunakan rule 'captcha'
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-            'g-recaptcha-response' => 'required',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
 
-        // Verifikasi reCAPTCHA ke Google
-        $recaptchaResponse = $request->input('g-recaptcha-response');
-        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => env('RECAPTCHA_SECRET_KEY'),
-            'response' => $recaptchaResponse,
-            'remoteip' => $request->ip(),
-        ]);
-
-        $recaptchaResult = $response->json();
-
-        if (!$recaptchaResult['success']) {
-            return back()->withErrors([
-                'captcha' => 'Verifikasi reCAPTCHA gagal. Silakan coba lagi.',
-            ])->withInput();
-        }
-
-        // Cek kredensial login
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -58,11 +42,11 @@ class LoginController extends Controller
         ])->withInput();
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/login');
     }
-    
 }

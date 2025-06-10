@@ -10,7 +10,7 @@
     <h1 class="text-white font-bold text-center flex-grow text-sm sm:text-base">Detail Produk</h1>
 </div>
 
-<section class="relative bg-cover bg-center h-[550px]" style="background-image: url('{{ asset('img/Background 3.png') }}'); background-position: center 80%;">
+<section class="relative bg-cover bg-center h-[550px]" style="background-image: url('{{ asset('img/Background 3.png') }}'); background-position: center 20%;">
     <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
         <h1 class="text-4xl font-bold mb-4">Temukan Baju Impianmu</h1>
         <p class="max-w-xl text-lg mb-6">

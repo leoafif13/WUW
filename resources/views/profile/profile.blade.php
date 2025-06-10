@@ -17,6 +17,19 @@
   <!-- Main Content -->
   <main class="flex-grow flex items-center justify-center px-4 py-10">
     <div class="w-full max-w-lg">
+
+      <!-- Notifikasi Sukses -->
+      @if (session('success'))
+        <div
+          x-data="{ show: true }"
+          x-show="show"
+          x-init="setTimeout(() => show = false, 4000)"
+          class="mb-4 px-4 py-2 bg-green-100 border border-green-300 text-green-700 text-sm rounded shadow transition duration-300 ease-in-out"
+        >
+          {{ session('success') }}
+        </div>
+      @endif
+
       <!-- Profile Icon and Username -->
       <div class="flex flex-col items-center text-center">
         <x-profile-picture :foto="$user->foto" />

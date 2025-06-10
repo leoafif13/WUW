@@ -40,7 +40,7 @@
                         {{ \Carbon\Carbon::parse($payment->order->tanggal_sewa)->format('d M Y') }}
                     </p>
                     <p class="text-blue-700 font-bold mt-1">Rp{{ number_format($payment->total, 0, ',', '.') }}</p>
-                    <p class="text-sm">x 1</p>
+                    <p class="text-sm">{{ $payment->order->qty ?? '-' }}</p>
                 </div>
             </div>
 
@@ -86,7 +86,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         @foreach($payments as $payment)
-            @if($payment->order && $payment->order->tanggal_selesai && new Date("{{ $payment->order->tanggal_selesai }}") < new Date())
             const textarea{{ $payment->id }} = document.getElementById('ulasan-{{ $payment->id }}');
             const charCount{{ $payment->id }} = document.getElementById('charCount-{{ $payment->id }}');
             const inputFile{{ $payment->id }} = document.getElementById('fotoUpload-{{ $payment->id }}');
@@ -94,12 +93,10 @@
             const icon{{ $payment->id }} = document.getElementById('icon-{{ $payment->id }}');
             const text{{ $payment->id }} = document.getElementById('text-{{ $payment->id }}');
 
-            // Update character count
             textarea{{ $payment->id }}.addEventListener('input', () => {
                 charCount{{ $payment->id }}.textContent = `${textarea{{ $payment->id }}.value.length}/300`;
             });
 
-            // Preview image
             inputFile{{ $payment->id }}.addEventListener('change', function(event) {
                 const file = event.target.files[0];
                 if (file) {
@@ -118,7 +115,6 @@
                     text{{ $payment->id }}.classList.remove('hidden');
                 }
             });
-            @endif
         @endforeach
     });
 </script>

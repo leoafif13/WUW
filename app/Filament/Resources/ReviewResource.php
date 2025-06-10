@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ReviewResource\Pages;
 use App\Filament\Resources\ReviewResource\RelationManagers;
 use App\Models\Review;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -44,6 +45,9 @@ class ReviewResource extends Resource
                         return ($currentPage - 1) * $perPage + $index + 1;
                     })
                     ->sortable(false),
+                TextColumn::make('user.name')
+                    ->label('Nama User')
+                    ->searchable(),
                 TextColumn::make('ulasan')->searchable(),
                 ImageColumn::make('foto')
                     ->disk('public')

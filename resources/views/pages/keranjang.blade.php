@@ -17,7 +17,7 @@
 <main class="px-4 sm:px-6 py-4 space-y-2 bg-[#F9F9F9]">
     @forelse ($barangs as $barang)
     <article class="bg-white flex flex-wrap sm:flex-nowrap items-center p-3 shadow-sm space-x-3 w-full" data-barang-id="{{ $barang->id }}">
-        <input type="checkbox" class="check-barang" data-harga="{{ $barang->harga }}" data-qty="{{ $barang->qty }}" />
+        <input type="checkbox" class="check-barang"  name="selected_items[]" value="{{ $barang->id }}" data-harga="{{ $barang->harga }}" data-qty="{{ $barang->qty }}" />
 
         <img alt="{{ $barang->nama_barang }}" class="w-20 h-20 object-cover ml-3 flex-shrink-0"
              src="{{ $barang->foto ? asset('storage/' . $barang->foto) : 'https://via.placeholder.com/100' }}" />
@@ -30,11 +30,11 @@
             <div class="flex flex-wrap gap-2 mt-1 items-center">
                 <button class="text-[10px] sm:text-xs bg-gray-200 text-gray-400 rounded px-2 py-[2px]" disabled>{{ $barang->ukuran }}</button>
 
-                <label class="text-xs text-gray-600">Dari:</label>
-                <input type="date" class="tanggal-mulai border rounded px-2 py-1 text-xs sm:text-sm w-auto" />
+                <label for="mulai-{{ $barang->id }}" class="text-xs text-gray-600">Dari:</label>
+                <input  id="mulai-{{ $barang->id }}" type="date" class="tanggal-mulai border rounded px-2 py-1 text-xs sm:text-sm w-auto" />
 
-                <label class="text-xs text-gray-600">Sampai:</label>
-                <input type="date" class="tanggal-selesai border rounded px-2 py-1 text-xs sm:text-sm w-auto" />
+                <label for="selesai-{{ $barang->id }}" class="text-xs text-gray-600">Sampai:</label>
+                <input  id="selesai-{{ $barang->id }}" type="date" class="tanggal-selesai border rounded px-2 py-1 text-xs sm:text-sm w-auto" />
             </div>
             <span class="text-xs sm:text-sm text-blue-900 mt-1 harga-barang">
                 Rp{{ number_format($barang->harga) }} / hari

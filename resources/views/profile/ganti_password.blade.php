@@ -12,7 +12,7 @@
 
   <main class="flex-grow flex flex-col items-center justify-center px-4 relative"
         style="background-image: url('{{ asset('img/Background 3.png') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-    
+
     <!-- Overlay -->
     <div class="absolute inset-0 bg-black opacity-60 -z-10 rounded-md"></div>
 
@@ -32,6 +32,20 @@
 
     <!-- Form Ganti Password -->
     <div class="bg-white bg-opacity-90 rounded-lg p-6 w-full max-w-sm relative z-10">
+
+      <!-- Notifikasi Sukses -->
+      @if (session('success'))
+        <div
+          x-data="{ show: true }"
+          x-show="show"
+          x-init="setTimeout(() => show = false, 4000)"
+          class="mb-4 text-green-700 text-sm bg-green-100 border border-green-300 px-4 py-2 rounded shadow transition duration-300 ease-in-out"
+        >
+          {{ session('success') }}
+        </div>
+      @endif
+
+      <!-- Notifikasi Error -->
       @if ($errors->any())
         <div class="mb-4 text-red-600 text-xs">
           <ul>

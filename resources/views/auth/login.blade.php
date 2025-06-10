@@ -23,12 +23,12 @@
       </div>
     @endif
 
-    {{-- Tampilkan error reCAPTCHA jika ada --}}
-    @if($errors->has('captcha'))
+    {{-- Tampilkan error jika captcha salah --}}
+    @error('g-recaptcha-response')
       <div class="text-red-600 text-sm mb-4">
-        {{ $errors->first('captcha') }}
+        {{ $message }}
       </div>
-    @endif
+    @enderror
 
     <div class="mb-4">
       <x-label for="email" value="Email" />
@@ -40,16 +40,12 @@
       <x-input id="password" name="password" placeholder="Masukkan Kata Sandi" type="password" required />
     </div>
 
+    {{-- Tampilkan CAPTCHA --}}
     <div class="mb-4">
-      <div class="w-full flex justify-center">
-        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
-      </div>
+      {!! NoCaptcha::display() !!}
     </div>
 
-   
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  
-
+    {!! NoCaptcha::renderJs() !!}
 
     <x-button type="submit" class="w-full">
       Masuk

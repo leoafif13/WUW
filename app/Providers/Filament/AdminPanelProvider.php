@@ -31,7 +31,6 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->brandName('WUW')
             ->profile(isSimple: false)
-            ->registration()
             ->defaultThemeMode(ThemeMode::System)
             ->font('Poppins')
             ->favicon(asset('img/Logo WUW.png'))

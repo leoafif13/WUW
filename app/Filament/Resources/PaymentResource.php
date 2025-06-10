@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PaymentResource\Pages;
 use App\Filament\Resources\PaymentResource\RelationManagers;
 use App\Models\Payment;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -44,6 +45,9 @@ class PaymentResource extends Resource
                         return ($currentPage - 1) * $perPage + $index + 1;
                     })
                     ->sortable(false),
+                TextColumn::make('user.name')
+                    ->label('Nama User')
+                    ->searchable(),
                 TextColumn::make('metode')->searchable(),
                 TextColumn::make('pengiriman')->searchable(),
                 TextColumn::make('alamat')->searchable(),

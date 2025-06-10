@@ -5,7 +5,7 @@
   @include('components.navbar_auth')
 
   <!-- Hero Section -->
-  <x-hero-auth :name="Auth::user()->name" />
+ <x-hero-auth :name="auth()->user()->name" />
 
   <!-- Tentang Kami -->
   <section id="tentang">
