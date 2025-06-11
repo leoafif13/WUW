@@ -1,4 +1,5 @@
-<section id="produk" class="max-w-6xl mx-auto px-4 py-6 text-center overflow-hidden">
+<div class="py-24 sm:px-6 lg:px-16 bg-gradient-to-r from-[#1e3a8a] to-[#000000]">
+<section id="produk" class="max-w-6xl mx-auto text-center overflow-hidden">
   <h2 class="text-white text-2xl md:text-3xl font-bold mb-10">Produk Yang Kami Sewakan</h2>
 
   <div class="produk-slider flex gap-6 overflow-x-auto scrollbar-hide">
@@ -36,6 +37,7 @@
         </div>
       </div>
     @endforeach
+  </div>
   </div>
 </section>
 

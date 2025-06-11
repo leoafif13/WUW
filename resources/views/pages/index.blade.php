@@ -17,7 +17,7 @@
   </section>
 
   <!-- Produk -->
-  <section id="produk" class="pt-16 py-20 px-4 sm:px-6 lg:px-16 bg-gradient-to-r from-[#1e3a8a] to-[#000000] text-white">
+  <section id="produk">
     @include('pages.produk', ['barang' => $barang])
   </section>
 
