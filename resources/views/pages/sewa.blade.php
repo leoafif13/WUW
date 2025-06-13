@@ -4,7 +4,7 @@
 
 <!-- Header manual dengan tombol kembali -->
 <div class="bg-blue-900 flex items-center px-4 py-3">
-  <button id="backButton" aria-label="Back" class="text-white text-lg mr-4">
+  <button id="backButton" aria-label="Back" class="text-white hover:text-blue-300 text-lg mr-4">
     <i class="fas fa-arrow-left"></i>
   </button>
   <h1 class="text-white text-center flex-grow text-sm sm:text-base">Syarat dan Panduan Menyewa</h1>

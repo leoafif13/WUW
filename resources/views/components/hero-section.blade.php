@@ -1,5 +1,5 @@
 <!-- Hero Section -->
-<section id="beranda" class="bg-gradient-to-r from-[#1e3a8a] to-[#000000] relative min-h-screen py-24">
+<section id="beranda" class="bg-gradient-to-r from-[#1e3a8a] to-[#000000] relative min-h-screen pt-32 py-20">
   <div class="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8">
 
     <!-- Konten Kiri (Teks) -->

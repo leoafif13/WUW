@@ -30,7 +30,7 @@
 
           {{-- Tombol --}}
           <a href="/login"
-             class="block w-full bg-blue-900 text-white text-sm font-bold px-4 py-2 rounded hover:bg-gray-700 hover:text-gray-400 transition duration-300 text-center mt-auto
+             class="block w-full bg-blue-900 text-white text-sm font-bold px-4 py-2 rounded hover:bg-gray-700 hover:text-blue-300 transition duration-300 text-center mt-auto
              {{ $item->stok <= 0 ? 'opacity-50 cursor-not-allowed pointer-events-none' : '' }}">
             Sewa Sekarang
           </a>

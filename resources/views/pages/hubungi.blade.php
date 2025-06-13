@@ -1,4 +1,4 @@
-<section id="hubungi" class="bg-gradient-to-r from-blue-900 to-black min-h-screen scroll-mt-24">
+<section id="hubungi" class="bg-gradient-to-r from-blue-900 to-black min-h-screen scroll-mt-24 p-16">
   <div class="max-w-7xl mx-auto px-4 pt-16 pb-16">
     <div class="text-center mb-8">
       <h2 class="text-3xl sm:text-4xl font-bold text-white">Hubungi Kami</h2>

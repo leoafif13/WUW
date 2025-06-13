@@ -4,8 +4,8 @@
 
 <header class="flex items-center justify-between px-4 py-3 text-white text-sm bg-blue-900 backdrop-blur-sm">
     <div class="flex items-center">
-        <button onclick="history.back()" aria-label="Back" class="mr-4 hover:text-gray-300 focus:outline-none">
-            <i class="fas fa-chevron-left"></i>
+        <button onclick="history.back()" aria-label="Back" class="mr-4 hover:text-blue-300 text-lg focus:outline-none">
+            <i class="fas fa-arrow-left"></i>
         </button>
     </div>
     <h1 class="text-base font-bold sm:text-lg absolute left-1/2 transform -translate-x-1/2">Keranjang</h1>

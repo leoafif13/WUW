@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @section('content')
-<body class="text-white font-sans">
+<body class="font-sans">
   @include('components.navbar_auth')
 
   <!-- Hero Section -->

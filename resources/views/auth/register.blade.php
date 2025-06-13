@@ -3,15 +3,15 @@
 @section('content')
 <div class="min-h-screen flex flex-col items-center justify-start bg-[rgba(0,0,0,0.3)] relative">
   <img src="img/Background 3.png" alt="Background image" class="absolute inset-0 w-full h-full object-cover opacity-80" loading="lazy" aria-hidden="true" />
+
   <div class="relative z-10 mt-20 md:mt-28 flex flex-col items-center">
-    <img src="img/logo1.png" alt="Logo WJ Wear Jak Rock" class="mb-2 w-20 h-20 object-contain" />
-    <h1 class="text-white font-bold text-lg mb-4 drop-shadow-[0_0_2px_rgba(0,0,0,0.7)]">
-      Daftar Akun
-    </h1>
+    <img src="img/logo WUW.png" alt="Logo WUW" class="mb-2 w-20 h-20 object-contain" />
+    <h1 class="text-white font-bold text-lg mb-4 drop-shadow-[0_0_2px_rgba(0,0,0,0.7)]">Daftar Akun</h1>
   </div>
-  
+
   <form method="POST" action="{{ route('register') }}" autocomplete="off" class="relative z-10 bg-white bg-opacity-90 rounded-md w-[90vw] max-w-3xl p-4 md:p-6 mb-12">
     @csrf
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
       <div>
         <x-label for="name" value="Nama Lengkap" />
@@ -59,25 +59,22 @@
       </div>
     </div>
 
-    <div class="mt-2 text-[10px] text-black flex items-start">
-      <input class="mt-[3px] mr-1 w-3 h-3 accent-[#5a0a0a]" id="agree" type="checkbox" required />
+    <div class="mt-2 text-[10px] text-black flex items-center">
+      <input class="mr-2 w-3 h-3 accent-[#1e3a8a]" id="agree" type="checkbox" required />
       <label class="leading-tight" for="agree">
         Saya menyetujui 
-        <a href="{{ route('terms') }}" class="underline hover:text-[#5a0a0a]" target="_blank">Ketentuan Layanan</a>
+        <a href="{{ route('terms') }}" class="underline hover:text-[#1e3a8a]" target="_blank">Ketentuan Layanan</a>
         dan
-        <a href="{{ route('policy') }}" class="underline hover:text-[#5a0a0a]" target="_blank">Kebijakan Privasi</a>
+        <a href="{{ route('policy') }}" class="underline hover:text-[#1e3a8a]" target="_blank">Kebijakan Privasi</a>
         yang berlaku.
       </label>
     </div>
-
 
     <x-button type="submit" class="mt-4">Buat Akun</x-button>
 
     <p class="mt-2 text-[10px] text-center text-black">
       Sudah punya akun?
-      <a class="underline hover:text-[#5a0a0a]" href="{{ route('login') }}">
-        Masuk sekarang
-      </a>
+      <a class="underline hover:text-[#1e3a8a]" href="{{ route('login') }}">Masuk sekarang</a>
     </p>
   </form>
 </div>

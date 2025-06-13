@@ -1,17 +1,15 @@
 @extends('layouts.app')
 @section('title', 'Login')
 @section('content')
-<div class="min-h-screen flex flex-col items-center justify-start bg-[rgb(9, 41, 201)] relative">
+<div class="min-h-screen flex flex-col items-center justify-start relative">
   <img src="{{ asset('img/Background 3.png') }}" alt="Background image" class="absolute inset-0 w-full h-full object-cover opacity-80" loading="lazy" aria-hidden="true" />
   
   <!-- Logo dan Judul -->
   <div class="relative z-10 mt-16 sm:mt-20 md:mt-28 flex flex-col items-center px-4 text-center">
-    <img src="{{ asset('img/logo1.png') }}" alt="Logo WJ Wear Jak Rock" class="mb-2 w-16 h-16 sm:w-20 sm:h-20 object-contain" />
-    <h1 class="text-white font-bold text-lg sm:text-xl mb-4 drop-shadow-[0_0_2px_rgba(0,0,0,0.7)]">
-      Masuk
-    </h1>
+    <img src="{{ asset('img/logo WUW.png') }}" alt="Logo WUW" class="mb-2 w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+    <h1 class="text-white font-bold text-lg sm:text-xl mb-4 drop-shadow-[0_0_2px_rgba(0,0,0,0.7)]">Masuk</h1>
   </div>
-  
+
   <!-- Form Login -->
   <form method="POST" action="{{ route('login') }}" autocomplete="off" class="relative z-10 bg-white bg-opacity-90 rounded-md w-[90vw] max-w-md p-4 sm:p-6 mb-12">
     @csrf
@@ -47,13 +45,11 @@
 
     {!! NoCaptcha::renderJs() !!}
 
-    <x-button type="submit" class="w-full">
-      Masuk
-    </x-button>
+    <x-button type="submit" class="w-full">Masuk</x-button>
 
     <p class="mt-4 text-xs text-center text-black">
       Belum punya akun?
-      <a class="underline hover:text-[#5a0a0a]" href="{{ route('register') }}">
+      <a class="underline hover:text-[#1e3a8a]" href="{{ route('register') }}">
         Daftar sekarang
       </a>
     </p>
