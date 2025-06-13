@@ -41,7 +41,9 @@
         @endif
       </div>
     @empty
-      <p class="text-center text-gray-500 text-sm sm:text-base">Belum ada riwayat penyewaan.</p>
+    <div class="min-h-screen flex items-center justify-center">
+      <p class="text-center text-gray-500 text-sm sm:text-base">Belum ada riwayat penyewaan</p>
+    </div>
     @endforelse
   </div>
 </div>
