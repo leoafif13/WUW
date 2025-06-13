@@ -12,7 +12,7 @@
 
 <main class="py-8">
   <!-- Bagian Syarat -->
-  <x-section-title title="Syarat dan Panduan Menyewa" />
+  <x-section-title title="Syarat Menyewa" />
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
     @foreach ($terms as $term)
