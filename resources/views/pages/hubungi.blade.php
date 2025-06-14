@@ -11,22 +11,21 @@
         <div class="flex flex-col md:flex-row gap-6">
           <!-- Jam Operasional -->
           <div class="flex-1 bg-gray-300 rounded-lg shadow p-4">
-            <h3 class="text-lg font-semibold text-blue-900 mb-2">Jam Operasional</h3>
-            <ul class="space-y-3 text-sm leading-relaxed">
-  <li class="flex justify-between gap-6">
-    <span class="min-w-[110px]">Senin - Jumat</span>
-    <span class="text-blue-600 font-semibold">8.00 – 16.00</span>
-  </li>
-  <li class="flex justify-between gap-6">
-    <span class="min-w-[110px]">Sabtu</span>
-    <span class="text-blue-600 font-semibold">8.00 – 12.00</span>
-  </li>
-  <li class="flex justify-between gap-6">
-    <span class="min-w-[110px]">Minggu</span>
-    <span class="text-blue-600 font-semibold">Close</span>
-  </li>
-</ul>
-
+              <h3 class="text-lg font-semibold text-blue-900 mb-2">Jam Operasional</h3>
+              <ul class="space-y-3 text-sm leading-relaxed">
+              <li class="flex justify-between gap-6">
+                <span class="min-w-[110px]">Senin - Jumat</span>
+                <span class="text-blue-600 font-semibold">8.00 – 16.00</span>
+              </li>
+              <li class="flex justify-between gap-6">
+                <span class="min-w-[110px]">Sabtu</span>
+                <span class="text-blue-600 font-semibold">8.00 – 12.00</span>
+              </li>
+              <li class="flex justify-between gap-6">
+                <span class="min-w-[110px]">Minggu</span>
+                <span class="text-red-600 font-semibold">Close</span>
+              </li>
+            </ul>
           </div>
 
           <!-- Lokasi -->
@@ -47,8 +46,15 @@
         </div>
       </div>
 
-      <!-- KANAN: Form -->
-      <form action="{{ route('kontak.store') }}" method="POST" class="flex flex-col justify-center bg-gray-300 rounded-lg shadow p-8 md:p-10 lg:p-12 space-y-4 h-full">
+     <!-- KANAN: Form -->
+    <div class="flex flex-col justify-center bg-gray-300 rounded-lg shadow p-8 md:p-10 lg:p-12 h-full">
+      <!-- Teks Pengantar -->
+      <div class="text-center -mt-4 mb-4">
+        <h3 class="text-xl font-semibold text-blue-900">Ada Pertanyaan?</h3>
+        <p class="text-sm text-gray-700 mt-1">Isi formulir di bawah ini dan tim kami akan segera menghubungi Anda.</p>
+      </div>
+
+      <form action="{{ route('kontak.store') }}" method="POST" class="flex flex-col space-y-4">
         @csrf
 
         <!-- Nama -->
@@ -61,7 +67,7 @@
 
         <!-- Email -->
         <div>
-          <input type="email" name="email" placeholder="Alamat Email" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required value="{{ old('email') }}" autocomplete="email">
+          <input type="email" name="email" placeholder="Alamat Email" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required value="{{ old('email') }}">
           @error('email')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
           @enderror
@@ -85,7 +91,6 @@
 
         <button type="submit" class="w-full bg-blue-900 text-white font-semibold px-6 py-2 rounded-lg hover:bg-gray-900 transition">Kirim</button>
       </form>
-
     </div>
   </div>
 </section>

@@ -67,6 +67,8 @@ class OrderController extends Controller
             ]);
         }
 
+        session()->forget('keranjang');
+
 
         return redirect('/pembayaran')->with('success', 'Pesanan berhasil disimpan!');
     }

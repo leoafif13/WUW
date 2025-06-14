@@ -11,7 +11,7 @@
     @if($reviews->isEmpty())
         <p class="text-center text-gray-500 italic">Belum ada ulasan untuk produk ini.</p>
     @else
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($reviews as $index => $review)
             <div class="bg-gray-100 rounded-xl shadow-md p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300 w-full">
                 <!-- Bagian Atas: Foto Barang + Info -->
@@ -44,8 +44,8 @@
 
             <!-- Modal -->
             @if($review->foto)
-            <div id="modal-{{ $index }}" class="fixed inset-0 z-50 hidden bg-black bg-opacity-70 flex items-center justify-center p-4">
-                <div class="bg-white rounded-lg p-5 max-w-md w-full relative shadow-lg max-h-[80vh] overflow-y-auto">
+            <div id="modal-{{ $index }}" class="fixed inset-0 z-50 hidden bg-black bg-opacity-70 items-center justify-center p-4">
+                <div class="bg-white rounded-lg p-5 max-w-md w-full relative shadow-lg max-h-[80vh] overflow-y-auto flex flex-col items-center">
                     <button class="absolute top-2 right-2 text-gray-600 text-2xl font-bold" onclick="closeModal('modal-{{ $index }}')">&times;</button>
 
                     <!-- Gambar -->
@@ -78,10 +78,14 @@
 <!-- Modal Script -->
 <script>
     function openModal(id) {
-        document.getElementById(id).classList.remove('hidden');
+        const modal = document.getElementById(id);
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
     }
     function closeModal(id) {
-        document.getElementById(id).classList.add('hidden');
+        const modal = document.getElementById(id);
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
     }
 </script>
 @endsection

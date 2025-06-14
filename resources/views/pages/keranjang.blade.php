@@ -14,6 +14,14 @@
     </a>
 </header>
 
+@if(session('success'))
+  <div class="mx-4 mt-4 bg-green-100 border border-green-300 text-green-800 px-4 py-3 rounded relative" role="alert">
+    <strong class="font-bold">Berhasil!</strong>
+    <span class="block sm:inline">{{ session('success') }}</span>
+  </div>
+@endif
+
+
 <main class="px-4 sm:px-6 py-4 space-y-2 bg-[#F9F9F9]">
     @forelse ($barangs as $barang)
     <article class="bg-white flex flex-wrap sm:flex-nowrap items-center p-3 shadow-sm space-x-3 w-full" data-barang-id="{{ $barang->id }}">
@@ -91,7 +99,7 @@
         const mulai = new Date(tglMulai);
         const selesai = new Date(tglSelesai);
         const diffTime = selesai - mulai;
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; // +1 supaya termasuk hari terakhir
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
         return diffDays > 0 ? diffDays : 0;
     }
 
@@ -128,6 +136,12 @@
         document.getElementById('countBarang').textContent = count;
     }
 
+    // Set tanggal minimal hari ini
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelectorAll('.tanggal-mulai, .tanggal-selesai').forEach(input => {
+        input.setAttribute('min', today);
+    });
+
     // Update jumlah barang dan total saat checkbox / tanggal berubah
     document.querySelectorAll('.check-barang, .tanggal-mulai, .tanggal-selesai').forEach(el => {
         el.addEventListener('change', updateTotal);
@@ -142,7 +156,7 @@
         updateTotal();
     });
 
-    // Submit form, buat JSON items dari yang diceklis
+    // Submit form
     document.getElementById('orderForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -185,14 +199,10 @@
             return;
         }
 
-        // Isi input hidden dengan JSON string
         document.getElementById('itemsInput').value = JSON.stringify(items);
-
-        // Submit form
         e.target.submit();
     });
 
-    // Inisialisasi update total saat halaman load
     updateTotal();
 </script>
 

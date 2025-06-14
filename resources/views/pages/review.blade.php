@@ -58,16 +58,19 @@
 
             <!-- Upload Foto -->
             <div class="mt-6">
-                <label for="fotoUpload-{{ $payment->id }}" class="block text-base font-semibold mb-1">Masukkan Foto</label>
                 <label for="fotoUpload-{{ $payment->id }}"
-                    class="flex flex-col justify-center items-center border-2 border-dashed border-gray-300 rounded-lg h-32 cursor-pointer relative overflow-hidden">
-                    
-                    <img id="preview-{{ $payment->id }}" src="#" alt="Preview Foto" class="hidden absolute inset-0 w-full h-full object-cover rounded-lg" />
-                    
-                    <i id="icon-{{ $payment->id }}" class="fas fa-camera text-2xl text-gray-400"></i>
-                    <span id="text-{{ $payment->id }}" class="text-gray-500 mt-2">Masukkan Foto</span>
-                    <input type="file" id="fotoUpload-{{ $payment->id }}" name="foto" accept="image/*" class="hidden">
-                </label>
+                class="block border-2 border-dashed border-gray-300 rounded-lg cursor-pointer relative overflow-hidden w-full">
+                
+                <img id="preview-{{ $payment->id }}" src="#" alt="Preview Foto"
+                    class="hidden w-full h-auto object-contain rounded-lg bg-white" />
+
+                <div id="placeholder-{{ $payment->id }}" class="flex flex-col justify-center items-center py-8">
+                    <i class="fas fa-camera text-2xl text-gray-400"></i>
+                    <span class="text-gray-500 mt-2">Masukkan Foto</span>
+                </div>
+
+                <input type="file" id="fotoUpload-{{ $payment->id }}" name="foto" accept="image/*" class="hidden">
+            </label>
             </div>
 
             <!-- Tombol Kirim -->
@@ -98,23 +101,22 @@
             });
 
             inputFile{{ $payment->id }}.addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        previewImg{{ $payment->id }}.src = e.target.result;
-                        previewImg{{ $payment->id }}.classList.remove('hidden');
-                        icon{{ $payment->id }}.classList.add('hidden');
-                        text{{ $payment->id }}.classList.add('hidden');
-                    }
-                    reader.readAsDataURL(file);
-                } else {
-                    previewImg{{ $payment->id }}.src = '#';
-                    previewImg{{ $payment->id }}.classList.add('hidden');
-                    icon{{ $payment->id }}.classList.remove('hidden');
-                    text{{ $payment->id }}.classList.remove('hidden');
+            const file = event.target.files[0];
+            const placeholder = document.getElementById('placeholder-{{ $payment->id }}');
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg{{ $payment->id }}.src = e.target.result;
+                    previewImg{{ $payment->id }}.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
                 }
-            });
+                reader.readAsDataURL(file);
+            } else {
+                previewImg{{ $payment->id }}.src = '#';
+                previewImg{{ $payment->id }}.classList.add('hidden');
+                placeholder.classList.remove('hidden');
+            }
+        });
         @endforeach
     });
 </script>

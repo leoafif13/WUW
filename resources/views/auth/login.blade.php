@@ -14,6 +14,13 @@
   <form method="POST" action="{{ route('login') }}" autocomplete="off" class="relative z-10 bg-white bg-opacity-90 rounded-md w-[90vw] max-w-md p-4 sm:p-6 mb-12">
     @csrf
 
+    {{-- Notifikasi Berhasil Register --}}
+    @if(session('success'))
+      <div class="bg-green-100 text-green-800 text-sm p-3 rounded mb-4 border border-green-300">
+        {{ session('success') }}
+      </div>
+    @endif
+
     {{-- Tampilkan error login jika ada --}}
     @if($errors->any())
       <div class="text-red-600 text-sm mb-4">

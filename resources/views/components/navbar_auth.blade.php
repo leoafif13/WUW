@@ -20,12 +20,19 @@
       <a href="/sewa" class="hover:text-blue-900 transition">
         <span class="material-symbols-outlined">sticky_note_2</span>
       </a>
-      <a href="/keranjang" class="hover:text-blue-900 transition">
-        <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
-        </svg>
-      </a>
+     <a href="/keranjang" class="relative hover:text-blue-900 transition">
+      <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+      </svg>
+      
+      @if(session('keranjang') && count(session('keranjang')) > 0)
+        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+          {{ count(session('keranjang')) }}
+        </span>
+      @endif
+    </a>
+
 
       <!-- Profile Desktop -->
       <div class="relative z-30">
@@ -63,12 +70,19 @@
         <span class="material-symbols-outlined text-2xl">sticky_note_2</span>
       </a>
 
-      <a href="/keranjang" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition">
+      <a href="/keranjang" class="relative flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition">
         <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
         </svg>
+
+        @if(session('keranjang') && count(session('keranjang')) > 0)
+          <span class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+            {{ count(session('keranjang')) }}
+          </span>
+        @endif
       </a>
+
 
       <div class="relative flex items-center justify-center">
         <button id="profile-btn-mobile" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition">
