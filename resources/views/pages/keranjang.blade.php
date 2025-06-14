@@ -19,7 +19,7 @@
     <article class="bg-white flex flex-wrap sm:flex-nowrap items-center p-3 shadow-sm space-x-3 w-full" data-barang-id="{{ $barang->id }}">
         <input type="checkbox" class="check-barang"  name="selected_items[]" value="{{ $barang->id }}" data-harga="{{ $barang->harga }}" data-qty="{{ $barang->qty }}" />
 
-        <img alt="{{ $barang->nama_barang }}" class="w-20 h-20 object-cover ml-3 flex-shrink-0"
+        <img alt="{{ $barang->nama_barang }}" class="w-32 h-32 rounded-lg object-cover ml-3 flex-shrink-0"
              src="{{ $barang->foto ? asset('storage/' . $barang->foto) : 'https://via.placeholder.com/100' }}" />
 
         <div class="flex flex-col ml-4 flex-1 min-w-0">

@@ -22,7 +22,7 @@
       @endphp
       <div class="bg-white rounded shadow-sm p-3 sm:p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center">
         <div class="flex items-start space-x-3 sm:space-x-4 w-full sm:w-auto">
-          <img src="{{ asset('storage/' . $item->order->foto) }}" alt="Produk" class="w-16 h-20 sm:w-20 sm:h-24 object-cover rounded flex-shrink-0" />
+          <img src="{{ asset('storage/' . $item->order->foto) }}" alt="Produk" class="w-28 h-32 sm:w-32 sm:h-36 object-cover rounded flex-shrink-0" />
           <div class="text-sm">
             <h2 class="font-semibold text-gray-800 truncate max-w-[180px] sm:max-w-xs">{{ $item->nama_barang }}</h2>
             <p class="text-gray-600 text-xs sm:text-sm">Variasi: Size {{ $item->ukuran }}</p>

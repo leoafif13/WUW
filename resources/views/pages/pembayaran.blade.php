@@ -23,7 +23,7 @@
           @endphp
 
           <div class="flex flex-wrap sm:flex-nowrap items-center gap-4">
-            <img src="{{ asset('storage/' . $order->foto) }}" class="w-20 h-20 object-cover rounded" alt="{{ $order->nama_barang }}">
+            <img src="{{ asset('storage/' . $order->foto) }}" class="w-32 h-32 object-cover rounded" alt="{{ $order->nama_barang }}">
             <div class="flex-1 min-w-0">
               <h2 class="font-semibold truncate">{{ $order->nama_barang }}</h2>
 

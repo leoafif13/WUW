@@ -30,7 +30,7 @@
             <!-- Card Produk -->
             <div class="bg-white mt-4 p-4 rounded-xl shadow-md flex flex-col sm:flex-row gap-4">
                 <img src="{{ asset('storage/' . $payment->order->foto) }}" alt="Foto Produk"
-                    class="w-full sm:w-24 h-28 object-cover rounded-lg">
+                    class="w-full sm:w-32 h-36 object-cover rounded-lg">
                 <div class="text-center sm:text-left">
                     <h2 class="font-semibold text-base">{{ $payment->order->nama_barang ?? '-' }}</h2>
                     <p class="text-sm text-gray-600">Variasi: {{ $payment->order->ukuran ?? '-' }}</p>
