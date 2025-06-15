@@ -22,7 +22,7 @@
 <section class="bg-blue-900 text-white py-6">
     <div class="text-center">
         <h2 class="text-2xl font-bold">
-            @if(request()->has('search') || request()->has('kategori') || request()->has('ukuran')) 
+            @if(request()->has('search') || request()->has('kategori') || request()->has('ukuran') || request()->has('type'))
                 Hasil Penelusuran
             @else
                 Produk Rekomendasi Kami
@@ -33,9 +33,15 @@
 
 <!-- Daftar Produk -->
 <section class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    @foreach ($barangs as $barang)
-        <x-product-card :barang="$barang" />
-    @endforeach
+    @if ($barangs->isEmpty())
+        <div class="col-span-full text-center text-gray-600 text-lg">
+            Barang tidak ditemukan.
+        </div>
+    @else
+        @foreach ($barangs as $barang)
+            <x-product-card :barang="$barang" />
+        @endforeach
+    @endif
 </section>
 
 <script>

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use App\Models\Order;
 use App\Models\Payment;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Midtrans\Snap;
+use Midtrans\Config;
 use Carbon\Carbon;
 
 class PembayaranController extends Controller
@@ -22,15 +24,48 @@ class PembayaranController extends Controller
                 'harga_per_hari', 'tanggal_mulai', 'tanggal_selesai', 'total_harga'
             ]);
 
-        return view('pages.pembayaran', compact('orders'));
+        if ($orders->isEmpty()) {
+            return redirect()->route('home')->with('error', 'Tidak ada pesanan untuk dibayar.');
+        }
+
+        $subtotal = $orders->sum('total_harga');
+        $biayaLayanan = 1500;
+        $totalBayar = $subtotal + $biayaLayanan;
+
+        // Konfigurasi Midtrans
+        Config::$serverKey = config('midtrans.serverKey');
+        Config::$isProduction = false;
+        Config::$isSanitized = true;
+        Config::$is3ds = true;
+
+        // Buat Snap Token
+        $params = [
+            'transaction_details' => [
+                'order_id' => uniqid('ORDER-'),
+                'gross_amount' => $totalBayar,
+            ],
+            'customer_details' => [
+                'first_name' => Auth::user()->name,
+                'email' => Auth::user()->email,
+            ],
+        ];
+
+        $snapToken = Snap::getSnapToken($params);
+
+        return view('pages.pembayaran', [
+            'orders' => $orders,
+            'snapToken' => $snapToken
+        ]);
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'pengiriman' => 'required|in:antar,jemput',
-            'metode'     => 'required|in:cod,qris',
-            'alamat'     =>  $request->pengiriman === 'antar' ? 'required|string' : 'nullable|string',
+            'alamat' => 'nullable|string|max:255',
+            'metode' => 'required|in:cod,qris',
+            'snap_status' => 'nullable|string',
+            'snap_result' => 'nullable|string',
         ]);
 
         $user = Auth::user();
@@ -40,12 +75,11 @@ class PembayaranController extends Controller
             ->get();
 
         if ($orders->isEmpty()) {
-            return back()->with('error', 'Tidak ada pesanan yang dapat dibayar.');
+            return redirect()->route('home')->with('error', 'Tidak ada pesanan untuk diproses.');
         }
 
-        DB::beginTransaction();
-        try {
-            foreach ($orders as $order) {
+        foreach ($orders as $order) {
+            try {
                 Payment::create([
                     'user_id'         => $user->id,
                     'order_id'        => $order->id,
@@ -57,19 +91,31 @@ class PembayaranController extends Controller
                     'metode'          => $request->metode,
                     'pengiriman'      => $request->pengiriman,
                     'alamat'          => $request->pengiriman === 'antar' ? $request->alamat : null,
-                    'total'           => $order->total_harga + 1500, // Jika biaya layanan per order
+                    'total'           => $order->total_harga + 1500,
                     'status'          => 'dibayar',
                 ]);
 
-                $order->update(['status' => 'dibayar']);
+                // Update status order
+                $order->update(['status' => 'selesai']);
+            } catch (\Exception $e) {
+                Log::error('Gagal menyimpan payment: ' . $e->getMessage());
+                return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan pembayaran.');
             }
-
-            DB::commit();
-
-            return redirect()->route('history')->with('success', 'Pembayaran berhasil dilakukan!');
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return back()->with('error', 'Terjadi kesalahan saat memproses pembayaran.')->withErrors(['exception' => $e->getMessage()]);
         }
+
+        return redirect()->route('history')->with('success', 'Pembayaran berhasil dilakukan.');
+    }
+
+    public function cancel($id)
+    {
+        $order = Order::findOrFail($id);
+
+        if ($order->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'Tidak diizinkan.');
+        }
+
+        $order->delete();
+
+        return redirect()->route('pembayaran.index')->with('success', 'Pesanan berhasil dibatalkan.');
     }
 }
