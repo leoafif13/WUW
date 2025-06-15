@@ -33,24 +33,66 @@ class PembayaranController extends Controller
         $totalBayar = $subtotal + $biayaLayanan;
 
         // Konfigurasi Midtrans
-        Config::$serverKey = config('midtrans.serverKey');
-        Config::$isProduction = false;
-        Config::$isSanitized = true;
-        Config::$is3ds = true;
+        \Midtrans\Config::$serverKey = config('midtrans.serverKey');
+        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isSanitized = true;
+        \Midtrans\Config::$is3ds = true;
 
-        // Buat Snap Token
+        // Buat array item_details dari setiap order
+        $itemDetails = $orders->map(function ($order) {
+            return [
+                'id' => 'ORDER-' . $order->id,
+                'price' => $order->total_harga,
+                'quantity' => 1,
+                'name' => $order->nama_barang . ' (' . $order->ukuran . ')'
+            ];
+        })->toArray();
+
+        // Tambahkan biaya layanan
+        $itemDetails[] = [
+            'id' => 'BIAYA-LAYANAN',
+            'price' => $biayaLayanan,
+            'quantity' => 1,
+            'name' => 'Biaya Layanan'
+        ];
+
+        // Ambil data pelanggan (users)
+        $customer = Auth::user();
+        $customerPhone = $customer->telepon ?? '-';
+        $customerAddress = $customer->alamat ?? '-';
+
+        // Ambil data pengiriman dari payment terakhir user (jika ada)
+        $latestPayment = \App\Models\Payment::where('user_id', $userId)->latest()->first();
+        $shippingAddress = $latestPayment?->alamat ?? '-';
+
+        // Parameter Midtrans
         $params = [
             'transaction_details' => [
                 'order_id' => uniqid('ORDER-'),
                 'gross_amount' => $totalBayar,
             ],
             'customer_details' => [
-                'first_name' => Auth::user()->name,
-                'email' => Auth::user()->email,
+                'first_name' => $customer->name,
+                'email' => $customer->email,
+                'phone' => $customerPhone,
+                'address' => $customerAddress,
+                'billing_address' => [
+                    'first_name' => $customer->name,
+                    'email' => $customer->email,
+                    'phone' => $customerPhone,
+                    'address' => $customerAddress, // dari users
+                ],
+                'shipping_address' => [
+                    'first_name' => $customer->name,
+                    'email' => $customer->email,
+                    'phone' => $customerPhone,
+                    'address' => $shippingAddress, // dari payment
+                ],
             ],
+            'item_details' => $itemDetails,
         ];
 
-        $snapToken = Snap::getSnapToken($params);
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         return view('pages.pembayaran', [
             'orders' => $orders,
