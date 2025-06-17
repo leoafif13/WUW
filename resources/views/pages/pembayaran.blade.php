@@ -27,16 +27,18 @@
 
           <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <img src="{{ asset('storage/' . $order->foto) }}" class="w-full sm:w-32 max-h-40 object-contain rounded" alt="{{ $order->nama_barang }}">
-            <div class="flex-1 min-w-0">
+            <div class="flex-1 min-w-0 self-start">
               <h2 class="font-semibold truncate">{{ $order->nama_barang }}</h2>
               <div class="flex flex-wrap gap-2 mt-1 text-sm text-gray-600">
                 <span>Ukuran: {{ $order->ukuran }}</span>
                 <span>|</span>
                 <span>{{ \Carbon\Carbon::parse($order->tanggal_mulai)->format('d M') }} - {{ \Carbon\Carbon::parse($order->tanggal_selesai)->format('d M') }}</span>
               </div>
-              <p class="text-blue-600 font-bold mt-2">Rp{{ number_format($order->total_harga, 0, ',', '.') }}</p>
+            </div>
+            <div class="flex flex-col items-end gap-2">
+              <p class="text-blue-600 font-bold">Rp{{ number_format($order->total_harga, 0, ',', '.') }}</p>
               <button type="button"
-                      class="text-red-600 text-sm hover:underline mt-1"
+                      class="text-red-600 text-sm hover:underline"
                       onclick="if(confirm('Apakah kamu yakin ingin membatalkan pesanan ini?')) { document.getElementById('cancel-form-{{ $order->id }}').submit(); }">
                 Batalkan
               </button>
