@@ -12,14 +12,20 @@ use Illuminate\Support\Facades\Storage;
 class ReviewController extends Controller
 {
     // Menampilkan halaman review dengan data payment dan order
-    public function index()
+    public function index(Request $request)
     {
         $userId = Auth::id();
 
         // Ambil data payment dengan relasi order saja
-        $payments = Payment::with('order')
-            ->where('user_id', $userId)
-            ->get();
+       $query = Payment::with('order')
+        ->where('user_id', $userId);// ambil data payment dengan user_id sesuai dengan user yang login
+
+         // Filter berdasarkan payment_id jika ada
+    if ($request->has('payment_id')) {
+        $query->where('id', $request->payment_id);
+    }
+
+        $payments = $query->get();
 
         return view('pages.review', compact('payments'));
     }
@@ -51,4 +57,6 @@ class ReviewController extends Controller
 
         return back()->with('success', 'Ulasan berhasil dikirim!');
     }
+
+    
 }

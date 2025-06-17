@@ -34,7 +34,7 @@
         @if($tanggalSelesai->isPast())
           <div class="flex space-x-2 mt-3 sm:mt-0 w-full sm:w-auto justify-start sm:justify-end">
             <a href="{{ url('/barang') }}" class="bg-blue-900 text-white px-3 py-2 rounded text-xs sm:text-sm hover:bg-blue-800 w-full sm:w-auto text-center">Sewa Lagi</a>
-            <a href="{{ route('review.index') }}" class="bg-blue-900 text-white px-6 py-2 rounded text-xs sm:text-sm hover:bg-blue-800 text-center w-full sm:w-auto">Nilai</a>
+            <a href="{{ route('review.index', ['payment_id' => $item->id]) }}" class="bg-blue-900 text-white px-6 py-2 rounded text-xs sm:text-sm hover:bg-blue-800 text-center w-full sm:w-auto">Nilai</a>
           </div>
         @else
           <div class="text-xs text-gray-400 mt-3 sm:mt-0">Masih dalam penyewaan</div>
