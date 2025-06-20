@@ -89,15 +89,30 @@
       </section>
 
       <!-- Metode Pembayaran -->
-<section class="space-y-3">
-  <h3 class="font-semibold text-lg">Metode Pembayaran</h3>
-  <div class="w-30 text-left sm:text-center bg-white border px-4 py-2 rounded-lg flex justify-between items-center shadow-sm">
-    <span class="font-medium">TRANSFER</span>
-  </div>
-  <input type="hidden" name="metode" value="qris" x-model="metode">
-</section>
+      <section class="space-y-3">
+        <h3 class="font-semibold text-lg">Metode Pembayaran</h3>
+        <div class="relative">
+          <button type="button" @click="dropdown = !dropdown"
+                  class="w-full text-left sm:text-center sm:w-auto bg-white border px-4 py-2 rounded-lg flex justify-between items-center shadow-sm">
+            <span x-text="metode === 'cod' ? 'Cash On Delivery (COD)' : 'QRIS'"></span>
+            <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06z"/>
+            </svg>
+          </button>
 
-
+          <div x-show="dropdown" @click.away="dropdown = false" x-cloak
+               class="absolute z-10 mt-2 w-full sm:max-w-xs bg-white border rounded shadow-md p-3 space-y-2">
+            <label class="flex items-center gap-2">
+              <input type="radio" name="metode" value="cod" x-model="metode" class="form-radio">
+              Cash On Delivery (COD)
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="radio" name="metode" value="qris" x-model="metode" class="form-radio">
+              QRIS
+            </label>
+          </div>
+        </div>
+      </section>
 
 <!-- Rincian -->
       <section class="space-y-2 pt-2">
