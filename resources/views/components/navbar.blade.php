@@ -1,5 +1,6 @@
 <header class="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md text-white shadow">
   <div class="flex items-center justify-between max-w-7xl mx-auto px-6 py-4 md:px-12">
+    
     <!-- Logo -->
     <div class="flex items-center space-x-2">
       <x-logo />
@@ -14,25 +15,22 @@
       <a href="#hubungi" class="hover:underline px-2 tracking-wide">Hubungi Kami</a>
     </nav>
 
-    <!-- Auth Buttons & Mobile Toggle -->
-        <!-- Auth Buttons -->
+    <!-- Auth Buttons Desktop -->
     <div class="hidden md:flex items-center space-x-4 font-semibold text-base">
       <a href="/register" class="hover:underline">Daftar</a>
       <a href="/login" class="bg-white text-blue-900 px-4 py-2 rounded-lg font-bold hover:bg-gray-900 hover:text-blue-300 transition">Masuk</a>
     </div>
 
-
-      <!-- Mobile Toggle -->
-      <div class="md:hidden">
-        <button id="menu-toggle" class="text-[#f9f6f1] text-2xl focus:outline-none">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
+    <!-- Mobile Toggle -->
+    <div class="md:hidden">
+      <button id="menu-toggle" class="text-white text-2xl focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="md:hidden hidden bg-transparent backdrop-blur-md px-6 py-4 space-y-4 text-white text-sm font-semibold">
+  <div id="mobile-menu" class="md:hidden hidden bg-transparent backdrop-blur-md px-6 py-4 space-y-4 text-white text-sm font-semibold transition duration-300 ease-in-out">
     <a href="#beranda" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Beranda</a>
     <a href="#tentang" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Tentang</a>
     <a href="#produk" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Produk</a>
@@ -41,7 +39,7 @@
     <a href="/login" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition duration-200">Masuk</a>
   </div>
 
-  <!-- Script untuk toggle menu -->
+  <!-- Script Toggle -->
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');

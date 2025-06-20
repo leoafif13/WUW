@@ -3,56 +3,70 @@
 @section('title', 'Pembayaran')
 
 @section('content')
-<main class="bg-white text-gray-800 font-sans" x-data="{ pengiriman: 'antar', metode: 'qris', dropdown: false }">
+<main class="bg-white text-gray-800 font-sans" x-data="paymentState()" x-init="init()">
   @include('components.navbar_payment')
+
+  <!-- Tracking Status -->
+  <section class="p-6 pt-8">
+    <h3 class="text-lg font-bold mb-4">Status Pembayaran</h3>
+    <div class="flex items-center gap-4 text-sm text-gray-700">
+      <div class="flex items-center gap-1">
+        <div :class="progress === 'isi' ? 'bg-blue-600' : 'bg-gray-300'" class="w-3 h-3 rounded-full transition-all"></div>
+        <span :class="progress === 'isi' ? 'font-semibold text-blue-900' : 'text-gray-500'">Isi Formulir</span>
+      </div>
+      <div class="h-0.5 w-6 bg-gray-300"></div>
+      <div class="flex items-center gap-1">
+        <div :class="progress === 'bayar' ? 'bg-blue-600' : 'bg-gray-300'" class="w-3 h-3 rounded-full transition-all"></div>
+        <span :class="progress === 'bayar' ? 'font-semibold text-blue-900' : 'text-gray-500'">Sedang Dibayar</span>
+      </div>
+      <div class="h-0.5 w-6 bg-gray-300"></div>
+      <div class="flex items-center gap-1">
+        <div :class="progress === 'selesai' ? 'bg-blue-600' : 'bg-gray-300'" class="w-3 h-3 rounded-full transition-all"></div>
+        <span :class="progress === 'selesai' ? 'font-semibold text-blue-900' : 'text-gray-500'">Sudah Dibayar dan Dikirim</span>
+      </div>
+    </div>
+  </section>
 
   <form id="form-pembayaran" method="POST" action="{{ route('pembayaran.store') }}">
     @csrf
     <input type="hidden" name="snap_status" id="snap_status">
     <input type="hidden" name="snap_result" id="snap_result">
 
-    <div class="p-4 space-y-6 pb-32 sm:pb-20">
+    <div class="p-16 space-y-6 pb-32 sm:pb-20">
       <!-- Produk -->
-      <section class="space-y-4">
+      @php
+          $totalProduk = 0;
+          $subtotalProduk = 0;
+      @endphp
+
+      @foreach ($orders as $order)
         @php
-            $totalProduk = 0;
-            $subtotalProduk = 0;
+            $totalProduk += $order->qty;
+            $subtotalProduk += $order->total_harga;
         @endphp
 
-        @foreach ($orders as $order)
-          @php
-              $totalProduk += $order->qty;
-              $subtotalProduk += $order->total_harga;
-          @endphp
-
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <img src="{{ asset('storage/' . $order->foto) }}" class="w-full sm:w-32 max-h-40 object-contain rounded" alt="{{ $order->nama_barang }}">
-            <div class="flex-1 min-w-0 self-start">
-              <h2 class="font-semibold truncate">{{ $order->nama_barang }}</h2>
-              <div class="flex flex-wrap gap-2 mt-1 text-sm text-gray-600">
-                <span>Ukuran: {{ $order->ukuran }}</span>
-                <span>|</span>
-                <span>{{ \Carbon\Carbon::parse($order->tanggal_mulai)->format('d M') }} - {{ \Carbon\Carbon::parse($order->tanggal_selesai)->format('d M') }}</span>
-              </div>
-            </div>
-            <div class="flex flex-col items-end gap-2">
-              <p class="text-blue-600 font-bold">Rp{{ number_format($order->total_harga, 0, ',', '.') }}</p>
-              <button type="button"
-                      class="text-red-600 text-sm hover:underline"
-                      onclick="if(confirm('Apakah kamu yakin ingin membatalkan pesanan ini?')) { document.getElementById('cancel-form-{{ $order->id }}').submit(); }">
-                Batalkan
-              </button>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <img src="{{ asset('storage/' . $order->foto) }}" class="w-full sm:w-32 max-h-40 object-contain rounded" alt="{{ $order->nama_barang }}">
+          <div class="flex-1 min-w-0 self-start">
+            <h2 class="font-semibold truncate">{{ $order->nama_barang }}</h2>
+            <div class="flex flex-wrap gap-2 mt-1 text-lg text-gray-600">
+              <span>Ukuran: {{ $order->ukuran }}</span>
+              <span>|</span>
+              <span>{{ \Carbon\Carbon::parse($order->tanggal_mulai)->format('d M') }} - {{ \Carbon\Carbon::parse($order->tanggal_selesai)->format('d M') }}</span>
             </div>
           </div>
-        @endforeach
-
-        <div class="flex justify-between font-semibold pt-3 border-t">
-          <p>Total Produk ({{ $totalProduk }}):</p>
-          <p class="text-blue-900">Rp{{ number_format($subtotalProduk, 0, ',', '.') }}</p>
+          <div class="flex flex-col items-end gap-2">
+            <p class="text-blue-600 text-xl font-bold">Rp{{ number_format($order->total_harga, 0, ',', '.') }}</p>
+            <button type="button"
+                    class="text-red-600 text-lg hover:underline"
+                    onclick="if(confirm('Apakah kamu yakin ingin membatalkan pesanan ini?')) { document.getElementById('cancel-form-{{ $order->id }}').submit(); }">
+              Batalkan
+            </button>
+          </div>
         </div>
-      </section>
+      @endforeach
 
-      <!-- Pengiriman -->
+<!-- Pengiriman -->
       <section class="space-y-3">
         <h3 class="font-semibold text-lg">Opsi Pengiriman</h3>
         <div class="flex flex-col sm:flex-row gap-4">
@@ -66,7 +80,7 @@
           </label>
         </div>
         <div x-show="pengiriman === 'antar'" x-transition x-cloak>
-          <label for="alamat" class="block text-sm font-semibold mb-1">Alamat Pengiriman</label>
+          <label for="alamat" class="block text-lg font-semibold mb-1">Alamat Pengiriman</label>
           <textarea id="alamat" name="alamat" rows="3"
                     x-bind:required="pengiriman === 'antar'"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -75,44 +89,35 @@
       </section>
 
       <!-- Metode Pembayaran -->
-      <section class="space-y-3">
-        <h3 class="font-semibold text-lg">Metode Pembayaran</h3>
-        <div class="relative">
-          <button type="button" @click="dropdown = !dropdown"
-                  class="w-full text-left sm:text-center sm:w-auto bg-white border px-4 py-2 rounded-lg flex justify-between items-center shadow-sm">
-            <span x-text="metode === 'cod' ? 'Cash On Delivery (COD)' : 'QRIS'"></span>
-            <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06z"/>
-            </svg>
-          </button>
+<section class="space-y-3">
+  <h3 class="font-semibold text-lg">Metode Pembayaran</h3>
+  <div class="w-30 text-left sm:text-center bg-white border px-4 py-2 rounded-lg flex justify-between items-center shadow-sm">
+    <span class="font-medium">TRANSFER</span>
+  </div>
+  <input type="hidden" name="metode" value="qris" x-model="metode">
+</section>
 
-          <div x-show="dropdown" @click.away="dropdown = false" x-cloak
-               class="absolute z-10 mt-2 w-full sm:max-w-xs bg-white border rounded shadow-md p-3 space-y-2">
-            <label class="flex items-center gap-2">
-              <input type="radio" name="metode" value="cod" x-model="metode" class="form-radio">
-              Cash On Delivery (COD)
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="radio" name="metode" value="qris" x-model="metode" class="form-radio">
-              QRIS
-            </label>
-          </div>
-        </div>
-      </section>
 
-      <!-- Rincian -->
+
+<!-- Rincian -->
       <section class="space-y-2 pt-2">
         <h3 class="font-semibold text-lg">Rincian Pembayaran</h3>
-        <div class="flex justify-between text-sm">
+        <div class="flex justify-between text-lg">
           <span>Subtotal Produk</span><span>Rp{{ number_format($subtotalProduk, 0, ',', '.') }}</span>
         </div>
-        <div class="flex justify-between text-sm">
+        <div class="flex justify-between text-lg">
           <span>Biaya Layanan</span><span>Rp1.500</span>
         </div>
         <div class="flex justify-between font-semibold text-lg">
           <span>Total Bayar</span><span class="text-blue-900">Rp{{ number_format($subtotalProduk + 1500, 0, ',', '.') }}</span>
         </div>
       </section>
+    </div>
+
+      <div class="flex justify-between font-semibold pt-3 border-t">
+        <p>Total Produk ({{ $totalProduk }}):</p>
+        <p class="text-blue-900 text-xl">Rp{{ number_format($subtotalProduk, 0, ',', '.') }}</p>
+      </div>
     </div>
 
     <!-- Footer -->
@@ -137,34 +142,51 @@
 
 <!-- Midtrans Snap -->
 <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
-<script type="text/javascript">
-  document.getElementById('pay-button').onclick = function () {
-    const pengiriman = document.querySelector('input[name="pengiriman"]:checked').value;
-    const metode = document.querySelector('input[name="metode"]:checked').value;
-    const alamat = pengiriman === 'antar' ? document.getElementById('alamat').value : null;
+<script src="https://unpkg.com/alpinejs" defer></script>
+<script>
+  function paymentState() {
+    return {
+      pengiriman: 'antar',
+      metode: 'qris',
+      dropdown: false,
+      progress: 'isi',
+      init() {
+        document.getElementById('pay-button').onclick = () => {
+          this.progress = 'bayar';
 
-    if (pengiriman === 'antar' && (!alamat || alamat.trim() === '')) {
-      alert('Alamat wajib diisi jika memilih antar.');
-      return;
-    }
+          const pengiriman = document.querySelector('input[name="pengiriman"]:checked').value;
+          const metode = document.querySelector('input[name="metode"]:checked').value;
+          const alamat = pengiriman === 'antar' ? document.getElementById('alamat').value : null;
 
-    snap.pay('{{ $snapToken }}', {
-      onSuccess: function (result) {
-        document.getElementById('snap_status').value = 'success';
-        document.getElementById('snap_result').value = JSON.stringify(result);
-        setTimeout(() => document.getElementById('form-pembayaran').submit(), 100);
-      },
-      onPending: function (result) {
-        document.getElementById('snap_status').value = 'pending';
-        document.getElementById('snap_result').value = JSON.stringify(result);
-        setTimeout(() => document.getElementById('form-pembayaran').submit(), 100);
-      },
-      onError: function (result) {
-        alert('Pembayaran gagal. Silakan coba lagi.');
-        console.error(result);
+          if (pengiriman === 'antar' && (!alamat || alamat.trim() === '')) {
+            alert('Alamat wajib diisi jika memilih antar.');
+            this.progress = 'isi';
+            return;
+          }
+
+          snap.pay('{{ $snapToken }}', {
+            onSuccess: (result) => {
+              this.progress = 'selesai';
+              document.getElementById('snap_status').value = 'success';
+              document.getElementById('snap_result').value = JSON.stringify(result);
+              setTimeout(() => document.getElementById('form-pembayaran').submit(), 3000);
+            },
+            onPending: (result) => {
+              this.progress = 'selesai';
+              document.getElementById('snap_status').value = 'pending';
+              document.getElementById('snap_result').value = JSON.stringify(result);
+              setTimeout(() => document.getElementById('form-pembayaran').submit(), 3000);
+            },
+            onError: (result) => {
+              alert('Pembayaran gagal. Silakan coba lagi.');
+              console.error(result);
+              this.progress = 'isi';
+            }
+          });
+        }
       }
-    });
-  };
+    }
+  }
 </script>
 
 <style>

@@ -41,15 +41,21 @@
         </div>
 
         <!-- Google Map -->
-        <div class="bg-gray-300 rounded-lg shadow p-2">
-          <iframe class="w-full rounded-lg" height="220" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.052173474437!2d104.04564687499073!3d1.118895662724118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d9892f2138b9f1%3A0x8dcab8a3c877bba0!2sPoliteknik%20Negeri%20Batam!5e0!3m2!1sid!2sid!4v1713523456789" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="w-full h-[300px] rounded-lg overflow-hidden">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.0577989797293!2d104.0458816734901!3d1.1187258622782366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d98921856ddfab%3A0xf9d9fc65ca00c9d!2sPoliteknik%20Negeri%20Batam!5e0!3m2!1sid!2sid!4v1750322719876!5m2!1sid!2sid" 
+            class="w-full h-full border-0"
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
 
      <!-- KANAN: Form -->
     <div class="flex flex-col justify-center bg-gray-300 rounded-lg shadow p-8 md:p-10 lg:p-12 h-full">
       <!-- Teks Pengantar -->
-      <div class="text-center -mt-4 mb-4">
+      <div class="text-center mt-4 mb-4">
         <h3 class="text-xl font-semibold text-blue-900">Ada Pertanyaan?</h3>
         <p class="text-sm text-gray-700 mt-1">Isi formulir di bawah ini dan tim kami akan segera menghubungi Anda.</p>
       </div>

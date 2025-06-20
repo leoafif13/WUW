@@ -2,15 +2,15 @@
 @section('title', 'Keranjang')
 @section('content')
 
-<header class="flex items-center justify-between px-4 py-3 text-white text-sm bg-blue-900 backdrop-blur-sm">
+<header class="flex items-center justify-between px-4 py-3   text-white text-sm bg-blue-900 backdrop-blur-sm">
     <div class="flex items-center">
         <button onclick="history.back()" aria-label="Back" class="mr-4 hover:text-blue-300 text-lg focus:outline-none">
-            <i class="fas fa-chevron-left" ></i>
+            <i class="fas fa-arrow-left" ></i>
         </button>
     </div>
     <h1 class="text-base font-bold sm:text-lg absolute left-1/2 transform -translate-x-1/2">Keranjang</h1>
-    <a href="/sewa" aria-label="Notes" class="text-white text-lg">
-        <span class="material-symbols-outlined">sticky_note_2</span>
+    <a href="/sewa" aria-label="Notes" class="text-white text-lg hover:text-gray-300 transition">
+        <i class="fas fa-sticky-note"></i>
     </a>
 </header>
 
@@ -24,7 +24,7 @@
 
 <main class="px-4 sm:px-6 py-4 space-y-2 bg-[#F9F9F9]">
     @forelse ($barangs as $barang)
-    <article class="bg-white flex flex-wrap sm:flex-nowrap items-center p-3 shadow-sm space-x-3 w-full" data-barang-id="{{ $barang->id }}">
+    <article class="bg-white flex flex-wrap sm:flex-nowrap items-center p-8 shadow-sm space-x-3 w-full" data-barang-id="{{ $barang->id }}">
         <input type="checkbox" class="check-barang"  name="selected_items[]" value="{{ $barang->id }}" data-harga="{{ $barang->harga }}" data-qty="{{ $barang->qty }}" />
 
         <img alt="{{ $barang->nama_barang }}" class="w-32 h-32 rounded-lg object-cover ml-3 flex-shrink-0"

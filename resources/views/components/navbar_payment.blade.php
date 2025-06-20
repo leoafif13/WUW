@@ -8,8 +8,8 @@
   </button>
     <h1 class="text-lg font-semibold">Checkout</h1>
     <div class="space-x-2">
-    <a href="/sewa" aria-label="Catatan" class="hover:text-blue-900 transition duration-200">
-        <span class="material-symbols-outlined">sticky_note_2</span>
+    <a href="/sewa" aria-label="Catatan" class="hover:text-gray-300 transition duration-200">
+        <i class="fas fa-sticky-note"></i>
       </a>
     </div>
   </header>

@@ -18,33 +18,29 @@
     <!-- Desktop Icons -->
     <div class="hidden md:flex space-x-6 text-[#f9f6f1] text-xl items-center">
       <a href="/sewa" class="hover:text-blue-900 transition">
-        <span class="material-symbols-outlined">sticky_note_2</span>
+        <i class="fas fa-sticky-note"></i>
       </a>
-     <a href="/keranjang" class="relative hover:text-blue-900 transition">
-      <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
-      </svg>
-      
-      @if(session('keranjang') && count(session('keranjang')) > 0)
-        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-          {{ count(session('keranjang')) }}
-        </span>
-      @endif
-    </a>
 
+      <a href="/keranjang" class="relative hover:text-blue-900 transition">
+        <i class="fas fa-shopping-cart"></i>
+        @if(session('keranjang') && count(session('keranjang')) > 0)
+          <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+            {{ count(session('keranjang')) }}
+          </span>
+        @endif
+      </a>
 
       <!-- Profile Desktop -->
       <div class="relative z-30">
         <button aria-label="Akun" id="profile-btn" class="hover:text-blue-900 transition">
-          <i class="far fa-user-circle"></i>
+          <i class="fas fa-user-circle"></i>
         </button>
-        <div id="profile-dropdown" class="absolute right-0 mt-2 w-45 bg-white text-[#4a3c32] shadow-lg rounded-lg hidden z-40">
-          <a href="/profile" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Profile Saya</a>
-          <a href="/ganti_password" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Ganti Kata Sandi</a>
-          <a href="/history" class="block bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Riwayat Penyewaan</a>
+        <div id="profile-dropdown" class="absolute right-0 mt-2 w-45 bg-white text-black shadow-lg rounded-lg hidden z-40">
+          <a href="/profile" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Profile Saya</a>
+          <a href="/ganti_password" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Ganti Kata Sandi</a>
+          <a href="/history" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Riwayat Penyewaan</a>
           <hr class="text-gray-300">
-          <a href="{{ route('keluar') }}" class="block w-full text-left bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Keluar</a>
+          <a href="{{ route('keluar') }}" class="block w-full text-left px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Keluar</a>
         </div>
       </div>
     </div>
@@ -67,15 +63,11 @@
 
     <div class="flex items-center justify-center space-x-6 text-xl text-white pt-4 border-t border-[#d8cfc6]">
       <a href="/sewa" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition">
-        <span class="material-symbols-outlined text-2xl">sticky_note_2</span>
+        <i class="fas fa-sticky-note"></i>
       </a>
 
       <a href="/keranjang" class="relative flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition">
-        <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
-        </svg>
-
+        <i class="fas fa-shopping-cart"></i>
         @if(session('keranjang') && count(session('keranjang')) > 0)
           <span class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
             {{ count(session('keranjang')) }}
@@ -83,10 +75,9 @@
         @endif
       </a>
 
-
       <div class="relative flex items-center justify-center">
         <button id="profile-btn-mobile" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition">
-          <i class="far fa-user-circle text-2xl"></i>
+          <i class="fas fa-user-circle"></i>
         </button>
         <div id="profile-dropdown-mobile" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white text-blue-900 shadow-lg rounded-lg hidden z-40">
           <a href="/profile" class="block px-4 py-2 text-sm">Profile Saya</a>
@@ -100,42 +91,32 @@
   </div>
 </header>
 
-
-
 <!-- Script -->
 <script>
-  // Toggle mobile menu
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
-
   menuToggle.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
   });
 
-  // Desktop Profile Dropdown
   const profileBtn = document.getElementById('profile-btn');
   const profileDropdown = document.getElementById('profile-dropdown');
-
   profileBtn.addEventListener('click', (event) => {
     event.stopPropagation();
     profileDropdown.classList.toggle('hidden');
   });
 
-  // Mobile Profile Dropdown
   const profileBtnMobile = document.getElementById('profile-btn-mobile');
   const profileDropdownMobile = document.getElementById('profile-dropdown-mobile');
-
   profileBtnMobile.addEventListener('click', (event) => {
     event.stopPropagation();
     profileDropdownMobile.classList.toggle('hidden');
   });
 
-  // Close all dropdowns if clicked outside
   window.addEventListener('click', (e) => {
     if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
       profileDropdown.classList.add('hidden');
     }
-
     if (!profileBtnMobile.contains(e.target) && !profileDropdownMobile.contains(e.target)) {
       profileDropdownMobile.classList.add('hidden');
     }

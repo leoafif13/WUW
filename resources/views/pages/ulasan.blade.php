@@ -5,13 +5,13 @@
 @section('content')
 @include('components.navbar_auth')
 
-<div class="pt-24 px-4 pb-10 min-h-screen bg-gradient-to-r from-[#1e3a8a] to-[#000000]">
+<div class="pt-24 p-16 min-h-screen bg-gradient-to-r from-[#1e3a8a] to-[#000000]">
     <h1 class="text-3xl font-bold mb-6 text-center text-white">Daftar Ulasan Produk</h1>
 
     @if($reviews->isEmpty())
         <p class="text-center text-gray-500 italic">Belum ada ulasan untuk produk ini.</p>
     @else
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             @foreach($reviews as $index => $review)
             <div class="bg-gray-100 rounded-xl shadow-md p-4 sm:p-6 hover:shadow-xl transition-shadow duration-300 w-full">
                 <!-- Bagian Atas: Foto Barang + Info -->

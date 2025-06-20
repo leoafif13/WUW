@@ -13,18 +13,14 @@ class HistoryController extends Controller
     {
         $userId = Auth::id();
 
-        // Ambil semua pembayaran dengan relasi order
         $payments = Payment::with('order')
             ->where('user_id', $userId)
             ->get();
 
-        // Cek setiap pembayaran
         foreach ($payments as $payment) {
             $order = $payment->order;
 
-            // Pastikan order ada dan tanggal_selesai telah lewat
             if ($order && Carbon::parse($order->tanggal_selesai)->isPast()) {
-                // Jika status belum "selesai", update
                 if ($order->status !== 'selesai') {
                     $order->status = 'selesai';
                     $order->save();
