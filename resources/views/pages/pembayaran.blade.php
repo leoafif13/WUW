@@ -6,6 +6,27 @@
 <main class="bg-white text-gray-800 font-sans" x-data="{ pengiriman: 'antar', metode: 'qris', dropdown: false }">
   @include('components.navbar_payment')
 
+ <!-- Progress Tracker -->
+<div class="w-full bg-gray-100 border-b border-gray-200 py-3 px-4 sm:px-6 flex flex-wrap items-center justify-center space-x-4 text-sm sm:text-base text-center sm:text-left">
+    <div class="flex items-center text-blue-900 font-semibold">
+        <div class="w-6 h-6 flex items-center justify-center mr-2">
+            <i class="fas fa-shopping-cart text-blue-900"></i>
+        </div>
+    </div>
+    <div class="w-4 h-px bg-blue-600"></div>
+    <div class="flex items-center text-blue-900 font-semibold">
+        <div class="w-6 h-6 flex items-center justify-center mr-2">
+            <i class="fas fa-file-alt text-blue-900"></i>
+        </div>
+    </div>
+    <div class="w-4 h-px bg-blue-600"></div>
+    <div class="flex items-center text-blue-900 font-semibold">
+        <div class="w-6 h-6 flex items-center justify-center mr-2">
+            <i class="fas fa-credit-card text-blue-900"></i>
+        </div>
+    </div>
+</div>
+
   <form id="form-pembayaran" method="POST" action="{{ route('pembayaran.store') }}">
     @csrf
     <input type="hidden" name="snap_status" id="snap_status">

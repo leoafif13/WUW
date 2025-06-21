@@ -2,17 +2,39 @@
 @section('title', 'Keranjang')
 @section('content')
 
-<header class="flex items-center justify-between px-4 py-3 text-white text-sm bg-blue-900 backdrop-blur-sm">
+<header class="flex items-center justify-between px-4 py-3 text-white text-sm bg-blue-900 backdrop-blur-sm relative">
     <div class="flex items-center">
         <button onclick="history.back()" aria-label="Back" class="mr-4 hover:text-blue-300 text-lg focus:outline-none">
             <i class="fas fa-arrow-left"></i>
         </button>
     </div>
-    <h1 class="text-base font-bold sm:text-lg absolute left-1/2 transform -translate-x-1/2">Keranjang</h1>
+    <h1 class="text-base font-bold sm:text-lg absolute left-1/2 transform -translate-x-1/2 pl-6">Keranjang</h1>
     <a href="/sewa" aria-label="Notes" class="text-white text-lg hover:text-gray-300 transition">
         <i class="fas fa-sticky-note"></i>
     </a>
 </header>
+
+@if ($barangs->count())
+<div class="w-full bg-gray-100 border-b border-gray-200 py-3 px-4 sm:px-6 flex flex-wrap items-center justify-center space-x-4 text-sm sm:text-base text-center sm:text-left">
+    <div class="flex items-center text-blue-900 font-semibold">
+        <div class="w-6 h-6 flex items-center justify-center mr-2">
+            <i class="fas fa-shopping-cart text-blue-900"></i>
+        </div>
+    </div>
+    <div class="w-4 h-px bg-gray-400"></div>
+    <div class="flex items-center text-gray-500">
+        <div class="w-6 h-6 flex items-center justify-center mr-2">
+            <i class="fas fa-file-alt text-gray-500"></i>
+        </div>
+    </div>
+    <div class="w-4 h-px bg-gray-400"></div>
+    <div class="flex items-center text-gray-500">
+        <div class="w-6 h-6 flex items-center justify-center mr-2">
+            <i class="fas fa-credit-card text-gray-500"></i>
+        </div>
+    </div>
+</div>
+@endif
 
 @if(session('success'))
   <div class="mx-4 mt-4 bg-green-100 border border-green-300 text-green-800 px-4 py-3 rounded relative" role="alert">
@@ -21,15 +43,15 @@
   </div>
 @endif
 
-<main class="px-4 sm:px-6 py-4 space-y-2 bg-[#F9F9F9]">
+<main class="px-4 sm:px-6 py-4 space-y-4 bg-[#F9F9F9]">
     @forelse ($barangs as $barang)
-    <article class="bg-white flex flex-wrap sm:flex-nowrap items-center p-8 shadow-sm space-x-3 w-full" data-barang-id="{{ $barang->id }}">
-        <input type="checkbox" class="check-barang" name="selected_items[]" value="{{ $barang->id }}" data-harga="{{ $barang->harga }}" data-qty="{{ $barang->qty }}" />
+    <article class="keranjang-item bg-white flex flex-wrap sm:flex-nowrap gap-4 items-start p-4 sm:p-6 shadow-sm w-full" data-barang-id="{{ $barang->id }}">
+        <input type="checkbox" class="check-barang mt-1" name="selected_items[]" value="{{ $barang->id }}" data-harga="{{ $barang->harga }}" data-qty="{{ $barang->qty }}" />
 
-        <img alt="{{ $barang->nama_barang }}" class="w-32 h-32 rounded-lg object-cover ml-3 flex-shrink-0"
+        <img alt="{{ $barang->nama_barang }}" class="w-24 h-24 sm:w-32 sm:h-32 rounded-lg object-cover ml-3 flex-shrink-0"
              src="{{ $barang->foto ? asset('storage/' . $barang->foto) : 'https://via.placeholder.com/100' }}" />
 
-        <div class="flex flex-col ml-4 flex-1 min-w-0">
+        <div class="flex flex-col ml-4 flex-1 min-w-0 w-full sm:w-auto">
             <h2 class="text-sm sm:text-base md:text-lg text-blue-900 break-words whitespace-normal">
                 {{ $barang->nama_barang }}
                 <span class="text-xs text-gray-500">x {{ $barang->qty }}</span>
@@ -43,12 +65,12 @@
                 <label for="selesai-{{ $barang->id }}" class="text-xs text-gray-600">Sampai:</label>
                 <input id="selesai-{{ $barang->id }}" type="date" class="tanggal-selesai border rounded px-2 py-1 text-xs sm:text-sm w-auto" />
             </div>
-            <span class="text-xs sm:text-sm text-blue-900 mt-1 harga-barang">
+            <span class="text-xs sm:text-sm text-blue-900 mt-1 harga-barang block">
                 Rp{{ number_format($barang->harga) }} / hari
             </span>
         </div>
 
-        <div class="grid grid-cols-3 sm:grid-cols-1 gap-2 w-full sm:w-auto">
+        <div class="grid grid-cols-2 sm:grid-cols-1 gap-2 w-full sm:w-auto mt-4 sm:mt-0">
             <form action="{{ route('keranjang.kurangi', $barang->id) }}" method="GET">
                 <button class="bg-blue-900 text-white text-xs sm:text-sm rounded px-3 py-1 w-full" type="submit">- 1</button>
             </form>
@@ -64,7 +86,7 @@
     @endforelse
 </main>
 
-<form id="orderForm" action="{{ route('order.store') }}" method="POST" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between px-4 sm:px-6 py-3 space-y-2 sm:space-y-0">
+<form id="orderForm" action="{{ route('order.store') }}" method="POST" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex flex-wrap sm:flex-nowrap items-center justify-between px-4 sm:px-6 py-3 space-y-2 sm:space-y-0 z-10">
     @csrf
     <label class="flex items-center text-blue-900 text-sm sm:text-base font-semibold cursor-pointer w-full sm:w-auto">
         <input id="checkAll" class="w-5 h-5 mr-2 text-blue-900 border-gray-300 rounded" type="checkbox" />
