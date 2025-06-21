@@ -9,8 +9,18 @@
       <!-- KIRI -->
       <div class="flex flex-col gap-6">
         <div class="flex flex-col md:flex-row gap-6">
+          <!-- Lokasi -->
+          <div class="flex-1 bg-gray-200 rounded-lg shadow p-4 text-sm leading-relaxed">
+            <h3 class="text-lg font-semibold text-blue-900 mb-2">Kunjungi Lokasi Kami</h3>
+            <p class="flex items-center"><i class="fa-solid fa-phone-volume p-2"></i><strong>Nomor Telepon:</strong></p>
+            <p class="flex items-center ml-7">(0778) 456880</p>
+            <p class="flex items-center"><i class="fa-solid fa-location-dot p-2"></i><strong>Alamat:</strong></p>
+            <p class="flex items-center ml-7">Jl. Ahmad Yani, Tlk. Tering, Kec. Batam Kota, Kota Batam, Kepulauan Riau 29444</p>
+            <p class="flex items-center"><i class="fa-solid fa-envelope p-2"></i><strong>Email:</strong></p>
+            <p class="flex items-center ml-8">WearYouWant@gmail.com</p>
+          </div>
           <!-- Jam Operasional -->
-          <div class="flex-1 bg-gray-300 rounded-lg shadow p-4">
+          <div class="flex-1 bg-gray-200 rounded-lg shadow p-4">
               <h3 class="text-lg font-semibold text-blue-900 mb-2">Jam Operasional</h3>
               <ul class="space-y-3 text-sm leading-relaxed">
               <li class="flex justify-between gap-6">
@@ -27,17 +37,6 @@
               </li>
             </ul>
           </div>
-
-          <!-- Lokasi -->
-          <div class="flex-1 bg-gray-300 rounded-lg shadow p-4 text-sm leading-relaxed">
-            <h3 class="text-lg font-semibold text-blue-900 mb-2">Kunjungi Lokasi Kami</h3>
-            <p class="flex items-center"><i class="fa-solid fa-phone-volume p-2"></i><strong>Nomor Telepon:</strong></p>
-            <p class="flex items-center ml-7">(0778) 456880</p>
-            <p class="flex items-center"><i class="fa-solid fa-location-dot p-2"></i><strong>Alamat:</strong></p>
-            <p class="flex items-center ml-7">Jl. Ahmad Yani, Tlk. Tering, Kec. Batam Kota, Kota Batam, Kepulauan Riau 29444</p>
-            <p class="flex items-center"><i class="fa-solid fa-envelope p-2"></i><strong>Email:</strong></p>
-            <p class="flex items-center ml-8">WearYouWant@gmail.com</p>
-          </div>
         </div>
 
         <!-- Google Map -->
@@ -53,7 +52,7 @@
       </div>
 
      <!-- KANAN: Form -->
-    <div class="flex flex-col justify-center bg-gray-300 rounded-lg shadow p-8 md:p-10 lg:p-12 h-full">
+    <div class="flex flex-col justify-center bg-gray-100 rounded-lg shadow p-8 md:p-10 lg:p-12 h-full">
       <!-- Teks Pengantar -->
       <div class="text-center mt-4 mb-4">
         <h3 class="text-xl font-semibold text-blue-900">Ada Pertanyaan?</h3>
