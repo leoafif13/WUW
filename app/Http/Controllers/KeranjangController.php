@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Barang;
 use Illuminate\Support\Facades\DB;
+use App\Models\Keranjang;
+use Illuminate\Support\Facades\Auth;
 
 class KeranjangController extends Controller
 {
@@ -13,129 +15,129 @@ class KeranjangController extends Controller
      */
     public function index()
     {
-        $keranjang = session('keranjang', []); // Format: [barang_id => qty]
-        $barangIds = array_keys($keranjang);
-        $barangs = Barang::whereIn('id', $barangIds)->get();
+        $userId = Auth::id();
 
-        // Tambahkan properti qty ke masing-masing barang
-        foreach ($barangs as $barang) {
-            $barang->qty = $keranjang[$barang->id];
-        }
+        $barangs = Keranjang::where('user_id', $userId)->get();
 
         return view('pages.keranjang', compact('barangs'));
     }
-
+    
     /**
      * Tambah barang ke keranjang, kurangi stok di DB (dengan transaksi & lock).
      */
     public function tambah(Request $request, $id)
     {
-        // Validasi input jumlah, default 1
-        $jumlah = $request->input('jumlah', 1);
-        $jumlah = (int) $jumlah;
+        $jumlah = (int) $request->input('jumlah', 1);
         if ($jumlah < 1) $jumlah = 1;
 
         return DB::transaction(function () use ($id, $jumlah) {
-            // Lock stok barang supaya tidak ada race condition
             $barang = Barang::lockForUpdate()->findOrFail($id);
 
             if ($barang->stok < $jumlah) {
                 return redirect()->back()->with('error', 'Stok barang tidak cukup!');
             }
 
-            $keranjang = session()->get('keranjang', []);
+            $userId = Auth::id();
 
-            // Tambah qty atau inisialisasi sesuai input jumlah
-            if (isset($keranjang[$id])) {
-                $keranjang[$id] += $jumlah;
+            // Cek apakah barang sudah ada di keranjang user
+            $keranjang = Keranjang::where('user_id', $userId)
+                ->where('nama_barang', $barang->nama_barang)
+                ->where('ukuran', $barang->ukuran)
+                ->first();
+
+            if ($keranjang) {
+                $keranjang->qty += $jumlah;
+                $keranjang->save();
             } else {
-                $keranjang[$id] = $jumlah;
+                Keranjang::create([
+                    'user_id'     => $userId,
+                    'nama_barang' => $barang->nama_barang,
+                    'foto'        => $barang->foto,
+                    'ukuran'      => $barang->ukuran ?? 'default', // ganti sesuai kebutuhan
+                    'qty'         => $jumlah,
+                    'harga'       => $barang->harga,
+                ]);
             }
 
-            // Kurangi stok barang di DB sesuai jumlah
+            // Kurangi stok barang
             $barang->stok -= $jumlah;
             $barang->save();
-
-            session(['keranjang' => $keranjang]);
 
             return redirect()->route('keranjang.index')->with('success', 'Barang berhasil ditambahkan ke keranjang.');
         });
     }
-
-
     /**
      * Hapus barang dari keranjang dan kembalikan stok.
      */
     public function hapus($id)
     {
         return DB::transaction(function () use ($id) {
-            $keranjang = session()->get('keranjang', []);
+            $userId = Auth::id();
 
-            if (!isset($keranjang[$id])) {
+            $keranjang = Keranjang::where('user_id', $userId)->where('id', $id)->first();
+            if (!$keranjang) {
                 return redirect()->back()->with('error', 'Barang tidak ditemukan di keranjang.');
             }
 
-            $qty = $keranjang[$id];
+            // Kembalikan stok ke barang
+            $barang = Barang::lockForUpdate()->where('nama_barang', $keranjang->nama_barang)->first();
+            if ($barang) {
+                $barang->stok += $keranjang->qty;
+                $barang->save();
+            }
 
-            // Lock dan kembalikan stok barang
-            $barang = Barang::lockForUpdate()->findOrFail($id);
-            $barang->stok += $qty;
-            $barang->save();
-
-            // Hapus barang dari keranjang
-            unset($keranjang[$id]);
-            session(['keranjang' => $keranjang]);
+            $keranjang->delete();
 
             return redirect()->back()->with('success', 'Barang berhasil dihapus dari keranjang.');
         });
     }
-
     /**
      * Kosongkan seluruh keranjang dan kembalikan stok semua barang.
      */
     public function kosongkan()
     {
         return DB::transaction(function () {
-            $keranjang = session()->get('keranjang', []);
+            $userId = Auth::id();
+            $keranjangItems = Keranjang::where('user_id', $userId)->get();
 
-            foreach ($keranjang as $id => $qty) {
-                $barang = Barang::lockForUpdate()->find($id);
+            foreach ($keranjangItems as $item) {
+                $barang = Barang::lockForUpdate()->where('nama_barang', $item->nama_barang)->first();
                 if ($barang) {
-                    $barang->stok += $qty;
+                    $barang->stok += $item->qty;
                     $barang->save();
                 }
             }
 
-            session()->forget('keranjang');
+            Keranjang::where('user_id', $userId)->delete();
 
             return redirect()->route('keranjang.index')->with('success', 'Keranjang berhasil dikosongkan.');
         });
     }
+
     public function kurangi($id)
-{
-    return DB::transaction(function () use ($id) {
-        $keranjang = session()->get('keranjang', []);
+    {
+        return DB::transaction(function () use ($id) {
+            $userId = Auth::id();
 
-        if (!isset($keranjang[$id])) {
-            return redirect()->back()->with('error', 'Barang tidak ditemukan di keranjang.');
-        }
+            $keranjang = Keranjang::where('user_id', $userId)->where('id', $id)->first();
+            if (!$keranjang) {
+                return redirect()->back()->with('error', 'Barang tidak ditemukan di keranjang.');
+            }
 
-        // Kurangi qty 1
-        $keranjang[$id] -= 1;
+            $barang = Barang::lockForUpdate()->where('nama_barang', $keranjang->nama_barang)->first();
+            if ($barang) {
+                $barang->stok += 1;
+                $barang->save();
+            }
 
-        // Ambil barang dan kembalikan 1 ke stok
-        $barang = Barang::lockForUpdate()->findOrFail($id);
-        $barang->stok += 1;
-        $barang->save();
+            $keranjang->qty -= 1;
+            if ($keranjang->qty <= 0) {
+                $keranjang->delete();
+            } else {
+                $keranjang->save();
+            }
 
-        if ($keranjang[$id] <= 0) {
-            unset($keranjang[$id]);
-        }
-
-        session(['keranjang' => $keranjang]);
-
-        return redirect()->back()->with('success', 'Satu item berhasil dikurangi dari keranjang.');
-    });
-}
-
+            return redirect()->back()->with('success', 'Jumlah barang berhasil dikurangi.');
+        });
+    }
 }

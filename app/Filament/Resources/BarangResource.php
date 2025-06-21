@@ -28,6 +28,17 @@ class BarangResource extends Resource
     
     protected static ?string $label = 'Product';
 
+    public static function getNavigationBadge(): ?string
+    {
+        $count = Barang::count(); 
+
+        if ($count > 99) {
+            return '99+';
+        }
+
+        return (string) $count;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -50,7 +61,8 @@ class BarangResource extends Resource
                         'Satu Set' => 'Satu Set',
                     ]),
                 
-                TextInput::make('nama_barang'),
+                TextInput::make('nama_barang')
+                    ->required(),
 
                 TextInput::make('harga')
                     ->required()
@@ -61,7 +73,8 @@ class BarangResource extends Resource
                     ->minValue(0)
                     ->maxValue(1000000),
 
-                TextInput::make('stok'),
+                TextInput::make('stok')
+                    ->required(),
 
                 FileUpload::make('foto')
                     ->required()
@@ -79,8 +92,10 @@ class BarangResource extends Resource
                     ->preserveFilenames()
                     ->maxSize(2048)
                     ->required(),
-                TextInput::make('ukuran'),
-                TextInput::make('warna'),
+                TextInput::make('ukuran')
+                    ->required(),
+                TextInput::make('warna')
+                    ->required(),
 
                 MarkdownEditor::make('deskripsi')
                     ->columnSpanFull()
@@ -128,11 +143,20 @@ class BarangResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                ->successNotification(null)
+                ->after(function ($record) {
+                    \Filament\Notifications\Notification::make()
+                        ->title("Barang '{$record->nama_barang}' berhasil dihapus!")
+                        ->body('Data produk telah dihapus dari daftar.')
+                        ->success()
+                        ->duration(4000) // 4 detik tampil
+                        ->send();
+                }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

@@ -1,3 +1,14 @@
+@php
+    use Illuminate\Support\Facades\Auth;
+    use App\Models\Keranjang;
+
+    $user = Auth::user();
+    $jumlahKeranjang = 0;
+
+    if ($user) {
+        $jumlahKeranjang = Keranjang::where('user_id', $user->id)->sum('qty');
+    }
+@endphp
 <header class="fixed top-0 left-0 z-20 bg-transparent backdrop-blur-md w-full text-sm font-semibold">
   <div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
     <!-- Logo -->
@@ -23,18 +34,21 @@
 
       <a href="/keranjang" class="relative hover:text-blue-900 transition">
         <i class="fas fa-shopping-cart"></i>
-        @if(session('keranjang') && count(session('keranjang')) > 0)
+        @if($jumlahKeranjang > 0)
           <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-            {{ count(session('keranjang')) }}
+            {{ $jumlahKeranjang }}
           </span>
         @endif
       </a>
 
       <!-- Profile Desktop -->
-      <div class="relative z-30">
-        <button aria-label="Akun" id="profile-btn" class="hover:text-blue-900 transition">
-          <i class="fas fa-user-circle"></i>
-        </button>
+      <div class="relative z-30"> 
+      <button aria-label="Akun" id="profile-btn" class="hover:text-blue-900 transition">
+          <img src="{{ $user->foto ? asset('storage/' . $user->foto) : asset('default-avatar.png') }}"
+              alt="Foto Profil"
+              class="w-8 h-8 rounded-full object-cover">
+      </button>
+
         <div id="profile-dropdown" class="absolute right-0 mt-2 w-45 bg-white text-black shadow-lg rounded-lg hidden z-40">
           <a href="/profile" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Profile Saya</a>
           <a href="/ganti_password" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Ganti Kata Sandi</a>
@@ -68,17 +82,21 @@
 
       <a href="/keranjang" class="relative flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition">
         <i class="fas fa-shopping-cart"></i>
-        @if(session('keranjang') && count(session('keranjang')) > 0)
+        @if($jumlahKeranjang > 0)
           <span class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-            {{ count(session('keranjang')) }}
+            {{ $jumlahKeranjang }}
           </span>
         @endif
       </a>
 
+
       <div class="relative flex items-center justify-center">
         <button id="profile-btn-mobile" class="flex items-center justify-center p-2 hover:text-blue-900 rounded-xl transition">
-          <i class="fas fa-user-circle"></i>
+          <img src="{{ $user->foto ? asset('storage/' . $user->foto) : asset('default-avatar.png') }}"
+              alt="Foto Profil"
+              class="w-8 h-8 rounded-full object-cover">
         </button>
+
         <div id="profile-dropdown-mobile" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white text-blue-900 shadow-lg rounded-lg hidden z-40">
           <a href="/profile" class="block px-4 py-2 text-sm">Profile Saya</a>
           <a href="/ganti_password" class="block px-4 py-2 text-sm">Ganti Kata Sandi</a>

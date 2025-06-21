@@ -9,12 +9,16 @@ use Carbon\Carbon;
 
 class HistoryController extends Controller
 {
-    public function history()
+    public function history(Request $request)
     {
         $userId = Auth::id();
+        $status = $request->query('status');
 
         $payments = Payment::with('order')
             ->where('user_id', $userId)
+            ->when($status && $status !== 'all', function ($query) use ($status) {
+                $query->where('status', $status);
+            })
             ->get();
 
         foreach ($payments as $payment) {
@@ -30,4 +34,5 @@ class HistoryController extends Controller
 
         return view('pages.history', ['riwayat' => $payments]);
     }
+
 }

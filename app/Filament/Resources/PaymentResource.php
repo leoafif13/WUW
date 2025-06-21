@@ -28,9 +28,76 @@ class PaymentResource extends Resource
     {
         return $form
             ->schema([
-                //
-            ]);
-    }
+                Forms\Components\Select::make('user_id')
+                    ->label('Nama Customer')
+                    ->relationship('user', 'name')
+                    ->searchable()
+                    ->required(),
+
+                Forms\Components\TextInput::make('nama_barang')
+                    ->label('Nama Barang')
+                    ->required()
+                    ->maxLength(255),
+
+                Forms\Components\TextInput::make('ukuran')
+                    ->label('Ukuran')
+                    ->required()
+                    ->maxLength(50),
+
+                Forms\Components\DatePicker::make('tanggal_mulai')
+                    ->label('Tanggal Mulai')
+                    ->required(),
+
+                Forms\Components\DatePicker::make('tanggal_selesai')
+                    ->label('Tanggal Selesai')
+                    ->required(),
+
+                Forms\Components\TextInput::make('qty')
+                    ->label('Jumlah (Qty)')
+                    ->numeric()
+                    ->required(),
+
+                Forms\Components\Select::make('metode')
+                    ->options([
+                        'cod' => 'Cash on Delivery (COD)',
+                        'qris' => 'QRIS',
+                    ])
+                    ->label('Metode Pembayaran')
+                    ->required(),
+
+                Forms\Components\Select::make('pengiriman')
+                    ->options([
+                        'antar' => 'Antar ke Rumah',
+                        'jemput' => 'Jemput ke Toko',
+                    ])
+                    ->label('Opsi Pengiriman')
+                    ->required(),
+
+                Forms\Components\Textarea::make('alamat')
+                    ->label('Alamat')
+                    ->maxLength(255)
+                    ->rows(3)
+                    ->nullable()
+                    ->columnSpan('full'),
+
+                Forms\Components\TextInput::make('total')
+                    ->label('Total Harga')
+                    ->numeric()
+                    ->prefix('Rp')
+                    ->required(),
+
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'dibayar' => 'Dibayar',
+                        'diproses' => 'Diproses',
+                        'selesai' => 'Selesai',
+                        'batal' => 'Batal',
+                    ])
+                    ->required()
+                    ->label('Status'),
+                ]);
+            }
 
     public static function table(Table $table): Table
     {
@@ -46,7 +113,7 @@ class PaymentResource extends Resource
                     })
                     ->sortable(false),
                 TextColumn::make('user.name')
-                    ->label('Nama User')
+                    ->label('Nama Customer')
                     ->searchable(),
                 TextColumn::make('metode')->searchable(),
                 TextColumn::make('pengiriman')->searchable(),

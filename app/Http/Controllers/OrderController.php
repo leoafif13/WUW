@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Keranjang;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -67,7 +68,11 @@ class OrderController extends Controller
             ]);
         }
 
-        session()->forget('keranjang');
+         // Hapus dari keranjang
+            Keranjang::where('user_id', $userId)
+                ->where('nama_barang', $item['nama_barang'])
+                ->where('ukuran', $item['ukuran'])
+                ->delete();
 
 
         return redirect('/pembayaran')->with('success', 'Pesanan berhasil disimpan!');

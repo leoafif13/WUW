@@ -28,9 +28,57 @@ class OrderResource extends Resource
     {
         return $form
             ->schema([
-                
+                 Forms\Components\TextInput::make('name')
+                    ->label('Nama Customer')
+                    ->required()
+                    ->maxLength(255),
+
+                Forms\Components\TextInput::make('nama_barang')
+                    ->label('Nama Barang')
+                    ->required()
+                    ->maxLength(255),
+
+                Forms\Components\TextInput::make('ukuran')
+                    ->required()
+                    ->maxLength(50),
+
+                Forms\Components\TextInput::make('qty')
+                    ->label('Pcs')
+                    ->numeric()
+                    ->required(),
+
+                Forms\Components\FileUpload::make('foto')
+                    ->label('Foto Barang')
+                    ->directory('barangs')
+                    ->disk('public')
+                    ->image()
+                    ->visibility('public'),
+
+                Forms\Components\DatePicker::make('tanggal_mulai')
+                    ->label('Tanggal Mulai')
+                    ->required(),
+
+                Forms\Components\DatePicker::make('tanggal_selesai')
+                    ->label('Tanggal Selesai')
+                    ->required(),
+
+                Forms\Components\TextInput::make('total_harga')
+                    ->label('Total Harga')
+                    ->numeric()
+                    ->required()
+                    ->prefix('Rp'),
+
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'diproses' => 'Diproses',
+                        'selesai' => 'Selesai',
+                        'batal' => 'Batal',
+                    ])
+                    ->required()
+                    ->label('Status'),
             ]);
-    }
+        }
 
     public static function table(Table $table): Table
     {
@@ -45,8 +93,10 @@ class OrderResource extends Resource
                         return ($currentPage - 1) * $perPage + $index + 1;
                     })
                     ->sortable(false),
-                TextColumn::make('name')->searchable(),
-                TextColumn::make('nama_barang')->searchable(),
+                TextColumn::make('name')->searchable()
+                    ->label('Nama Customer'),
+                TextColumn::make('nama_barang')->searchable()
+                    ->label('Nama Barang'),
                 TextColumn::make('ukuran')->searchable(),
                 TextColumn::make('qty')->searchable()
                     ->label('Pcs'),

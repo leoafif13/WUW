@@ -6,6 +6,8 @@ use App\Models\Barang;
 use App\Models\User;
 use App\Models\Kontak;
 use App\Models\Order;
+use App\Models\Payment;
+use App\Models\Review;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
@@ -16,13 +18,17 @@ class StatsDashboard extends BaseWidget
         $countBarangs = Barang::count();
         $countuser = User::where('role', 'customer')->count();
         $countkontak = Kontak::count();
-        $countorder = Order::where('status', 'pending')->count();
+        $countorder = Order::where('status', 'selesai')->count();
+        $countpayment = Payment::where('status', 'dibayar')->count();
+        $countreview = Review::count();
 
         return [
             Stat::make('Jumlah Barang', $countBarangs),
             Stat::make('Jumlah User', $countuser),
             Stat::make('Jumlah Orderan', $countorder),
             Stat::make('Pesan Kontak', $countkontak),
+            Stat::make('Jumlah Pembayaran', $countpayment),
+            Stat::make('Jumlah Review', $countreview),
         ];
     }
 }

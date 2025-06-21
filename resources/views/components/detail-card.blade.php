@@ -39,10 +39,11 @@
 
       @if ($barang->stok > 0)
         <!-- Tombol Sewa -->
-        <a href="{{ route('keranjang.index') }}"
+        <form action="{{ route('keranjang.tambah', $barang->id) }}" method="GET" class="flex flex-col gap-2">
+          <button type="submit"
            class="w-full md:w-fit text-sm px-4 py-2 bg-blue-900 text-white rounded text-center">
           Sewa Sekarang
-        </a>
+        </button>
 
         <!-- Form Tambah ke Keranjang -->
         <form action="{{ route('keranjang.tambah', $barang->id) }}" method="GET" class="flex flex-col gap-2">
