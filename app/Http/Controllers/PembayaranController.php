@@ -38,7 +38,7 @@ class PembayaranController extends Controller
         \Midtrans\Config::$isSanitized = true;
         \Midtrans\Config::$is3ds = true;
 
-        // Buat item_details
+        // Buat array item_details dari setiap order
         $itemDetails = $orders->map(function ($order) {
             return [
                 'id' => 'ORDER-' . $order->id,
@@ -48,6 +48,7 @@ class PembayaranController extends Controller
             ];
         })->toArray();
 
+        // Tambahkan biaya layanan
         $itemDetails[] = [
             'id' => 'BIAYA-LAYANAN',
             'price' => $biayaLayanan,
@@ -55,13 +56,16 @@ class PembayaranController extends Controller
             'name' => 'Biaya Layanan'
         ];
 
+        // Ambil data pelanggan (users)
         $customer = Auth::user();
         $customerPhone = $customer->telepon ?? '-';
         $customerAddress = $customer->alamat ?? '-';
 
-        $latestPayment = Payment::where('user_id', $userId)->latest()->first();
+        // Ambil data pengiriman dari payment terakhir user (jika ada)
+        $latestPayment = \App\Models\Payment::where('user_id', $userId)->latest()->first();
         $shippingAddress = $latestPayment?->alamat ?? '-';
 
+        // Parameter Midtrans
         $params = [
             'transaction_details' => [
                 'order_id' => uniqid('ORDER-'),
@@ -76,19 +80,19 @@ class PembayaranController extends Controller
                     'first_name' => $customer->name,
                     'email' => $customer->email,
                     'phone' => $customerPhone,
-                    'address' => $customerAddress,
+                    'address' => $customerAddress, // dari users
                 ],
                 'shipping_address' => [
                     'first_name' => $customer->name,
                     'email' => $customer->email,
                     'phone' => $customerPhone,
-                    'address' => $shippingAddress,
+                    'address' => $shippingAddress, // dari payment
                 ],
             ],
             'item_details' => $itemDetails,
         ];
 
-        $snapToken = Snap::getSnapToken($params);
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         return view('pages.pembayaran', [
             'orders' => $orders,
@@ -130,13 +134,13 @@ class PembayaranController extends Controller
                     'pengiriman'      => $request->pengiriman,
                     'alamat'          => $request->pengiriman === 'antar' ? $request->alamat : null,
                     'total'           => $order->total_harga + 1500,
-                    'status'          => $request->snap_status ?? 'pending',
-                    'snap_result'     => $request->snap_result,
+                    'status' => $request->metode === 'cod' ? 'diproses' : 'dibayar',
                 ]);
 
+                // Update status order
                 $order->update([
-                    'status' => $request->snap_status === 'success' ? 'dibayar' : 'pending',
-                ]);
+                    'status' => $request->metode === 'cod' ? 'diproses' : 'selesai'
+                ]);;
             } catch (\Exception $e) {
                 Log::error('Gagal menyimpan payment: ' . $e->getMessage());
                 return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan pembayaran.');

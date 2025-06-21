@@ -5,10 +5,20 @@ namespace App\Filament\Resources\BarangResource\Pages;
 use App\Filament\Resources\BarangResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
+use Filament\Notifications\Notification;
 
 class CreateBarang extends CreateRecord
 {
     protected static string $resource = BarangResource::class;
+
+    protected function getCreatedNotification(): ?Notification
+    {
+        return Notification::make()
+            ->title('Barang berhasil ditambahkan!')
+            ->success()
+            ->duration(2000)
+            ->body('Data Barang berhasil diubah');
+    }
 
     public function getTitle(): string
     {

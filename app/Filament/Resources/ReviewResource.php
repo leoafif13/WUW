@@ -28,7 +28,25 @@ class ReviewResource extends Resource
     {
         return $form
             ->schema([
-                //
+                 Forms\Components\Select::make('user_id')
+                    ->label('Nama User')
+                    ->relationship('user', 'name')
+                    ->searchable()
+                    ->required(),
+
+                Forms\Components\Textarea::make('ulasan')
+                    ->label('Ulasan')
+                    ->required()
+                    ->maxLength(1000)
+                    ->columnSpan('full'),
+
+                Forms\Components\FileUpload::make('foto')
+                    ->label('Foto')
+                    ->directory('ulasan_foto')
+                    ->image()
+                    ->maxSize(2048) // maksimum 2MB
+                    ->nullable()
+                    ->columnSpan('full'),
             ]);
     }
 

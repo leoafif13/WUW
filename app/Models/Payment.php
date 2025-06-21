@@ -23,7 +23,6 @@ class Payment extends Model
         'alamat',
         'total',
         'status',
-        'progres_status',
     ];
 
     public function user()
