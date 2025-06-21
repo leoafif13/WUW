@@ -17,7 +17,12 @@ class HistoryController extends Controller
         $payments = Payment::with('order')
             ->where('user_id', $userId)
             ->when($status && $status !== 'all', function ($query) use ($status) {
-                $query->where('status', $status);
+                $query->where(function ($query) use ($status) {
+                    $query->where('status', $status)
+                        ->orWhereHas('order', function ($q) use ($status) {
+                            $q->where('status', $status);
+                        });
+                });
             })
             ->get();
 
@@ -34,5 +39,4 @@ class HistoryController extends Controller
 
         return view('pages.history', ['riwayat' => $payments]);
     }
-
 }
