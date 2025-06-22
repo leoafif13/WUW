@@ -72,7 +72,7 @@
 
         <!-- Email -->
         <div>
-          <input type="email" name="email" placeholder="Alamat Email" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required value="{{ old('email') }}">
+          <input type="email" name="email" placeholder="Alamat Email" autocomplete="email" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required value="{{ old('email') }}">
           @error('email')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
           @enderror

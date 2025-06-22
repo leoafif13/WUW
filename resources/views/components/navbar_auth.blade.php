@@ -97,12 +97,12 @@
               class="w-8 h-8 rounded-full object-cover">
         </button>
 
-        <div id="profile-dropdown-mobile" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white text-blue-900 shadow-lg rounded-lg hidden z-40">
-          <a href="/profile" class="block px-4 py-2 text-sm">Profile Saya</a>
-          <a href="/ganti_password" class="block px-4 py-2 text-sm">Ganti Kata Sandi</a>
-          <a href="/history" class="block px-4 py-2 text-sm">Riwayat Pemesanan</a>
+        <div id="profile-dropdown-mobile" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-45 bg-white text-black shadow-lg rounded-lg hidden z-40">
+          <a href="/profile" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Profile Saya</a>
+          <a href="/ganti_password" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Ganti Kata Sandi</a>
+          <a href="/history" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Riwayat Penyewaan</a>
           <hr class="text-gray-300">
-          <a href="{{ route('keluar') }}" class="block w-full text-left bg-[#f9f6f1] px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Keluar</a>
+          <a href="{{ route('keluar') }}" class="block w-full text-left px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Keluar</a>
         </div>
       </div>
     </div>
