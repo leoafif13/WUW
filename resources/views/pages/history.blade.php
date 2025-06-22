@@ -5,8 +5,8 @@
   <!-- Header -->
   <div class="bg-blue-900 text-white py-3 px-3 sm:px-6 shadow">
     <div class="flex items-center justify-between">
-      <a href="{{ url('/home') }}" aria-label="Back" class="mr-3 focus:outline-none hover:text-gray-300">
-        <i class="fas fa-chevron-left"></i>
+      <a href="{{ url('/home') }}" aria-label="Back" class="mr-3 focus:outline-none text-lg hover:text-blue-500">
+        <i class="fas fa-arrow-left"></i>
       </a>
       <h1 class="text-base sm:text-lg font-semibold text-center flex-1 truncate">Riwayat Penyewaan</h1>
       <div class="w-6"></div>

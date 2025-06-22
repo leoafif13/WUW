@@ -5,8 +5,8 @@
   
   <!-- Header -->
   <div class="bg-blue-900 flex items-center px-4 py-3">
-    <a href="{{ url('/home') }}" aria-label="Back" class="text-white hover:text-gray-300 text-lg mr-4">
-      <i class="fas fa-chevron-left"></i>
+    <a href="{{ url('/home') }}" aria-label="Back" class="text-white hover:text-blue-500 text-lg mr-4">
+      <i class="fas fa-arrow-left"></i>
     </a>
     <h1 class="text-white font-bold text-center flex-grow text-sm sm:text-base">
       Profile Saya
@@ -45,7 +45,7 @@
         <x-profile-row label="Alamat Email" :value="$user->email" />
         <x-profile-row label="Nomor Telepon" :value="$user->telepon" />
 
-        <a href="{{ url('/edit_profile') }}" class="w-full block text-center bg-blue-900 text-white py-2 rounded text-sm sm:text-base font-semibold">
+        <a href="{{ url('/edit_profile') }}" class="w-full block text-center bg-blue-900 hover:bg-blue-500 text-white py-2 rounded text-sm sm:text-base font-semibold">
           Edit Profile
         </a>
       </div>

@@ -4,7 +4,7 @@
 
     <!-- Dropdown Kategori -->
     <select name="kategori" id="kategori"
-      class="h-10 w-full md:w-auto px-4 text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded md:rounded-l-md hover:bg-gray-100 focus:ring-2 focus:outline-none focus:ring-gray-100">
+      class="h-10 w-full md:w-auto px-4 text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded md:rounded-l-md hover:bg-gray-300 focus:ring-2 focus:outline-none focus:ring-gray-100">
       <option value="">Semua Kategori</option>
       <option value="Baju Nikahan" {{ request('kategori') == 'Baju Nikahan' ? 'selected' : '' }}>Baju Nikahan</option>
       <option value="Baju Wisuda" {{ request('kategori') == 'Baju Wisuda' ? 'selected' : '' }}>Baju Wisuda</option>
@@ -12,7 +12,7 @@
 
     <!-- Dropdown Type -->
     <select name="type" id="type"
-      class="h-10 w-full md:w-auto px-4 text-sm font-medium text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-2 focus:outline-none focus:ring-gray-100">
+      class="h-10 w-full md:w-auto px-4 text-sm font-medium text-gray-900 bg-white border border-gray-300 hover:bg-gray-300 focus:ring-2 focus:outline-none focus:ring-gray-100">
       <option value="">Semua Type</option>
       <option value="atasan" {{ request('type') == 'atasan' ? 'selected' : '' }}>Atasan</option>
       <option value="bawahan" {{ request('type') == 'bawahan' ? 'selected' : '' }}>Bawahan</option>
@@ -21,7 +21,7 @@
 
     <!-- Dropdown Ukuran -->
     <select name="ukuran" id="ukuran"
-      class="h-10 w-full md:w-auto px-4 text-sm font-medium text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-2 focus:outline-none focus:ring-gray-100">
+      class="h-10 w-full md:w-auto px-4 text-sm font-medium text-gray-900 bg-white border border-gray-300 hover:bg-gray-300 focus:ring-2 focus:outline-none focus:ring-gray-100">
       <option value="">Semua Ukuran</option>
       <option value="S" {{ request('ukuran') == 'S' ? 'selected' : '' }}>S</option>
       <option value="M" {{ request('ukuran') == 'M' ? 'selected' : '' }}>M</option>
@@ -33,10 +33,10 @@
     <!-- Input Search dan Tombol -->
     <div class="relative w-full md:w-[300px]">
       <input type="search" name="search" id="search" value="{{ request('search') }}"
-        class="block h-10 p-2.5 w-full text-sm text-gray-900 bg-white border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+        class="block h-10 p-2.5 w-full text-sm text-gray-900 bg-white border border-gray-300 focus:ring-blue-500 focus:border-blue-500 rounded-r-md"
         placeholder="Telusuri lebih banyak lagi..." />
       <button type="submit"
-        class="absolute top-0 right-0 h-10 px-4 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 rounded-r-md">
+        class="absolute top-0 right-0 h-10 px-4 text-sm font-medium text-white bg-blue-900 hover:bg-blue-500 focus:ring-2 focus:outline-none focus:ring-blue-300 rounded-r-md">
         Cari
       </button>
     </div>

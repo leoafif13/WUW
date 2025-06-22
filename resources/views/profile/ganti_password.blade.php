@@ -4,7 +4,7 @@
 <body class="bg-blue-900 min-h-screen flex flex-col">
   <header class="flex items-center px-4 py-3 text-white font-extrabold text-sm">
     <a href="{{ url('/home') }}" aria-label="Back" class="mr-4 focus:outline-none hover:text-gray-300">
-      <i class="fas fa-chevron-left"></i>
+      <i class="fas fa-arrow-left"></i>
     </a>
     <h1 class="flex-1 text-center font-extrabold text-sm">Ganti Password</h1>
     <div class="w-6"></div>

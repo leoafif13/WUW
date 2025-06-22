@@ -41,15 +41,15 @@
         <!-- Tombol Sewa -->
         <form action="{{ route('keranjang.tambah', $barang->id) }}" method="GET" class="flex flex-col gap-2">
           <button type="submit"
-           class="w-full md:w-fit text-sm px-4 py-2 bg-blue-900 text-white rounded text-center">
+           class="w-full md:w-fit text-sm px-4 py-2 bg-blue-900 hover:bg-blue-500 text-white rounded text-center">
           Sewa Sekarang
         </button>
 
         <!-- Form Tambah ke Keranjang -->
         <form action="{{ route('keranjang.tambah', $barang->id) }}" method="GET" class="flex flex-col gap-2">
           <button type="submit"
-                  class="text-sm px-4 py-2 bg-blue-900 text-white rounded hover:bg-blue-800 w-full md:w-fit">
-            🛒 Tambah ke Keranjang
+                  class="text-sm px-4 py-2 bg-blue-900 text-white rounded hover:bg-blue-500 w-full md:w-fit transition">
+            <i class="fas fa-shopping-cart"></i> Tambah ke Keranjang
           </button>
 
           <!-- Input Jumlah di Bawah Tombol -->

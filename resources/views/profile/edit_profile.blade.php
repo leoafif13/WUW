@@ -5,8 +5,8 @@
 <body class="bg-cover bg-center min-h-screen flex flex-col" style="background-image: url('img/Background 3.png')">
   <!-- Header -->
   <header class="flex items-center px-4 py-3 text-white font-semibold text-sm bg-blue-900 backdrop-blur-sm">
-    <a href="{{ url('/profile') }}" aria-label="Back" class="mr-4 focus:outline-none hover:text-gray-300">
-      <i class="fas fa-chevron-left"></i>
+    <a href="{{ url('/profile') }}" aria-label="Back" class="mr-4 focus:outline-none text-lg hover:text-blue-500">
+      <i class="fas fa-arrow-left"></i>
     </a>
     <h1 class="flex-1 text-center font-bold text-sm">Edit Profile</h1>
     <div class="w-6"></div>

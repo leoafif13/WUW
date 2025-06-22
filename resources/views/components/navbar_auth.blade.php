@@ -28,11 +28,11 @@
 
     <!-- Desktop Icons -->
     <div class="hidden md:flex space-x-6 text-[#f9f6f1] text-xl items-center">
-      <a href="/sewa" class="hover:text-blue-900 transition">
+      <a href="/sewa" title="Cara Menyewa" class="hover:text-blue-400 transition">
         <i class="fas fa-sticky-note"></i>
       </a>
 
-      <a href="/keranjang" class="relative hover:text-blue-900 transition">
+      <a href="/keranjang" title="Keranjang" class="relative hover:text-blue-400 transition">
         <i class="fas fa-shopping-cart"></i>
         @if($jumlahKeranjang > 0)
           <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
@@ -43,7 +43,7 @@
 
       <!-- Profile Desktop -->
       <div class="relative z-30"> 
-      <button aria-label="Akun" id="profile-btn" class="hover:text-blue-900 transition">
+      <button aria-label="Akun" id="profile-btn" class="flex items-center justify-center hover:text-blue-300 transition">
           <img src="{{ $user->foto ? asset('storage/' . $user->foto) : asset('default-avatar.png') }}"
               alt="Foto Profil"
               class="w-8 h-8 rounded-full object-cover">

@@ -5,7 +5,7 @@
 <header class="flex items-center justify-between px-4 py-3 text-white text-sm bg-blue-900 backdrop-blur-sm relative">
     <div class="flex items-center">
         <button onclick="history.back()" aria-label="Back" class="mr-4 hover:text-blue-300 text-lg focus:outline-none">
-            <i class="fas fa-chevron-left"></i>
+            <i class="fas fa-arrow-left"></i>
         </button>
     </div>
     <h1 class="text-base font-bold sm:text-lg absolute left-1/2 transform -translate-x-1/2 pl-6">Keranjang</h1>
@@ -46,9 +46,9 @@
 <main class="px-4 sm:px-6 py-4 space-y-4 bg-[#F9F9F9]">
     @forelse ($barangs as $barang)
     <article class="keranjang-item bg-white flex flex-wrap sm:flex-nowrap gap-4 items-start p-4 sm:p-6 shadow-sm w-full" data-barang-id="{{ $barang->id }}">
-        <input type="checkbox" class="check-barang mt-1" name="selected_items[]" value="{{ $barang->id }}" data-harga="{{ $barang->harga }}" data-qty="{{ $barang->qty }}" />
+        <input type="checkbox" class="check-barang mt-15 w-5 h-5" name="selected_items[]" value="{{ $barang->id }}" data-harga="{{ $barang->harga }}" data-qty="{{ $barang->qty }}" />
 
-        <img alt="{{ $barang->nama_barang }}" class="w-24 h-24 sm:w-32 sm:h-32 rounded-lg object-cover ml-3 flex-shrink-0"
+        <img alt="{{ $barang->nama_barang }}" class="w-24 h-24 sm:w-32 sm:h-32 rounded-lg object-cover ml-2 flex-shrink-0"
              src="{{ $barang->foto ? asset('storage/' . $barang->foto) : 'https://via.placeholder.com/100' }}" />
 
         <div class="flex flex-col ml-4 flex-1 min-w-0 w-full sm:w-auto">
@@ -70,12 +70,12 @@
             </span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-1 gap-2 w-full sm:w-auto mt-4 sm:mt-0">
+        <div class="grid grid-cols-2 sm:grid-cols-1 gap-4 w-full sm:w-auto mt-4 sm:mt-0">
             <form action="{{ route('keranjang.kurangi', $barang->id) }}" method="GET">
-                <button class="bg-blue-900 text-white text-xs sm:text-sm rounded px-3 py-1 w-full" type="submit">- 1</button>
+                <button class="bg-blue-900 hover:bg-blue-500 text-white text-xs sm:text-sm rounded px-3 py-1 w-full" type="submit">- 1</button>
             </form>
             <form action="{{ route('keranjang.hapus', $barang->id) }}" method="GET">
-                <button class="bg-blue-900 text-white text-xs sm:text-sm rounded px-3 py-1 w-full" type="submit">Hapus</button>
+                <button class="bg-blue-900 hover:bg-blue-500 text-white text-xs sm:text-sm rounded px-3 py-1 w-full" type="submit">Hapus</button>
             </form>
         </div>
     </article>
@@ -97,7 +97,7 @@
             Total <span id="totalHarga" class="text-blue-900 text-lg sm:text-xl font-extrabold">Rp0</span>
         </p>
         <input type="hidden" name="items" id="itemsInput" />
-        <button type="submit" class="bg-blue-900 text-white text-sm sm:text-base font-semibold rounded px-5 py-2 text-center w-full sm:w-auto">
+        <button type="submit" class="bg-blue-900 hover:bg-blue-500 text-white text-sm sm:text-base font-semibold rounded px-5 py-2 text-center w-full sm:w-auto">
             Checkout (<span id="countBarang">0</span>)
         </button>
     </div>

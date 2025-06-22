@@ -6,7 +6,7 @@
 @include('components.navbar_auth')
 
 <div class="pt-24 p-16 min-h-screen bg-gradient-to-r from-[#1e3a8a] to-[#000000]">
-    <h1 class="text-3xl font-bold mb-6 text-center text-white">Daftar Ulasan Produk</h1>
+    <h1 class="text-3xl font-bold mb-10 text-center text-white">Daftar Ulasan Produk</h1>
 
     @if($reviews->isEmpty())
         <p class="text-center text-gray-500 italic">Belum ada ulasan untuk produk ini.</p>

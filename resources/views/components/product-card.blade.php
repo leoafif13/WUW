@@ -18,13 +18,13 @@
         </p>
 
         <div class="mt-3 flex gap-2">
-            <a href="{{ route('detailproduk', $barang->id) }}" class="w-90 text-sm px-4 py-2 bg-blue-900 text-white rounded text-center">
+            <a href="{{ route('detailproduk', $barang->id) }}" class="w-90 text-sm px-4 py-2 bg-blue-900 hover:bg-blue-500 text-white rounded text-center transition">
                 Detail Produk
             </a>
 
             <form action="{{ route('keranjang.tambah', $barang->id) }}" method="get" class="inline">
                 @csrf
-                <button type="submit" class="text-sm px-4 py-2 border bg-blue-900 text-indigo-900 rounded">🛒</button>
+                <button type="submit" class="text-sm px-4 py-2 border bg-blue-900 hover:bg-blue-500 text-white rounded transition"><i class="fas fa-shopping-cart"></i></button>
             </form>
         </div>
     </div>

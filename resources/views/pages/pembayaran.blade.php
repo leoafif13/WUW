@@ -32,7 +32,7 @@
     <input type="hidden" name="snap_status" id="snap_status">
     <input type="hidden" name="snap_result" id="snap_result">
 
-    <div class="p-4 space-y-6 pb-32 sm:pb-20">
+    <div class="p-16 space-y-6 pb-32 sm:pb-20">
       <!-- Produk -->
       <section class="space-y-4">
         @php
