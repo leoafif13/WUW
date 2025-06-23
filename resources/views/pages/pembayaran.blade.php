@@ -3,7 +3,7 @@
 @section('title', 'Pembayaran')
 
 @section('content')
-<main class="bg-white text-gray-800 font-sans" x-data="{ pengiriman: 'antar', metode: 'qris', dropdown: false }">
+<main class="bg-white text-gray-800 font-poppins" x-data="{ pengiriman: 'antar', metode: 'qris', dropdown: false }">
   @include('components.navbar_payment')
 
  <!-- Progress Tracker -->

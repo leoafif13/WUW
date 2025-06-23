@@ -10,7 +10,7 @@
       <div class="flex flex-col gap-6">
         <div class="flex flex-col md:flex-row gap-6">
           <!-- Lokasi -->
-          <div class="flex-1 bg-gray-200 rounded-lg shadow p-4 text-sm leading-relaxed">
+          <div class="flex-1 bg-gray-100 rounded-lg shadow p-4 text-sm leading-relaxed">
             <h3 class="text-lg font-semibold text-blue-900 mb-2">Kunjungi Lokasi Kami</h3>
             <p class="flex items-center"><i class="fa-solid fa-phone-volume p-2"></i><strong>Nomor Telepon:</strong></p>
             <p class="flex items-center ml-7">(0778) 456880</p>
@@ -20,7 +20,7 @@
             <p class="flex items-center ml-8">WearYouWant@gmail.com</p>
           </div>
           <!-- Jam Operasional -->
-          <div class="flex-1 bg-gray-200 rounded-lg shadow p-4">
+          <div class="flex-1 bg-gray-100 rounded-lg shadow p-4">
               <h3 class="text-lg font-semibold text-blue-900 mb-2">Jam Operasional</h3>
               <ul class="space-y-3 text-sm leading-relaxed">
               <li class="flex justify-between gap-6">
