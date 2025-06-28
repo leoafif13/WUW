@@ -1,74 +1,73 @@
 @extends('layouts.app')
-
 @section('title', 'Pembayaran')
-
 @section('content')
-<main class="bg-white text-gray-800 font-poppins" x-data="{ pengiriman: 'antar', metode: 'qris', dropdown: false }">
+
+<main class="bg-white text-gray-800 font-poppins"
+      x-data="{ pengiriman: 'antar', metode: 'qris', dropdown: false, alamatSumber: 'default' }">
+
   @include('components.navbar_payment')
 
- <!-- Progress Tracker -->
-<div class="w-full bg-gray-100 border-b border-gray-200 py-3 px-4 sm:px-6 flex flex-wrap items-center justify-center space-x-4 text-sm sm:text-base text-center sm:text-left">
-    <div class="flex items-center text-blue-900 font-semibold">
-        <div class="w-6 h-6 flex items-center justify-center mr-2">
-            <i class="fas fa-shopping-cart text-blue-900"></i>
-        </div>
+  <!-- Progress -->
+  <div class="w-full bg-gray-100 border-b py-3 px-4 flex flex-wrap justify-center items-center gap-4 sm:space-x-10 text-sm text-center">
+    <div class="flex flex-col items-center text-blue-900 font-semibold">
+      <i class="fas fa-shopping-cart text-blue-900 w-6 h-6 flex items-center justify-center"></i>
+      <span class="text-xs mt-1">Keranjang</span>
     </div>
+
     <div class="w-4 h-px bg-blue-600"></div>
-    <div class="flex items-center text-blue-900 font-semibold">
-        <div class="w-6 h-6 flex items-center justify-center mr-2">
-            <i class="fas fa-file-alt text-blue-900"></i>
-        </div>
+
+    <div class="flex flex-col items-center text-blue-900 font-semibold">
+      <i class="fas fa-file-alt text-blue-900 w-6 h-6 flex items-center justify-center"></i>
+      <span class="text-xs mt-1">Isi Formulir</span>
     </div>
+
     <div class="w-4 h-px bg-blue-600"></div>
-    <div class="flex items-center text-blue-900 font-semibold">
-        <div class="w-6 h-6 flex items-center justify-center mr-2">
-            <i class="fas fa-credit-card text-blue-900"></i>
-        </div>
+
+    <div class="flex flex-col items-center text-blue-900 font-semibold">
+      <i class="fas fa-credit-card text-blue-900 w-6 h-6 flex items-center justify-center"></i>
+      <span class="text-xs mt-1">Bayar</span>
     </div>
-</div>
+  </div>
 
   <form id="form-pembayaran" method="POST" action="{{ route('pembayaran.store') }}">
     @csrf
     <input type="hidden" name="snap_status" id="snap_status">
     <input type="hidden" name="snap_result" id="snap_result">
 
-    <div class="p-16 space-y-6 pb-32 sm:pb-20">
+    <div class="p-4 sm:p-16 space-y-6 pb-36 sm:pb-20">
       <!-- Produk -->
       <section class="space-y-4">
         @php
-            $totalProduk = 0;
-            $subtotalProduk = 0;
+          $totalProduk = 0;
+          $subtotalProduk = 0;
         @endphp
 
         @foreach ($orders as $order)
           @php
-              $totalProduk += $order->qty;
-              $subtotalProduk += $order->total_harga;
+            $totalProduk += $order->qty;
+            $subtotalProduk += $order->total_harga;
           @endphp
 
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
             <img src="{{ asset('storage/' . $order->foto) }}" class="w-full sm:w-32 max-h-40 object-contain rounded" alt="{{ $order->nama_barang }}">
-            <div class="flex-1 min-w-0 self-start">
-              <h2 class="font-semibold truncate">{{ $order->nama_barang }}</h2>
-              <div class="flex flex-wrap gap-2 mt-1 text-sm text-gray-600">
+            <div class="flex-1">
+              <h2 class="font-semibold text-base sm:text-lg">{{ $order->nama_barang }}</h2>
+              <div class="text-sm text-gray-600 mt-1 flex flex-wrap gap-2">
                 <span>Ukuran: {{ $order->ukuran }}</span>
                 <span>|</span>
                 <span>{{ \Carbon\Carbon::parse($order->tanggal_mulai)->format('d M') }} - {{ \Carbon\Carbon::parse($order->tanggal_selesai)->format('d M') }}</span>
               </div>
             </div>
-            <div class="flex flex-col items-end gap-2">
-              <p class="text-blue-600 font-bold">Rp{{ number_format($order->total_harga, 0, ',', '.') }}</p>
-              <button type="button"
-                      class="text-red-600 text-sm hover:underline"
-                      onclick="if(confirm('Apakah kamu yakin ingin membatalkan pesanan ini?')) { document.getElementById('cancel-form-{{ $order->id }}').submit(); }">
-                Batalkan
-              </button>
+            <div class="text-right">
+              <p class="text-blue-600 font-bold text-sm sm:text-base">Rp{{ number_format($order->total_harga, 0, ',', '.') }}</p>
+              <button type="button" class="text-red-600 text-sm hover:underline"
+                      onclick="if(confirm('Yakin ingin membatalkan?')) document.getElementById('cancel-form-{{ $order->id }}').submit();">Batalkan</button>
             </div>
           </div>
         @endforeach
 
-        <div class="flex justify-between font-semibold pt-3 border-t">
-          <p>Total Produk ({{ $totalProduk }}):</p>
+        <div class="flex flex-col sm:flex-row justify-between font-semibold pt-3 border-t gap-1 sm:gap-0 text-sm">
+          <p>Total Produk ({{ $totalProduk }})</p>
           <p class="text-blue-900">Rp{{ number_format($subtotalProduk, 0, ',', '.') }}</p>
         </div>
       </section>
@@ -76,58 +75,75 @@
       <!-- Pengiriman -->
       <section class="space-y-3">
         <h3 class="font-semibold text-lg">Opsi Pengiriman</h3>
-        <div class="flex flex-col sm:flex-row gap-4">
+        <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
           <label class="flex items-center gap-2">
-            <input type="radio" name="pengiriman" value="antar" x-model="pengiriman" class="form-radio" checked>
-            Antar ke Rumah
+            <input type="radio" name="pengiriman" value="antar" x-model="pengiriman" class="form-radio" checked> Antar ke Rumah
           </label>
           <label class="flex items-center gap-2">
-            <input type="radio" name="pengiriman" value="jemput" x-model="pengiriman" class="form-radio">
-            Jemput ke Toko
+            <input type="radio" name="pengiriman" value="jemput" x-model="pengiriman" class="form-radio"> Jemput ke Toko
           </label>
         </div>
-        <div x-show="pengiriman === 'antar'" x-transition x-cloak>
-          <label for="alamat" class="block text-sm font-semibold mb-1">Alamat Pengiriman</label>
-          <textarea id="alamat" name="alamat" rows="3"
-                    x-bind:required="pengiriman === 'antar'"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-                    placeholder="Masukkan alamat lengkap..."></textarea>
+
+        <div x-show="pengiriman === 'antar'" x-transition x-cloak class="space-y-3">
+          <label class="block text-sm font-semibold">Pilih Alamat</label>
+          <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+            <label class="flex items-center gap-2">
+              <input type="radio" value="default" x-model="alamatSumber" class="form-radio"> Gunakan Alamat Akun
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="radio" value="manual" x-model="alamatSumber" class="form-radio"> Masukkan Manual
+            </label>
+          </div>
+
+          <template x-if="alamatSumber === 'default'">
+            <div>
+              <div class="bg-gray-100 p-3 rounded border text-sm text-gray-700">
+                {{ auth()->user()->alamat ?? 'Alamat belum tersedia.' }}
+              </div>
+              <input type="hidden" name="alamat" :value="@json(auth()->user()->alamat)">
+            </div>
+          </template>
+
+          <template x-if="alamatSumber === 'manual'">
+            <div>
+              <label class="block text-sm font-semibold mb-1">Alamat Pengiriman</label>
+              <textarea name="alamat" id="alamat" rows="3"
+                        class="w-full px-3 py-2 border rounded-md focus:ring focus:ring-blue-200"
+                        placeholder="Masukkan alamat lengkap..."></textarea>
+            </div>
+          </template>
         </div>
       </section>
 
       <!-- Metode Pembayaran -->
       <section class="space-y-3">
         <h3 class="font-semibold text-lg">Metode Pembayaran</h3>
-        <div class="relative">
+        <div class="relative w-full sm:w-auto">
           <button type="button" @click="dropdown = !dropdown"
-                  class="w-full text-left sm:text-center sm:w-auto bg-white border px-4 py-2 rounded-lg flex justify-between items-center shadow-sm">
-            <span x-text="metode === 'cod' ? 'Cash On Delivery (COD)' : 'QRIS'"></span>
+                  class="w-full border px-4 py-2 rounded-lg flex justify-between items-center shadow-sm">
+            <span x-text="metode === 'cod' ? 'COD' : 'Transfer'"></span>
             <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
               <path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06z"/>
             </svg>
           </button>
-
-          <div x-show="dropdown" @click.away="dropdown = false" x-cloak
-               class="absolute z-10 mt-2 w-full sm:max-w-xs bg-white border rounded shadow-md p-3 space-y-2">
+          <div x-show="dropdown" @click.away="dropdown = false" x-cloak class="absolute z-10 mt-2 w-full sm:max-w-xs bg-white border rounded shadow-md p-3 space-y-2">
             <label class="flex items-center gap-2">
-              <input type="radio" name="metode" value="cod" x-model="metode" class="form-radio">
-              Cash On Delivery (COD)
+              <input type="radio" name="metode" value="cod" x-model="metode" class="form-radio"> COD
             </label>
             <label class="flex items-center gap-2">
-              <input type="radio" name="metode" value="qris" x-model="metode" class="form-radio">
-              QRIS
+              <input type="radio" name="metode" value="qris" x-model="metode" class="form-radio"> Transfer
             </label>
           </div>
         </div>
       </section>
 
       <!-- Rincian -->
-      <section class="space-y-2 pt-2">
+      <section class="space-y-2 text-sm">
         <h3 class="font-semibold text-lg">Rincian Pembayaran</h3>
-        <div class="flex justify-between text-sm">
+        <div class="flex justify-between">
           <span>Subtotal Produk</span><span>Rp{{ number_format($subtotalProduk, 0, ',', '.') }}</span>
         </div>
-        <div class="flex justify-between text-sm">
+        <div class="flex justify-between">
           <span>Biaya Layanan</span><span>Rp1.500</span>
         </div>
         <div class="flex justify-between font-semibold text-lg">
@@ -137,43 +153,39 @@
     </div>
 
     <!-- Footer -->
-    <footer class="z-50 fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg px-4 py-3 flex flex-col sm:flex-row gap-2 sm:gap-0 justify-between items-start sm:items-center text-sm">
-      <p class="font-semibold">
-        Total: <span class="text-blue-900">Rp{{ number_format($subtotalProduk + 1500, 0, ',', '.') }}</span>
-      </p>
+    <footer class="fixed bottom-0 left-0 right-0 bg-white border-t px-4 py-3 shadow-lg flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm z-50 gap-2 sm:gap-0">
+      <p class="font-semibold">Total: <span class="text-blue-900">Rp{{ number_format($subtotalProduk + 1500, 0, ',', '.') }}</span></p>
       <button type="button" id="pay-button"
-              class="w-full sm:w-auto bg-blue-900 hover:bg-blue-800 text-white px-5 py-2 rounded-lg font-semibold transition">
+              class="w-full sm:w-auto bg-blue-900 hover:bg-blue-800 text-white px-5 py-2 rounded-lg font-semibold">
         Buat Pesanan
       </button>
     </footer>
   </form>
 
-  <!-- Form Cancel tersembunyi -->
   @foreach ($orders as $order)
-    <form id="cancel-form-{{ $order->id }}" action="{{ route('orders.cancel', $order->id) }}" method="POST" style="display:none;">
+    <form id="cancel-form-{{ $order->id }}" action="{{ route('orders.cancel', $order->id) }}" method="POST" style="display: none;">
       @csrf
     </form>
   @endforeach
+
 </main>
 
-<!-- Midtrans Snap -->
 <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
-<script type="text/javascript">
+<script>
   document.getElementById('pay-button').onclick = function () {
     const pengiriman = document.querySelector('input[name="pengiriman"]:checked').value;
     const metode = document.querySelector('input[name="metode"]:checked').value;
-    const alamat = pengiriman === 'antar' ? document.getElementById('alamat').value : null;
+    const alamatInput = document.querySelector('textarea[name="alamat"]');
+    const alamatValue = alamatInput ? alamatInput.value : @json(auth()->user()->alamat);
 
-    if (pengiriman === 'antar' && (!alamat || alamat.trim() === '')) {
+    if (pengiriman === 'antar' && (!alamatValue || alamatValue.trim() === '')) {
       alert('Alamat wajib diisi jika memilih antar.');
       return;
     }
 
     if (metode === 'cod') {
-      // Langsung submit form tanpa Midtrans
       document.getElementById('form-pembayaran').submit();
     } else {
-      // QRIS via Midtrans popup
       snap.pay('{{ $snapToken }}', {
         onSuccess: function (result) {
           document.getElementById('snap_status').value = 'success';
@@ -187,7 +199,6 @@
         },
         onError: function (result) {
           alert('Pembayaran gagal. Silakan coba lagi.');
-          console.error(result);
         }
       });
     }
@@ -198,4 +209,5 @@
   [x-cloak] { display: none !important; }
   body { overflow-x: hidden; }
 </style>
+
 @endsection

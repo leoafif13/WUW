@@ -132,9 +132,9 @@ class PembayaranController extends Controller
                     'qty'             => $order->qty,
                     'metode'          => $request->metode,
                     'pengiriman'      => $request->pengiriman,
-                    'alamat'          => $request->pengiriman === 'antar' ? $request->alamat : null,
+                    'alamat'          => $request->pengiriman === 'antar' ? ($request->alamat ?: $user->alamat): null,
                     'total'           => $order->total_harga + 1500,
-                    'status' => $request->metode === 'cod' ? 'diproses' : 'dibayar',
+                    'status'          => $request->metode === 'cod' ? 'diproses' : 'dibayar',
                 ]);
 
                 // Update status order

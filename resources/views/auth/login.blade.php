@@ -6,7 +6,7 @@
   
   <!-- Logo dan Judul -->
   <div class="relative z-10 mt-16 sm:mt-20 md:mt-28 flex flex-col items-center px-4 text-center">
-    <img src="{{ asset('img/logo WUW.png') }}" alt="Logo WUW" class="mb-2 w-16 h-16 sm:w-20 sm:h-20 object-contain" />
+    <img src="{{ asset('img/Logo WUW.png') }}" alt="Logo WUW" class="mb-2 w-16 h-16 sm:w-20 sm:h-20 object-contain" />
     <h1 class="text-white font-bold text-lg sm:text-xl mb-4 drop-shadow-[0_0_2px_rgba(0,0,0,0.7)]">Masuk</h1>
   </div>
 

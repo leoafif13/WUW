@@ -16,7 +16,7 @@
   <!-- Filter Status -->
   <div class="px-3 sm:px-6 py-4">
     @php
-        $statusOptions = ['all' => 'Semua', 'pending' => 'Pending', 'dibayar' => 'Dibayar', 'diproses' => 'Diproses', 'selesai' => 'Selesai'];
+        $statusOptions = ['all' => 'Semua', 'dibayar' => 'Dibayar', 'diproses' => 'Diproses', 'selesai' => 'Selesai', 'dikembalikan' => 'Dikembalikan' ];
         $currentStatus = request()->query('status', 'all');
     @endphp
     <div class="flex justify-center">
@@ -38,10 +38,10 @@
       @php
         $tanggalSelesai = \Carbon\Carbon::parse($item->tanggal_selesai);
         $statusLabel = match ($item->status) {
-            'pending' => 'Menunggu Pembayaran',
             'dibayar' => 'Pembayaran Diterima',
-            'diproses' => 'Masih dalam Proses Pengiriman',
+            'diproses' => 'Masih dalam Proses Pembayaran',
             'selesai' => 'Penyewaan Selesai',
+            'dikembalikan' => 'Barang Telah Dikembalikan',
             default => 'Status Tidak Diketahui',
         };
       @endphp

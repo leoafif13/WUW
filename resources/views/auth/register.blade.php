@@ -5,7 +5,7 @@
   <img src="img/Background 3.png" alt="Background image" class="absolute inset-0 w-full h-full object-cover opacity-80" loading="lazy" aria-hidden="true" />
 
   <div class="relative z-10 mt-20 md:mt-28 flex flex-col items-center">
-    <img src="img/logo WUW.png" alt="Logo WUW" class="mb-2 w-20 h-20 object-contain" />
+    <img src="img/Logo WUW.png" alt="Logo WUW" class="mb-2 w-20 h-20 object-contain" />
     <h1 class="text-white font-bold text-lg mb-4 drop-shadow-[0_0_2px_rgba(0,0,0,0.7)]">Daftar Akun</h1>
   </div>
 
@@ -22,25 +22,9 @@
       </div>
 
       <div>
-        <x-label for="alamat" value="Alamat"/>
-        <x-input id="alamat" name="alamat" placeholder="Masukkan Alamat" type="text" value="{{ old('alamat') }}" />
-        @error('alamat')
-          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-        @enderror
-      </div>
-
-      <div>
         <x-label for="email" value="Alamat Email" />
         <x-input id="email" name="email" placeholder="Masukkan Alamat Email" type="email" value="{{ old('email') }}" autocomplete="email"/>
         @error('email')
-          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-        @enderror
-      </div>
-
-      <div>
-        <x-label for="telepon" value="No Telepon" />
-        <x-input id="telepon" name="telepon" placeholder="Masukkan Nomor Telepon" type="tel" value="{{ old('telepon') }}" />
-        @error('telepon')
           <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
         @enderror
       </div>

@@ -17,15 +17,11 @@ class RegisterController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:8',
-            'alamat' => 'required',
-            'telepon' => 'required',
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'alamat' => $request->alamat,
-            'telepon' => $request->telepon,
             'role' => 'customer',
             'password' => Hash::make($request->password),
         ]);

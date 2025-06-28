@@ -13,7 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
-
+use Filament\Forms\Components\Radio;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 
@@ -63,7 +63,16 @@ class UsersResource extends Resource
                     ->preserveFilenames()
                     ->maxSize(2048)
                     ->required(),
+                Radio::make('status_verifikasi')
+                    ->options([
+                        'menunggu' => '🟡 Menunggu',
+                        'terverifikasi' => '🟢 Terverifikasi',
+                    ])
+                    ->inline()
+                    ->required()
+                    ->label('Status Verifikasi'),
             ]);
+            
     }
 
     public static function table(Table $table): Table
@@ -89,6 +98,19 @@ class UsersResource extends Resource
                         ->label('Foto')
                         ->visibility('public')
                         ->url(fn($record) => $record->foto ? asset('storage/profile/' . basename($record->foto)) : asset('images/default.jpg')),
+                ImageColumn::make('foto_ktp')
+                        ->disk('public')
+                        ->size(100)
+                        ->label('Foto KTP')
+                        ->visibility('public')
+                        ->url(fn($record) => $record->foto ? asset('storage/ktp/' . basename($record->foto)) : asset('images/default.jpg')),
+                TextColumn::make('status_verifikasi')
+                        ->badge()
+                        ->color(fn (string $state): string => match ($state) {
+                            'menunggu' => 'warning',
+                            'terverifikasi' => 'success',
+                            default => 'gray',
+                        }),
             ])
             ->filters([
                 //

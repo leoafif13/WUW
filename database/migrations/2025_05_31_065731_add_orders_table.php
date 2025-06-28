@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('tanggal_selesai');
             $table->bigInteger('harga_per_hari');
             $table->bigInteger('total_harga');
-            $table->enum('status', ['pending', 'dibayar', 'diproses', 'selesai', 'batal'])->default('pending');
+            $table->enum('status', ['pending', 'dibayar', 'diproses', 'selesai', 'batal', 'dikembalikan'])->default('pending');
             $table->timestamps();
         });
     }

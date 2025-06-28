@@ -74,6 +74,7 @@ class OrderResource extends Resource
                         'diproses' => 'Diproses',
                         'selesai' => 'Selesai',
                         'batal' => 'Batal',
+                        'dikembalikan' => 'Dikembalikan',
                     ])
                     ->required()
                     ->label('Status'),
@@ -121,6 +122,7 @@ class OrderResource extends Resource
                         'warning' => 'pending',
                         'success' => 'selesai',
                         'danger' => 'batal',
+                        'info' => 'dikembalikan',
                     ]),
                 ])
             ->filters([

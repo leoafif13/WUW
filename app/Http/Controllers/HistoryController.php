@@ -30,7 +30,7 @@ class HistoryController extends Controller
             $order = $payment->order;
 
             if ($order && Carbon::parse($order->tanggal_selesai)->isPast()) {
-                if ($order->status !== 'selesai') {
+                if (!in_array($order->status, ['selesai', 'dikembalikan'])) {
                     $order->status = 'selesai';
                     $order->save();
                 }

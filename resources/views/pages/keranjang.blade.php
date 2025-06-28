@@ -15,26 +15,37 @@
 </header>
 
 @if ($barangs->count())
-<div class="w-full bg-gray-100 border-b border-gray-200 py-3 px-4 sm:px-6 flex flex-wrap items-center justify-center space-x-4 text-sm sm:text-base text-center sm:text-left">
-    <div class="flex items-center text-blue-900 font-semibold">
-        <div class="w-6 h-6 flex items-center justify-center mr-2">
+<div class="w-full bg-gray-100 border-b border-gray-200 py-3 px-4 sm:px-6 flex flex-wrap items-center justify-center space-x-10 text-sm sm:text-base text-center">
+    <!-- Keranjang -->
+    <div class="flex flex-col items-center text-blue-900 font-semibold">
+        <div class="w-6 h-6 flex items-center justify-center">
             <i class="fas fa-shopping-cart text-blue-900"></i>
         </div>
+        <span class="text-xs mt-1 text-blue-900">Keranjang</span>
     </div>
+
     <div class="w-4 h-px bg-gray-400"></div>
-    <div class="flex items-center text-gray-500">
-        <div class="w-6 h-6 flex items-center justify-center mr-2">
+
+    <!-- Isi Formulir -->
+    <div class="flex flex-col items-center text-gray-500">
+        <div class="w-6 h-6 flex items-center justify-center">
             <i class="fas fa-file-alt text-gray-500"></i>
         </div>
+        <span class="text-xs mt-1">Isi Formulir</span>
     </div>
+
     <div class="w-4 h-px bg-gray-400"></div>
-    <div class="flex items-center text-gray-500">
-        <div class="w-6 h-6 flex items-center justify-center mr-2">
+
+    <!-- Bayar -->
+    <div class="flex flex-col items-center text-gray-500">
+        <div class="w-6 h-6 flex items-center justify-center">
             <i class="fas fa-credit-card text-gray-500"></i>
         </div>
+        <span class="text-xs mt-1">Bayar</span>
     </div>
 </div>
 @endif
+
 
 @if(session('success'))
   <div class="mx-4 mt-4 bg-green-100 border border-green-300 text-green-800 px-4 py-3 rounded relative" role="alert">
