@@ -41,6 +41,11 @@
         @foreach ($barangs as $barang)
             <x-product-card :barang="$barang" />
         @endforeach
+
+        <!-- Pagination -->
+        <div class="col-span-full mt-8 flex justify-center">
+            {{ $barangs->withQueryString()->links('pagination::tailwind') }}
+        </div>
     @endif
 </section>
 

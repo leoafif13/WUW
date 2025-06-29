@@ -98,7 +98,7 @@
           <template x-if="alamatSumber === 'default'">
             <div>
               <div class="bg-gray-100 p-3 rounded border text-sm text-gray-700">
-                {{ auth()->user()->alamat ?? 'Alamat belum tersedia.' }}
+                {{ auth()->user()->alamat ?? 'Alamat belum tersedia, silahkan isi alamat terlebih dahulu di halaman profile' }}
               </div>
               <input type="hidden" name="alamat" :value="@json(auth()->user()->alamat)">
             </div>
