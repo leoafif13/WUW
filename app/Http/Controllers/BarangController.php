@@ -8,7 +8,7 @@ use App\Models\Barang;
 class BarangController extends Controller
 {
     public function barang() {
-        $barangs = Barang::orderBy('nama_barang', 'asc')->paginate(9);
+        $barangs = Barang::orderBy('nama_barang', 'asc')->paginate(15);
         return view('pages.barang', compact('barangs'));
     }
     public function detailProduk($id) {
@@ -48,7 +48,7 @@ class BarangController extends Controller
         }
 
         // Dapatkan hasil filter
-        $barangs = $query->paginate(9)->withQueryString();
+        $barangs = $query->paginate(15)->withQueryString();
 
         // Kirim ke view halaman barang
         return view('pages.barang', compact('barangs'));
