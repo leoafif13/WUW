@@ -19,9 +19,13 @@ class PaymentResource extends Resource
 {
     protected static ?string $model = Payment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-credit-card';
+    protected static ?string $navigationIcon = 'heroicon-o-banknotes';
+
+    protected static ?string $activeNavigationIcon = 'heroicon-o-banknotes';
     
-    protected static ?string $navigationGroup = 'Products Management';
+    protected static ?string $navigationGroup = 'Manajemen Barang';
+
+    protected static ?string $label = 'Pembayaran';
 
     public static function form(Form $form): Form
     {
@@ -100,6 +104,7 @@ class PaymentResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc') 
             ->columns([
                 TextColumn::make('row_number')
                     ->label('No')
@@ -112,12 +117,12 @@ class PaymentResource extends Resource
                     ->sortable(false),
 
                 TextColumn::make('user.name')
-                    ->label('Nama Customer')
+                    ->label('Pengguna')
                     ->searchable(),
 
                 TextColumn::make('metode')->searchable(),
+
                 TextColumn::make('pengiriman')->searchable(),
-                TextColumn::make('alamat')->searchable(),
 
                 TextColumn::make('total')
                     ->label('Total Harga')

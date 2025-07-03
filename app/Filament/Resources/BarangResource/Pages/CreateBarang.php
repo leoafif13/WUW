@@ -22,7 +22,7 @@ class CreateBarang extends CreateRecord
 
     public function getTitle(): string
     {
-        return 'Nambah Barang';
+        return 'Tambah Barang';
     }
 
     protected function getFormActions(): array

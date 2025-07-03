@@ -24,9 +24,11 @@ class UsersResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
-    protected static ?string $navigationGroup = 'System Management';
+    protected static ?string $activeNavigationIcon = 'heroicon-o-users';
 
-    protected static ?string $label = 'Customer';
+    protected static ?string $navigationGroup = 'Manajemen Pengguna';
+
+    protected static ?string $label = 'Pengguna';
 
     public static function getNavigationBadge(): ?string
     {
@@ -78,6 +80,7 @@ class UsersResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc') 
             ->columns([
                 TextColumn::make('row_number')
                     ->label('No')

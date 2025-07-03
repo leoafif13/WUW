@@ -22,7 +22,9 @@ class KontakResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
 
-    protected static ?string $navigationGroup = 'Messages';
+    protected static ?string $activeNavigationIcon = 'heroicon-o-envelope';
+
+    protected static ?string $navigationGroup = 'Pesan';
 
     public static function form(Form $form): Form
     {
@@ -46,6 +48,7 @@ class KontakResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc') 
             ->columns([
                 TextColumn::make('row_number')
                     ->label('No')

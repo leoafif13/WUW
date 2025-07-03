@@ -22,7 +22,9 @@ class ReviewResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-star';
 
-    protected static ?string $navigationGroup = 'Messages';
+    protected static ?string $activeNavigationIcon = 'heroicon-o-star';
+
+    protected static ?string $navigationGroup = 'Pesan';
 
     public static function form(Form $form): Form
     {
@@ -53,6 +55,7 @@ class ReviewResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc') 
             ->columns([
                 TextColumn::make('row_number')
                     ->label('No')
@@ -64,7 +67,7 @@ class ReviewResource extends Resource
                     })
                     ->sortable(false),
                 TextColumn::make('user.name')
-                    ->label('Nama User')
+                    ->label('Pengguna')
                     ->searchable(),
                 TextColumn::make('ulasan')->searchable(),
                 ImageColumn::make('foto')

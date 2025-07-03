@@ -41,10 +41,7 @@ class BarangController extends Controller
         // Filter search (misal berdasarkan nama atau deskripsi)
         if ($request->filled('search')) {
             $search = $request->search;
-            $query->where(function($q) use ($search) {
-                $q->where('nama_barang', 'like', "%{$search}%")
-                ->orWhere('deskripsi', 'like', "%{$search}%");
-            });
+            $query->where('nama_barang', 'like', "%{$search}%");
         }
 
         // Dapatkan hasil filter

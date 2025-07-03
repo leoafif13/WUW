@@ -24,10 +24,10 @@ class BarangResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
-    protected static ?string $navigationGroup = 'Products Management';
-    
-    protected static ?string $label = 'Product';
+    protected static ?string $activeNavigationIcon = 'heroicon-o-shopping-bag';
 
+    protected static ?string $navigationGroup = 'Manajemen Barang';
+    
     public static function getNavigationBadge(): ?string
     {
         $count = Barang::count(); 
@@ -106,6 +106,7 @@ class BarangResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc') 
             ->columns([
                 TextColumn::make('row_number')
                     ->label('No')
@@ -126,17 +127,14 @@ class BarangResource extends Resource
                 TextColumn::make('harga')
                     ->label('Harga')
                     ->money('IDR', true),
-                TextColumn::make('stok'),
-
+        
                 ImageColumn::make('foto')
                     ->disk('public')
                     ->size(100)
                     ->label('Foto')
                     ->visibility('public')
                     ->url(fn($record) => $record->foto ? asset('storage/barangs/' . basename($record->foto)) : asset('images/default.jpg')),
-                TextColumn::make('ukuran'),
-                TextColumn::make('warna'),
-                TextColumn::make('deskripsi'),
+
             ])
             ->filters([
                 //

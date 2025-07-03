@@ -12,7 +12,7 @@ class CreateOrder extends CreateRecord
 
     public function getTitle(): string
     {
-        return 'Buat Order';
+        return 'Tambah Pesanan';
     }
 
     protected function getFormActions(): array

@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Models\Order;
+use App\Models\Payment;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -20,9 +21,13 @@ class OrderResource extends Resource
 {
     protected static ?string $model = Order::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
-    protected static ?string $navigationGroup = 'Products Management';
+    protected static ?string $activeNavigationIcon = 'heroicon-o-book-open';
+
+    protected static ?string $navigationGroup = 'Manajemen Barang';
+
+    protected static ?string $label = 'Pesanan';
 
     public static function form(Form $form): Form
     {
@@ -62,12 +67,6 @@ class OrderResource extends Resource
                     ->label('Tanggal Selesai')
                     ->required(),
 
-                Forms\Components\TextInput::make('total_harga')
-                    ->label('Total Harga')
-                    ->numeric()
-                    ->required()
-                    ->prefix('Rp'),
-
                 Forms\Components\Select::make('status')
                     ->options([
                         'pending' => 'Pending',
@@ -84,6 +83,7 @@ class OrderResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc') 
             ->columns([
                 TextColumn::make('row_number')
                     ->label('No')
@@ -95,7 +95,7 @@ class OrderResource extends Resource
                     })
                     ->sortable(false),
                 TextColumn::make('name')->searchable()
-                    ->label('Nama Customer'),
+                    ->label('Pengguna'),
                 TextColumn::make('nama_barang')->searchable()
                     ->label('Nama Barang'),
                 TextColumn::make('ukuran')->searchable(),
@@ -113,9 +113,9 @@ class OrderResource extends Resource
                 TextColumn::make('tanggal_selesai')
                     ->label('Tanggal Selesai')
                     ->date('d-m-Y'),
-                TextColumn::make('total_harga')
-                    ->label('Total Harga')
-                    ->money('IDR', true),
+                TextColumn::make('payment.alamat')
+                    ->label('Alamat')
+                    ->searchable(),
                 TextColumn::make('status')
                     ->badge()
                     ->colors([

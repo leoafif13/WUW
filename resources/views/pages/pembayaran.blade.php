@@ -199,6 +199,9 @@
         },
         onError: function (result) {
           alert('Pembayaran gagal. Silakan coba lagi.');
+        },
+        onClose: function () {
+          alert('Kamu belum menyelesaikan pembayaran!');
         }
       });
     }

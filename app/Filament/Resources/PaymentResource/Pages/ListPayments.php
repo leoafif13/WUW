@@ -13,7 +13,7 @@ class ListPayments extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make()->label('Nambah Pembayaran'),
+            Actions\CreateAction::make()->label('Tambah Pembayaran'),
         ];
     }
 }

@@ -12,7 +12,7 @@ class CreateUsers extends CreateRecord
 
     public function getTitle(): string
     {
-        return 'Nambah User';
+        return 'Tambah User';
     }
 
     protected function getFormActions(): array

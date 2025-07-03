@@ -12,7 +12,7 @@ class CreateKontak extends CreateRecord
 
     public function getTitle(): string
     {
-        return 'Nambah Pesan';
+        return 'Tambah Pesan';
     }
 
     protected function getFormActions(): array
