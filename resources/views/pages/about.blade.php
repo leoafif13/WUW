@@ -4,8 +4,8 @@
     <div class="text-center mb-12">
       <h1 class="text-3xl md:text-4xl font-bold text-white">Tentang Kami</h1>
     </div>
-      
     <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-12">
+      
       <!-- TEXT -->
       <div class="md:w-3/5 text-center md:text-left">
         <p class="text-lg md:text-xl mb-6 text-white">

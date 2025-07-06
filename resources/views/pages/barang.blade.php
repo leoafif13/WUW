@@ -13,7 +13,6 @@
         <p class="max-w-xl text-lg mb-6">
             Sekarang Anda dapat menghemat semua hal stress, waktu, dan biaya dengan berbagai pilihan baju untuk acara besar Anda
         </p>
-
         @include('components.filter-bar')
     </div>
 </section>
@@ -57,5 +56,4 @@
         });
     }
 </script>
-
 @endsection

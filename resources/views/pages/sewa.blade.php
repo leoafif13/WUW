@@ -13,7 +13,6 @@
 <main class="py-8">
   <!-- Bagian Syarat -->
   <x-section-title title="Syarat Menyewa" />
-
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
     @foreach ($terms as $term)
       <x-step-card :step="$term['step']" :icon="$term['icon']" :title="$term['title']" />
@@ -22,7 +21,6 @@
 
   <!-- Bagian Panduan -->
   <x-section-title title="Panduan Menyewa" />
-
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
     @foreach ($guides as $guide)
       <x-step-card :step="$guide['step']" :icon="$guide['icon']" :title="$guide['title']" />

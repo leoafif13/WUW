@@ -37,12 +37,12 @@
 
     <div class="mb-4">
       <x-label for="email" value="Email" />
-      <x-input id="email" name="email" placeholder="Masukkan Email" type="email" required autofocus autocomplete="email"/>
+      <x-input id="email" name="email" placeholder="Masukkan Email" type="email" required autofocus autocomplete="email" oninvalid="this.setCustomValidity('Silakan isi alamat email yang valid')" oninput="this.setCustomValidity('')"/>
     </div>
 
     <div class="mb-4">
       <x-label for="password" value="Kata Sandi" />
-      <x-input id="password" name="password" placeholder="Masukkan Kata Sandi" type="password" required />
+      <x-input id="password" name="password" placeholder="Masukkan Kata Sandi" type="password" required oninvalid="this.setCustomValidity('Silakan masukkan kata sandi')" oninput="this.setCustomValidity('')"/>
     </div>
 
     {{-- Tampilkan CAPTCHA --}}

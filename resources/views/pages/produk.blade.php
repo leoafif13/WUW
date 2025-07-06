@@ -7,7 +7,6 @@
       <div class="bg-white text-blue-900 rounded-lg overflow-hidden shadow-md flex flex-col w-64 sm:w-72 md:w-80 flex-shrink-0">
         <img src="{{ asset('storage/' . $item->foto) }}" alt="{{ $item->nama_barang }}"
              class="w-full h-60 sm:h-72 md:h-80 object-cover rounded-b-none">
-
         <div class="p-4 text-left flex flex-col flex-grow">
           {{-- Status & Nama --}}
           <div class="flex items-center mb-2">
@@ -42,12 +41,10 @@
 </section>
 
 <style>
-  
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }

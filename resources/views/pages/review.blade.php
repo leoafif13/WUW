@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title', 'Review')
-
 @section('content')
 <div class="min-h-screen bg-gray-100">
     <!-- Header -->
@@ -60,15 +58,12 @@
             <div class="mt-6">
                 <label for="fotoUpload-{{ $payment->id }}"
                 class="block border-2 border-dashed border-gray-300 rounded-lg cursor-pointer relative overflow-hidden w-full">
-                
                 <img id="preview-{{ $payment->id }}" src="#" alt="Preview Foto"
                     class="hidden w-full h-auto object-contain rounded-lg bg-white" />
-
                 <div id="placeholder-{{ $payment->id }}" class="flex flex-col justify-center items-center py-8">
                     <i class="fas fa-camera text-2xl text-gray-400"></i>
                     <span class="text-gray-500 mt-2">Masukkan Foto</span>
                 </div>
-
                 <input type="file" id="fotoUpload-{{ $payment->id }}" name="foto" accept="image/*" class="hidden">
             </label>
             </div>
@@ -93,30 +88,45 @@
             const charCount{{ $payment->id }} = document.getElementById('charCount-{{ $payment->id }}');
             const inputFile{{ $payment->id }} = document.getElementById('fotoUpload-{{ $payment->id }}');
             const previewImg{{ $payment->id }} = document.getElementById('preview-{{ $payment->id }}');
-            const icon{{ $payment->id }} = document.getElementById('icon-{{ $payment->id }}');
-            const text{{ $payment->id }} = document.getElementById('text-{{ $payment->id }}');
+            const placeholder = document.getElementById('placeholder-{{ $payment->id }}');
+            const form = textarea{{ $payment->id }}.closest('form');
 
+            // Hitung karakter
             textarea{{ $payment->id }}.addEventListener('input', () => {
                 charCount{{ $payment->id }}.textContent = `${textarea{{ $payment->id }}.value.length}/300`;
             });
 
+            // Preview gambar
             inputFile{{ $payment->id }}.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            const placeholder = document.getElementById('placeholder-{{ $payment->id }}');
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    previewImg{{ $payment->id }}.src = e.target.result;
-                    previewImg{{ $payment->id }}.classList.remove('hidden');
-                    placeholder.classList.add('hidden');
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImg{{ $payment->id }}.src = e.target.result;
+                        previewImg{{ $payment->id }}.classList.remove('hidden');
+                        placeholder.classList.add('hidden');
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    previewImg{{ $payment->id }}.src = '#';
+                    previewImg{{ $payment->id }}.classList.add('hidden');
+                    placeholder.classList.remove('hidden');
                 }
-                reader.readAsDataURL(file);
-            } else {
-                previewImg{{ $payment->id }}.src = '#';
-                previewImg{{ $payment->id }}.classList.add('hidden');
-                placeholder.classList.remove('hidden');
-            }
-        });
+            });
+
+            // Validasi sebelum submit
+            form.addEventListener('submit', function(e) {
+                const ulasanKosong = textarea{{ $payment->id }}.value.trim() === '';
+                const fotoKosong = !inputFile{{ $payment->id }}.files.length;
+
+                if (ulasanKosong || fotoKosong) {
+                    e.preventDefault(); // Cegah submit
+                    let pesan = 'Mohon lengkapi:\n';
+                    if (ulasanKosong) pesan += '- Ulasan belum diisi\n';
+                    if (fotoKosong) pesan += '- Foto belum diunggah\n';
+                    alert(pesan);
+                }
+            });
         @endforeach
     });
 </script>

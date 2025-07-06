@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title', 'Keluar')
-
 @section('content')
 <div class="fixed inset-0 backdrop-blur-sm bg-white/30 flex justify-center items-center z-50">
   <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-sm text-center">

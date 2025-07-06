@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title', 'Daftar Ulasan')
-
 @section('content')
 @include('components.navbar_auth')
 
@@ -19,7 +17,6 @@
                     <!-- Foto Barang -->
                     <img src="{{ asset('storage/' . ($review->payment->order->foto ?? '')) }}" alt="Foto Barang"
                         class="w-full sm:w-20 h-40 sm:h-20 object-cover rounded-md border mx-auto sm:mx-0">
-
                     <!-- Info Pengguna & Barang -->
                     <div class="text-center sm:text-left">
                         <p class="font-semibold text-sm text-black break-words">
@@ -29,9 +26,7 @@
                         <p class="text-xs text-gray-700 break-words">Variasi: {{ $review->payment->ukuran ?? '-' }}</p>
                     </div>
                 </div>
-
                 <div class="border-t border-gray-400 my-4"></div>
-
                 <p class="text-sm text-gray-900 leading-relaxed break-words">{{ $review->ulasan }}</p>
 
                 <!-- Thumbnail -->
@@ -41,25 +36,22 @@
                     onclick="openModal('modal-{{ $index }}')">
                 @endif
             </div>
-
+            
             <!-- Modal -->
             @if($review->foto)
             <div id="modal-{{ $index }}" class="fixed inset-0 z-50 hidden bg-black bg-opacity-70 items-center justify-center p-4">
                 <div class="bg-white rounded-lg p-5 max-w-md w-full relative shadow-lg max-h-[80vh] overflow-y-auto flex flex-col items-center">
                     <button class="absolute top-2 right-2 text-gray-600 text-2xl font-bold" onclick="closeModal('modal-{{ $index }}')">&times;</button>
-
                     <!-- Gambar -->
                     <div class="mb-4">
                         <img src="{{ asset('storage/' . $review->foto) }}" 
                             class="max-w-[300px] max-h-[300px] w-auto h-auto mx-auto rounded object-contain shadow">
                     </div>
-
                     <!-- Info Produk & User -->
                     <div class="mb-3 text-center">
                         <p class="font-semibold text-black text-sm">{{ '@' . ($review->payment->user->name ?? 'user') }}</p>
                         <p class="text-sm text-gray-700">{{ $review->payment->nama_barang ?? '-' }} ({{ $review->payment->ukuran ?? '-' }})</p>
                     </div>
-
                     <!-- Isi Ulasan -->
                     <div class="text-sm text-gray-900 text-center leading-relaxed break-words">
                         {{ $review->ulasan }}

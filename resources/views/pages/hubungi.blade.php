@@ -58,10 +58,8 @@
         <h3 class="text-xl font-semibold text-blue-900">Ada Pertanyaan?</h3>
         <p class="text-sm text-gray-700 mt-1">Isi formulir di bawah ini dan tim kami akan segera menghubungi Anda.</p>
       </div>
-
       <form action="{{ route('kontak.store') }}" method="POST" class="flex flex-col space-y-4">
         @csrf
-
         <!-- Nama -->
         <div>
           <input type="text" name="nama" placeholder="Nama Lengkap" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required value="{{ old('nama') }}">
@@ -69,7 +67,6 @@
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
           @enderror
         </div>
-
         <!-- Email -->
         <div>
           <input type="email" name="email" placeholder="Alamat Email" autocomplete="email" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required value="{{ old('email') }}">
@@ -77,7 +74,6 @@
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
           @enderror
         </div>
-
         <!-- Subjek -->
         <div>
           <input type="text" name="subjek" placeholder="Subjek Pesan" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required value="{{ old('subjek') }}">
@@ -85,7 +81,6 @@
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
           @enderror
         </div>
-
         <!-- Pesan -->
         <div>
           <textarea name="pesan" placeholder="Ketik Pesan Disini..." rows="4" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-900" required>{{ old('pesan') }}</textarea>
@@ -93,7 +88,6 @@
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
           @enderror
         </div>
-
         <button type="submit" class="w-full bg-blue-900 text-white font-semibold px-6 py-2 rounded-lg hover:bg-gray-900 transition">Kirim</button>
       </form>
     </div>

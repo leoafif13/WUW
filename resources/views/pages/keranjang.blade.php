@@ -23,7 +23,6 @@
         </div>
         <span class="text-xs mt-1 text-blue-900">Keranjang</span>
     </div>
-
     <div class="w-4 h-px bg-gray-400"></div>
 
     <!-- Isi Formulir -->
@@ -33,7 +32,6 @@
         </div>
         <span class="text-xs mt-1">Isi Formulir</span>
     </div>
-
     <div class="w-4 h-px bg-gray-400"></div>
 
     <!-- Bayar -->
@@ -45,7 +43,6 @@
     </div>
 </div>
 @endif
-
 
 @if(session('success'))
   <div class="mx-4 mt-4 bg-green-100 border border-green-300 text-green-800 px-4 py-3 rounded relative" role="alert">
