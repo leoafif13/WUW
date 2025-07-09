@@ -36,7 +36,6 @@ class AdminPanelProvider extends PanelProvider
             ->font('Poppins')
             ->favicon(asset('img/Logo WUW.png'))
             ->sidebarFullyCollapsibleOnDesktop()
-            ->login()
             ->userMenuItems([
                 'profile' => MenuItem::make()->label('Edit profil'),
             ])

@@ -14,7 +14,6 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // Validasi input termasuk reCAPTCHA menggunakan rule 'captcha'
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -26,15 +25,20 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            if ($user->role !== 'customer') {
+            $request->session()->regenerate();
+
+            if ($user->role === 'admin') {
+                // Redirect ke dashboard Filament
+                return redirect()->intended('/admin/dashboard'); // ganti dengan prefix Filament jika beda
+            } elseif ($user->role === 'customer') {
+                // Redirect ke halaman user biasa
+                return redirect()->route('home');
+            } else {
                 Auth::logout();
                 return back()->withErrors([
-                    'email' => 'Akun Anda tidak memiliki akses sebagai customer.',
+                    'email' => 'Role tidak dikenali.',
                 ]);
             }
-
-            $request->session()->regenerate();
-            return redirect()->route('home');
         }
 
         return back()->withErrors([
