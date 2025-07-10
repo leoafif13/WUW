@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Ganti Password')
+@section('title', 'Ganti Kata Sandi')
 @section('content')
 <body class="bg-blue-900 min-h-screen flex flex-col">
   <header class="flex items-center px-4 py-3 text-white font-extrabold text-sm">
     <a href="{{ url('/home') }}" aria-label="Back" class="mr-4 focus:outline-none hover:text-gray-300">
       <i class="fas fa-arrow-left"></i>
     </a>
-    <h1 class="flex-1 text-center font-extrabold text-sm">Ganti Password</h1>
+    <h1 class="flex-1 text-center font-extrabold text-sm">Ganti Kata Sandi</h1>
     <div class="w-6"></div>
   </header>
 
@@ -62,23 +62,23 @@
         <x-input-password
           id="current_password"
           name="current_password"
-          label="Password Lama"
-          placeholder="Masukkan Password Lama" />
+          label="Kata Sandi Lama"
+          placeholder="Masukkan Kata Sandi Lama" />
 
         <x-input-password
           id="new_password"
           name="new_password"
-          label="Password Baru"
-          placeholder="Masukkan Password Baru" />
+          label="Kata Sandi Baru"
+          placeholder="Masukkan Kata Sandi Baru" />
 
         <x-input-password
           id="new_password_confirmation"
           name="new_password_confirmation"
-          label="Konfirmasi Password Baru"
-          placeholder="Konfirmasi Password Baru" />
+          label="Konfirmasi Kata Sandi Baru"
+          placeholder="Konfirmasi Kata Sandi Baru" />
 
         <button type="submit" class="w-full bg-blue-900 text-white text-xs font-bold py-2 rounded mt-1 hover:bg-blue-500">
-          Ubah Password
+          Ubah Kata Sandi
         </button>
       </form>
     </div>
