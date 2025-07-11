@@ -19,7 +19,7 @@
 
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex space-x-8 text-[#f9f6f1] font-semibold">
-      <a href="/home" class="hover:underline px-2 tracking-wide">Home</a>
+      <a href="/home" class="hover:underline px-2 tracking-wide">Beranda</a>
       <a href="/home#tentang" class="hover:underline px-2 tracking-wide">Tentang</a>
       <a href="/barang" class="hover:underline px-2 tracking-wide">Produk</a>
       <a href="/home#hubungi" class="hover:underline px-2 tracking-wide">Hubungi Kami</a>
@@ -50,7 +50,7 @@
       </button>
 
         <div id="profile-dropdown" class="absolute right-0 mt-2 w-45 bg-white text-black shadow-lg rounded-lg hidden z-40">
-          <a href="/profile" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Profile Saya</a>
+          <a href="/profile" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Profil Saya</a>
           <a href="/ganti_password" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Ganti Kata Sandi</a>
           <a href="/history" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Riwayat Penyewaan</a>
           <hr class="text-gray-300">
@@ -69,7 +69,7 @@
 
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="md:hidden hidden bg-transparent backdrop-blur-md px-6 py-4 space-y-4 text-white font-semibold">
-    <a href="/home" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition">Home</a>
+    <a href="/home" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition">Beranda</a>
     <a href="/home#tentang" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition">Tentang</a>
     <a href="/barang" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition">Produk</a>
     <a href="/home#hubungi" class="block nav-item hover:bg-blue-900 p-2 rounded-xl transition">Hubungi Kami</a>
@@ -98,7 +98,7 @@
         </button>
 
         <div id="profile-dropdown-mobile" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-45 bg-white text-black shadow-lg rounded-lg hidden z-40">
-          <a href="/profile" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Profile Saya</a>
+          <a href="/profile" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Profil Saya</a>
           <a href="/ganti_password" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Ganti Kata Sandi</a>
           <a href="/history" class="block px-4 py-2 text-sm hover:text-white hover:bg-blue-900 transition">Riwayat Penyewaan</a>
           <hr class="text-gray-300">

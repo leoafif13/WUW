@@ -9,7 +9,7 @@
       <i class="fas fa-arrow-left"></i>
     </a>
     <h1 class="text-white font-bold text-center flex-grow text-sm sm:text-base">
-      Profile Saya
+      Profil Saya
     </h1>
     <div style="width: 24px;"></div>
   </div>
@@ -46,7 +46,7 @@
         <x-profile-row label="Nomor Telepon" :value="$user->telepon" />
 
         <a href="{{ url('/edit_profile') }}" class="w-full block text-center bg-blue-900 hover:bg-blue-500 text-white py-2 rounded text-sm sm:text-base font-semibold">
-          Edit Profile
+          Edit Profil
         </a>
       </div>
     </div>

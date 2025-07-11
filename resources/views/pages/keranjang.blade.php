@@ -106,7 +106,7 @@
         </p>
         <input type="hidden" name="items" id="itemsInput" />
         <button type="submit" class="bg-blue-900 hover:bg-blue-500 text-white text-sm sm:text-base font-semibold rounded px-5 py-2 text-center w-full sm:w-auto">
-            Checkout (<span id="countBarang">0</span>)
+            Pesan (<span id="countBarang">0</span>)
         </button>
     </div>
 </form>

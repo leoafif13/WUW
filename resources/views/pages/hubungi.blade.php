@@ -33,7 +33,7 @@
               </li>
               <li class="flex justify-between gap-6">
                 <span class="min-w-[110px]">Minggu</span>
-                <span class="text-red-600 font-semibold">Close</span>
+                <span class="text-red-600 font-semibold">Tutup</span>
               </li>
             </ul>
           </div>

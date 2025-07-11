@@ -59,7 +59,7 @@
               </div>
       <!-- Tombol Submit -->
       <button type="submit" class="w-full bg-blue-900 text-white font-bold text-xs py-2 rounded hover:bg-blue-500">
-        Ubah Profile
+        Ubah Profil
       </button>
     </form>
   </div>
