@@ -41,12 +41,12 @@ class StatsDashboard extends BaseWidget
 
         return [
             Stat::make('Jumlah Barang', $countBarangs),
-            Stat::make('Jumlah User', $countuser),
-            Stat::make('Jumlah Orderan', $countorder),
+            Stat::make('Jumlah Pengguna', $countuser),
+            Stat::make('Jumlah Pesanan', $countorder),
             Stat::make('Pesan Kontak', $countkontak),
             Stat::make('Jumlah Pembayaran', $countpayment),
-            Stat::make('Jumlah Review', $countreview),
-            Stat::make('Order Gagal', $countGagal),
+            Stat::make('Jumlah Ulasan', $countreview),
+            Stat::make('Pesanan Dibatalkan', $countGagal),
             Stat::make('Belum Dibayar', $countBelumBayar),
             Stat::make('Total Pendapatan', 'Rp ' . number_format($totalPembayaran, 0, ',', '.'))
                 ->description(($persentase >= 0 ? '+' : '') . number_format($persentase, 1) . '% dari bulan lalu')

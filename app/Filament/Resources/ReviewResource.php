@@ -26,6 +26,8 @@ class ReviewResource extends Resource
 
     protected static ?string $navigationGroup = 'Pesan';
 
+    protected static ?string $label = 'Ulasan';
+
     public static function form(Form $form): Form
     {
         return $form

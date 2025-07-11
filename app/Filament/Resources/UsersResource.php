@@ -91,7 +91,8 @@ class UsersResource extends Resource
                         return ($currentPage - 1) * $perPage + $index + 1;
                     })
                     ->sortable(false),
-                TextColumn::make('name')->searchable(),
+                TextColumn::make('name')->searchable()
+                        ->label('Pengguna'),
                 TextColumn::make('email')->searchable(),
                 TextColumn::make('alamat')->searchable(),
                 TextColumn::make('telepon')->searchable(),
