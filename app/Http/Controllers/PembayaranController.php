@@ -29,7 +29,7 @@ class PembayaranController extends Controller
         }
 
         $subtotal = $orders->sum('total_harga');
-        $biayaLayanan = 1500;
+        $biayaLayanan = 20000;
         $totalBayar = $subtotal + $biayaLayanan;
 
         // Konfigurasi Midtrans
@@ -133,7 +133,7 @@ class PembayaranController extends Controller
                     'metode'          => $request->metode,
                     'pengiriman'      => $request->pengiriman,
                     'alamat'          => $request->pengiriman === 'antar' ? ($request->alamat ?: $user->alamat): null,
-                    'total'           => $order->total_harga + 1500,
+                    'total'           => $order->total_harga,
                     'status'          => $request->metode === 'cod' ? 'diproses' : 'dibayar',
                 ]);
 

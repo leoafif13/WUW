@@ -144,17 +144,17 @@
           <span>Subtotal Produk</span><span>Rp{{ number_format($subtotalProduk, 0, ',', '.') }}</span>
         </div>
         <div class="flex justify-between">
-          <span>Biaya Layanan</span><span>Rp1.500</span>
+          <span>Biaya Layanan</span><span>Rp20.000</span>
         </div>
         <div class="flex justify-between font-semibold text-lg">
-          <span>Total Bayar</span><span class="text-blue-900">Rp{{ number_format($subtotalProduk + 1500, 0, ',', '.') }}</span>
+          <span>Total Bayar</span><span class="text-blue-900">Rp{{ number_format($subtotalProduk + 20000, 0, ',', '.') }}</span>
         </div>
       </section>
     </div>
 
     <!-- Footer -->
     <footer class="fixed bottom-0 left-0 right-0 bg-white border-t px-4 py-3 shadow-lg flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm z-50 gap-2 sm:gap-0">
-      <p class="font-semibold">Total: <span class="text-blue-900">Rp{{ number_format($subtotalProduk + 1500, 0, ',', '.') }}</span></p>
+      <p class="font-semibold">Total: <span class="text-blue-900">Rp{{ number_format($subtotalProduk + 20000, 0, ',', '.') }}</span></p>
       <button type="button" id="pay-button"
               class="w-full sm:w-auto bg-blue-900 hover:bg-blue-800 text-white px-5 py-2 rounded-lg font-semibold">
         Buat Pesanan
