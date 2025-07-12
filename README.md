@@ -140,6 +140,7 @@ Watch the following video to see our **Wear You Want (WWW)** ATS Presentation:
 Watch the following video to see our **Wear You Want (WWW)** AAS Presentation:
 
 📺 **(https://youtu.be/VqBooRHIx0A?si=hnS5rpKo5Oj7vz5v)**
+
 ---
 
 ### 🎥 Video Demonstration
@@ -147,4 +148,5 @@ Watch the following video to see our **Wear You Want (WWW)** AAS Presentation:
 Watch the following video to see how our **WearYouWant (WUW)** application works in action:
 
 📺 **(https://youtu.be/VqBooRHIx0A?si=hnS5rpKo5Oj7vz5v)**
+
 ---
