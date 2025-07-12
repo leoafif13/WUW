@@ -12,8 +12,7 @@
 
 ---
 
-A modern, stylish web application for renting wedding and graduation outfits.  
-This project is our final submission for **Project-Based Learning (PBL)**.
+A modern, stylish web application for renting wedding and graduation outfits. This project is our final submission for **Project-Based Learning (PBL)**.
 
 <p align="center">
   <!-- You can replace this image with your own logo -->
