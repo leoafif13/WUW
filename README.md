@@ -1,6 +1,6 @@
 <h1 align="center">
-  <img src="public/img/Logo WUW.png" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
-  WUW - WearYouWant
+  <img src="public/img/Logo WUW.png" alt="Logo" height="40" style="vertical-align: middle; margin-right: 10px;">
+  <strong>WUW - WearYouWant 👗🎓</strong>
 </h1>
 
 <p align="center">
@@ -13,18 +13,43 @@
 
 ---
 
-## 👥 Development Team
+## 👥 Project Contributors – WearYouWant (WUW)
 
-| Name                      | NIM     |
-|---------------------------|----------------|
-| Leo Afif Eka Permana           | 3312401041     |
-| Muhammad Faiq   | 3312401031     |
-| Ananda Khusnul Hotimah  | 3312401044     |
-| Muhammad Deza Awdino   | 3312401050     |
+| Name                      | NIM         | Role                                             | GitHub Username     |
+|---------------------------|-------------|--------------------------------------------------|---------------------|
+| Leo Afif Eka Permana      | 3312401041  | Lead Frontend Developer & Project Documentation  | [`@leoafif13`](https://github.com/leoafif13)     |
+| Muhammad Faiq             | 3312401031  | Backend Developer & Database Integration         | [`@Mufaaaa`](https://github.com/Mufaaaa)         |
+| Ananda Khusnul Hotimah    | 3312401044  | UI/UX Designer & Media Asset Manager             | [`@dioz44`](https://github.com/dioz44)           |
+| Muhammad Deza Awdino      | 3312401050  | System Tester, Deployment, & Test Documentation  | [`@dinoslebew`](https://github.com/dinoslebew)   |
+
+> 📝 *Each team member contributed significantly to the success of the WUW project.*
+---
 
 ## 📦 About the Project
 
 **WUW - WearYouWant** is a web-based application that makes it easy for users to rent outfits for wedding and graduation events. With a user-friendly interface and a seamless payment process, WUW aims to be a modern digital solution for formal wear rentals.
+
+---
+
+## 🌟 Key Features
+
+Here are the main features offered by **WUW - WearYouWant**:
+
+### 🔎 Instantly Search and Rent Outfits
+Users can search for outfits by name or category, view detailed product information, and instantly add them to the rental cart.
+
+### 🛒 Shopping Cart & Seamless Checkout
+A cart system that stores selected rental items. Fast and efficient checkout with a complete summary of the order and total cost.
+
+### 💸 Digital Payment Integration via Midtrans
+Integrated with the **Midtrans** payment gateway, users can make real-time payments using various methods such as e-wallets, bank transfers, and credit cards.
+
+### 📊 Powerful Admin Panel with Filament
+Administrators can manage products, users, orders, and rental reports using a modern and intuitive admin panel powered by **Filament**.
+
+### 📅 Rental History 
+Users can view their rental history 
+
 
 ---
 
