@@ -127,4 +127,24 @@ Make sure you have the following installed:
 🔗 Access the application via your browser: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ---
+### 🎥 Video Presentation ATS
 
+Watch the following video to see our **Wear You Want (WWW)** ATS Presentation:
+
+📺 **(https://youtu.be/VqBooRHIx0A?si=hnS5rpKo5Oj7vz5v)**
+
+---
+
+### 🎥 Video Presentation AAS
+
+Watch the following video to see our **Wear You Want (WWW)** AAS Presentation:
+
+📺 **(https://youtu.be/VqBooRHIx0A?si=hnS5rpKo5Oj7vz5v)**
+---
+
+### 🎥 Video Demonstration
+
+Watch the following video to see how our **WearYouWant (WUW)** application works in action:
+
+📺 **(https://youtu.be/VqBooRHIx0A?si=hnS5rpKo5Oj7vz5v)**
+---
