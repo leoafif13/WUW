@@ -91,8 +91,8 @@ Make sure you have the following installed:
 
 1. **Clone the repository and navigate to the project directory**
     ```bash
-    git clone https://github.com/your-username/your-repository-name.git
-    cd your-repository-name
+    git clone https://github.com/leoafif13/WUW.git
+    cd WUW
     ```
 
 2. **Install backend and frontend dependencies**
