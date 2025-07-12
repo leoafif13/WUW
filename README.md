@@ -4,6 +4,18 @@
 </h1>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Laravel-12-red?logo=laravel&style=for-the-badge" alt="Laravel" />
+  <img src="https://img.shields.io/badge/Livewire-3-blueviolet?logo=livewire&style=for-the-badge" alt="Livewire" />
+  <img src="https://img.shields.io/badge/TailwindCSS-3-38bdf8?logo=tailwindcss&style=for-the-badge" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Status-In_Development-brightgreen?style=for-the-badge" alt="Status" />
+</p>
+
+---
+
+A modern, stylish web application for renting wedding and graduation outfits.  
+This project is our final submission for **Project-Based Learning (PBL)**.
+
+<p align="center">
   <!-- You can replace this image with your own logo -->
   <img src="public/img/WUW.png" alt="WUW Logo">
 </p>
