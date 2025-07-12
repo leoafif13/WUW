@@ -150,3 +150,114 @@ Watch the following video to see how our **WearYouWant (WUW)** application works
 📺 **(https://youtu.be/VqBooRHIx0A?si=hnS5rpKo5Oj7vz5v)**
 
 ---
+
+# 📖 User Guide – WUW (Wear You Want) Web Application
+
+This guide explains each page of the **WearYouWant (WUW)** web-based rental application, from account registration to profile management.
+
+---
+
+## 1. 📝 Register Page
+
+Create an account by filling in your full name, email address, password, and confirming your password.
+
+
+> After a successful registration, users will be redirected to the **Login** page.
+
+---
+
+## 2. 🔐 Login Page
+
+Log in using your registered **email** and **password**.
+
+> If the entered credentials are correct, the user will be redirected to the **Home** page.
+
+---
+
+## 3. 🏠 Home Page
+
+On the **Home** page, users are welcomed with the main interface of the WUW application. This page is designed to give a strong first impression.
+
+> To browse available products, click the **"Products"** link in the navigation bar.
+
+---
+
+## 4. 🔍 Product Search Page
+
+The **Product Search** page is designed to help users easily find outfits that suit their needs by filtering through **categories**, **types**, or **sizes**.
+
+
+> To see more details about a product, click the **"Product Details"** button.
+
+---
+
+## 5. 📄 Product Detail Page
+
+This page provides detailed information about a selected outfit, helping users make informed decisions before renting.
+
+
+> If the user decides to rent, they can choose the quantity and click **"Add to Cart"**.
+
+---
+
+## 6. 🛒 Shopping Cart Page
+
+The **Cart** page shows a list of selected products the user intends to rent before proceeding to checkout.
+
+
+> Once confirmed, the user can click **"Checkout"** to continue to the next step.
+
+---
+
+## 7. 💳 Checkout Page
+
+The **Checkout** page is the final step before completing the rental. Here, users can review their orders, choose a **shipping method**, select a **payment method**, and see the **total cost**.
+
+
+> After clicking **"Place Order"**, a payment popup (e.g., from Midtrans) will appear for transaction completion.
+
+---
+
+## 8. 📚 Rental History Page
+
+The **Rental History** page displays all previous rentals made by the user. This allows users to review past orders or repeat a previous rental.
+
+
+> To leave a review on a past rental, click the **"Rate"** button.
+
+---
+
+## 9. 🌟 Product Rating Page
+
+The **Product Rating** page allows users to leave feedback or reviews for the items they rented. This helps other users and supports service improvement.
+
+
+---
+
+## 10. 👤 Profile Page
+
+To view personal information, go to the home page and click **"My Profile"**. This page shows your account and personal data.
+
+
+---
+
+## 11. ✏️ Edit Profile Page
+
+Users can update their personal information on the **Edit Profile** page. Keeping data up to date ensures smooth shipping and verification.
+
+
+> After making changes, click **"Update Profile"**.
+
+---
+
+## 12. 🔑 Change Password Page
+
+To change your password, return to the home page, go to **"My Profile"**, then click **"Change Password"**.
+
+This page allows users to securely update their passwords to protect their accounts.
+
+
+---
+
+🧡 Thank you for using **WearYouWant (WUW)** — your trusted outfit rental platform.
+
