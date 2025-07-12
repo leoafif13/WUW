@@ -129,7 +129,7 @@ Make sure you have the following installed:
 ---
 ### 🎥 Video Presentation ATS
 
-Watch the following video to see our **Wear You Want (WWW)** ATS Presentation:
+Watch the following video to see our **Wear You Want (WUW)** ATS Presentation:
 
 📺 **(https://youtu.be/VqBooRHIx0A?si=hnS5rpKo5Oj7vz5v)**
 
@@ -137,7 +137,7 @@ Watch the following video to see our **Wear You Want (WWW)** ATS Presentation:
 
 ### 🎥 Video Presentation AAS
 
-Watch the following video to see our **Wear You Want (WWW)** AAS Presentation:
+Watch the following video to see our **Wear You Want (WUW)** AAS Presentation:
 
 📺 **(https://youtu.be/VqBooRHIx0A?si=hnS5rpKo5Oj7vz5v)**
 
